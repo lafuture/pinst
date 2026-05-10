@@ -1,0 +1,345 @@
+openapi: 3.1.0
+info:
+  title: Pinst API
+  description: Backend API for the Pinst Telegram Mini App (AI image generation).
+  version: 0.1.0
+
+servers:
+  - url: https://api.pinst.ai
+    description: Production
+  - url: http://localhost:8080
+    description: Local development
+
+tags:
+  - name: auth
+    description: Telegram WebApp authentication
+  - name: user
+    description: User profile
+  - name: generation
+    description: AI image generation
+  - name: gallery
+    description: User's generation history
+  - name: payment
+    description: Subscription payments
+
+paths:
+  /api/auth/telegram:
+    post:
+      tags: [auth]
+      summary: Authenticate via Telegram WebApp initData
+      description: >
+        Validates the Telegram WebApp `initData` string (HMAC-SHA256 signature
+        checked against the bot token). On success returns a signed JWT valid
+        for 24 hours. The frontend must include this token as
+        `Authorization: Bearer <token>` on every subsequent request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelegramAuthRequest'
+            example:
+              init_data: "query_id=AAH...&user=%7B%22id%22%3A123%7D&auth_date=1714000000&hash=abc123"
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          description: Missing or malformed init_data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid or expired init_data signature
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error (bot not configured, database error, token error)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/user/me:
+    get:
+      tags: [user]
+      summary: Get current user profile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /api/generate:
+    post:
+      tags: [generation]
+      summary: Generate an AI image
+      description: >
+        Accepts a multipart/form-data body with a photo and optional parameters.
+        Decrements the user's `remaining_photo` counter.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [photo]
+              properties:
+                photo:
+                  type: string
+                  format: binary
+                  description: Source photo to process
+                prompt:
+                  type: string
+                  description: Optional style or instruction prompt
+      responses:
+        '200':
+          description: Generation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerationResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          description: No remaining generations — user must upgrade subscription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '501':
+          description: Not yet implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/gallery:
+    get:
+      tags: [gallery]
+      summary: Get user's generation history
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of past generations (newest first)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Generation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /api/payment/create:
+    post:
+      tags: [payment]
+      summary: Create a payment link for a subscription plan
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePaymentRequest'
+            example:
+              plan: pro
+              method: card
+      responses:
+        '200':
+          description: Payment link created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentLink'
+        '400':
+          description: Invalid plan or payment method
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '501':
+          description: Not yet implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/payment/{payment_id}:
+    get:
+      tags: [payment]
+      summary: Check payment status
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: payment_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Payment ID returned by /api/payment/create
+      responses:
+        '200':
+          description: Current payment status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentStatus'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Payment not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '501':
+          description: Not yet implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained from POST /api/auth/telegram
+
+  responses:
+    Unauthorized:
+      description: Missing or invalid Bearer token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+  schemas:
+    TelegramAuthRequest:
+      type: object
+      required: [init_data]
+      properties:
+        init_data:
+          type: string
+          description: Raw initData string from Telegram.WebApp.initData
+
+    AuthResponse:
+      type: object
+      required: [token]
+      properties:
+        token:
+          type: string
+          description: Signed JWT (HS256, 24 h TTL)
+        param:
+          type: string
+          description: >
+            Telegram deep-link start_param if the user opened the app via a
+            referral or campaign link; empty string otherwise.
+
+    User:
+      type: object
+      required: [telegram_id, username, remaining_photo, limits_photo]
+      properties:
+        telegram_id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        subscription:
+          type: string
+          nullable: true
+          enum: [lite, pro, null]
+        subscription_end_at:
+          type: string
+          format: date-time
+          nullable: true
+        remaining_photo:
+          type: integer
+          description: Generations available until subscription renewal
+        limits_photo:
+          type: integer
+          description: Total generations included in the current plan
+
+    GenerationResult:
+      type: object
+      required: [image_url]
+      properties:
+        image_url:
+          type: string
+          format: uri
+          description: URL of the generated image
+
+    Generation:
+      type: object
+      required: [id, image_url, created_at]
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_url:
+          type: string
+          format: uri
+        created_at:
+          type: string
+          format: date-time
+        prompt:
+          type: string
+          nullable: true
+
+    CreatePaymentRequest:
+      type: object
+      required: [plan, method]
+      properties:
+        plan:
+          type: string
+          enum: [lite, pro]
+        method:
+          type: string
+          enum: [card, sbp]
+
+    PaymentLink:
+      type: object
+      required: [url, payment_id]
+      properties:
+        url:
+          type: string
+          format: uri
+          description: Redirect URL to the payment provider
+        payment_id:
+          type: string
+          description: Opaque payment identifier for status polling
+
+    PaymentStatus:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [pending, success, failed]
+
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
