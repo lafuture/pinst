@@ -404,7 +404,7 @@ export default function TariffsScreen() {
                     </div>
                     <div style={{ textAlign: 'left' }}>
                       <p style={{ color: '#ffffff', fontSize: 15, fontWeight: 500, margin: 0 }}>Картой</p>
-                      <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, margin: '2px 0 0' }}>с автопродлением</p>
+                      <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, margin: '2px 0 0' }}>разовая оплата</p>
                     </div>
                   </button>
 
