@@ -121,6 +121,7 @@ function AppInner() {
     location.pathname !== '/create'
 
   const isChat = location.pathname === '/chat'
+  const isTariffs = location.pathname === '/tariffs'
 
   useEffect(() => {
     onReady()
@@ -216,7 +217,7 @@ function AppInner() {
         id="app-main-scroll"
         style={{
           /* 68px = высота BottomNav; чат заполняет область без лишних px — иначе родитель «дрожит» при скролле */
-          height: 'calc(100dvh - 84px)',
+          height: isTariffs ? '100dvh' : 'calc(100dvh - 84px)',
           overflowY: isChat ? 'hidden' : 'auto',
           overflowX: 'hidden',
           WebkitOverflowScrolling: 'touch',
@@ -227,7 +228,7 @@ function AppInner() {
         <AnimatedRoutes />
       </div>
 
-      <BottomNav />
+      {!isTariffs && <BottomNav />}
 
       <Toast
         message="Нет соединения"

@@ -1,15 +1,14 @@
 package handlers
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
+	"io"
 	"log"
 	"net/http"
 
 	"pinst/internal/auth"
-
-	"github.com/rvinnie/yookassa-sdk-go/yookassa"
-	yoocommon "github.com/rvinnie/yookassa-sdk-go/yookassa/common"
-	yoopayment "github.com/rvinnie/yookassa-sdk-go/yookassa/payment"
 )
 
 type paymentRequest struct {
@@ -30,6 +29,32 @@ var planAmounts = map[string]string{
 var planDescriptions = map[string]string{
 	"lite": "Подписка Pinst Lite — 1 месяц",
 	"pro":  "Подписка Pinst Pro — 1 месяц",
+}
+
+const yooKassaAPI = "https://api.yookassa.ru/v3/payments"
+
+type yooCreateRequest struct {
+	Amount            yooAmount         `json:"amount"`
+	Confirmation      yooConfirmation   `json:"confirmation"`
+	Description       string            `json:"description"`
+	Capture           bool              `json:"capture"`
+	SavePaymentMethod bool              `json:"save_payment_method"`
+	PaymentMethodData yooMethodData     `json:"payment_method_data"`
+	Metadata          map[string]any    `json:"metadata"`
+}
+
+type yooAmount struct {
+	Value    string `json:"value"`
+	Currency string `json:"currency"`
+}
+
+type yooConfirmation struct {
+	Type      string `json:"type"`
+	ReturnURL string `json:"return_url"`
+}
+
+type yooMethodData struct {
+	Type string `json:"type"`
 }
 
 func (h *Handler) CreatePaymentHandler(w http.ResponseWriter, r *http.Request) {
@@ -56,7 +81,7 @@ func (h *Handler) CreatePaymentHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if h.cfg.YooKassaShopID == "" || h.cfg.YooKassaSecretKey == "" {
-		log.Printf("CreatePayment: YooKassa not configured (YOOKASSA_SHOP_ID/YOOKASSA_SECRET_KEY missing)")
+		log.Printf("CreatePayment: YooKassa not configured")
 		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "payment not configured"})
 		return
 	}
@@ -66,28 +91,64 @@ func (h *Handler) CreatePaymentHandler(w http.ResponseWriter, r *http.Request) {
 		returnURL = "https://t.me/" + h.cfg.BOTUser
 	}
 
-	yooclient := yookassa.NewClient(h.cfg.YooKassaShopID, h.cfg.YooKassaSecretKey)
-	paymentHandler := yookassa.NewPaymentHandler(yooclient)
-
-	paymentObj := &yoopayment.Payment{
-		Amount: &yoocommon.Amount{
-			Value:    amount,
-			Currency: "RUB",
-		},
-		Confirmation: yoopayment.Redirect{
-			Type:      "redirect",
-			ReturnURL: returnURL,
-		},
-		Description:       planDescriptions[req.Plan],
-		Capture:           true,
-		SavePaymentMethod: true,
-		Metadata:          map[string]interface{}{"tg_id": userID, "plan": req.Plan},
+	methodType := "bank_card"
+	if req.Method == "sbp" {
+		methodType = "sbp"
 	}
 
-	created, err := paymentHandler.CreatePayment(r.Context(), paymentObj)
+	body := yooCreateRequest{
+		Amount:            yooAmount{Value: amount, Currency: "RUB"},
+		Confirmation:      yooConfirmation{Type: "redirect", ReturnURL: returnURL},
+		Description:       planDescriptions[req.Plan],
+		Capture:           true,
+		SavePaymentMethod: false,
+		PaymentMethodData: yooMethodData{Type: methodType},
+		Metadata:          map[string]any{"tg_id": userID, "plan": req.Plan},
+	}
+
+	bodyBytes, err := json.Marshal(body)
 	if err != nil {
-		log.Printf("CreatePayment: YooKassa error tg_id=%d plan=%s: %v", userID, req.Plan, err)
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "marshal error"})
+		return
+	}
+
+	httpReq, err := http.NewRequestWithContext(r.Context(), http.MethodPost, yooKassaAPI, bytes.NewReader(bodyBytes))
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "request error"})
+		return
+	}
+	httpReq.SetBasicAuth(h.cfg.YooKassaShopID, h.cfg.YooKassaSecretKey)
+	httpReq.Header.Set("Content-Type", "application/json")
+	httpReq.Header.Set("Idempotence-Key", fmt.Sprintf("%d-%s-%s", userID, req.Plan, req.Method))
+
+	resp, err := http.DefaultClient.Do(httpReq)
+	if err != nil {
+		log.Printf("CreatePayment: http error tg_id=%d: %v", userID, err)
 		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "payment creation failed"})
+		return
+	}
+	defer resp.Body.Close()
+
+	respBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "read error"})
+		return
+	}
+
+	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusCreated {
+		log.Printf("CreatePayment: YooKassa error tg_id=%d plan=%s status=%d body=%s", userID, req.Plan, resp.StatusCode, string(respBytes))
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "payment creation failed"})
+		return
+	}
+
+	var created struct {
+		ID           string `json:"id"`
+		Confirmation struct {
+			ConfirmationURL string `json:"confirmation_url"`
+		} `json:"confirmation"`
+	}
+	if err := json.Unmarshal(respBytes, &created); err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "parse error"})
 		return
 	}
 
@@ -95,34 +156,12 @@ func (h *Handler) CreatePaymentHandler(w http.ResponseWriter, r *http.Request) {
 		log.Printf("CreatePayment: db error tg_id=%d payment_id=%s: %v", userID, created.ID, err)
 	}
 
-	payURL := extractConfirmationURL(created.Confirmation)
-	if payURL == "" {
+	if created.Confirmation.ConfirmationURL == "" {
 		log.Printf("CreatePayment: empty confirmation URL payment_id=%s", created.ID)
 		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "no confirmation url"})
 		return
 	}
 
 	log.Printf("CreatePayment: ok tg_id=%d plan=%s payment_id=%s", userID, req.Plan, created.ID)
-	writeJSON(w, http.StatusCreated, paymentLinkResponse{URL: payURL, PaymentID: created.ID})
-}
-
-
-func extractConfirmationURL(c interface{}) string {
-	if c == nil {
-		return ""
-	}
-	if m, ok := c.(map[string]interface{}); ok {
-		if u, _ := m["confirmation_url"].(string); u != "" {
-			return u
-		}
-	}
-	switch v := c.(type) {
-	case *yoopayment.Redirect:
-		if v != nil {
-			return v.ConfirmationURL
-		}
-	case yoopayment.Redirect:
-		return v.ConfirmationURL
-	}
-	return ""
+	writeJSON(w, http.StatusCreated, paymentLinkResponse{URL: created.Confirmation.ConfirmationURL, PaymentID: created.ID})
 }
