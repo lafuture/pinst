@@ -9,6 +9,14 @@
     <link rel="stylesheet" crossorigin href="/assets/index-CxudzB1H.css">
   </head>
   <body>
+    <script>
+      (function () {
+        var tg = window.Telegram;
+        if (!tg || !tg.WebApp || !tg.WebApp.initData) {
+          window.location.replace('/landing.html');
+        }
+      })();
+    </script>
     <div id="root"></div>
   </body>
 </html>
