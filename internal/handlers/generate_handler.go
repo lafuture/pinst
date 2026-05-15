@@ -76,8 +76,9 @@ func (h *Handler) submitImageTask(ctx context.Context, tgID int64, prompt string
 		return "", http.StatusPaymentRequired, fmt.Errorf("no remaining generations")
 	}
 
+	resolution := h.resolutionForUser(ctx, tgID)
 	id := uuid.NewString()
-	if err := h.db.CreateKieTask(ctx, id, tgID, mode, prompt, mediaURLs, aspect); err != nil {
+	if err := h.db.CreateKieTask(ctx, id, tgID, mode, prompt, mediaURLs, aspect, resolution); err != nil {
 		if rerr := h.db.RefundRemainingPhoto(ctx, tgID); rerr != nil {
 			log.Printf("submitImageTask: refund tg_id=%d: %v", tgID, rerr)
 		}

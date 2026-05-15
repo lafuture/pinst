@@ -393,29 +393,33 @@ func (p *Postgres) DeleteUserModel(ctx context.Context, tgID int64) error {
 }
 
 type KieTask struct {
-	TaskID    string
-	KieTaskID *string
-	TgID      int64
-	State     string
-	Mode      string
-	Prompt    string
-	MediaURLs []string
-	Aspect    string
-	ImageURL  *string
-	Error     *string
-	Retries   int
-	CreatedAt time.Time
+	TaskID     string
+	KieTaskID  *string
+	TgID       int64
+	State      string
+	Mode       string
+	Prompt     string
+	MediaURLs  []string
+	Aspect     string
+	Resolution string
+	ImageURL   *string
+	Error      *string
+	Retries    int
+	CreatedAt  time.Time
 }
 
-func (p *Postgres) CreateKieTask(ctx context.Context, taskID string, tgID int64, mode, prompt string, mediaURLs []string, aspect string) error {
+func (p *Postgres) CreateKieTask(ctx context.Context, taskID string, tgID int64, mode, prompt string, mediaURLs []string, aspect, resolution string) error {
 	raw, err := json.Marshal(mediaURLs)
 	if err != nil {
 		return err
 	}
+	if resolution == "" {
+		resolution = "2K"
+	}
 	const q = `
-		INSERT INTO kie_tasks (task_id, tg_id, mode, prompt, media_urls, aspect, state)
-		VALUES ($1, $2, $3, $4, $5::jsonb, $6, 'queued')`
-	_, err = p.Pool.Exec(ctx, q, taskID, tgID, mode, prompt, string(raw), aspect)
+		INSERT INTO kie_tasks (task_id, tg_id, mode, prompt, media_urls, aspect, resolution, state)
+		VALUES ($1, $2, $3, $4, $5::jsonb, $6, $7, 'queued')`
+	_, err = p.Pool.Exec(ctx, q, taskID, tgID, mode, prompt, string(raw), aspect, resolution)
 	return err
 }
 
@@ -427,12 +431,12 @@ func (p *Postgres) SetKieTaskKieID(ctx context.Context, id, kieTaskID string) er
 
 func (p *Postgres) GetKieTaskByKieID(ctx context.Context, kieTaskID string) (KieTask, error) {
 	const q = `
-		SELECT task_id, kie_task_id, tg_id, state, mode, prompt, media_urls, aspect, image_url, error, retries, created_at
+		SELECT task_id, kie_task_id, tg_id, state, mode, prompt, media_urls, aspect, resolution, image_url, error, retries, created_at
 		FROM kie_tasks WHERE kie_task_id = $1`
 	var t KieTask
 	var raw []byte
 	err := p.Pool.QueryRow(ctx, q, kieTaskID).Scan(
-		&t.TaskID, &t.KieTaskID, &t.TgID, &t.State, &t.Mode, &t.Prompt, &raw, &t.Aspect,
+		&t.TaskID, &t.KieTaskID, &t.TgID, &t.State, &t.Mode, &t.Prompt, &raw, &t.Aspect, &t.Resolution,
 		&t.ImageURL, &t.Error, &t.Retries, &t.CreatedAt)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return KieTask{}, ErrUserNotFound
@@ -454,12 +458,12 @@ func (p *Postgres) IncrementKieTaskRetries(ctx context.Context, id string) error
 
 func (p *Postgres) GetKieTask(ctx context.Context, taskID string) (KieTask, error) {
 	const q = `
-		SELECT task_id, kie_task_id, tg_id, state, mode, prompt, media_urls, aspect, image_url, error, retries, created_at
+		SELECT task_id, kie_task_id, tg_id, state, mode, prompt, media_urls, aspect, resolution, image_url, error, retries, created_at
 		FROM kie_tasks WHERE task_id = $1`
 	var t KieTask
 	var raw []byte
 	err := p.Pool.QueryRow(ctx, q, taskID).Scan(
-		&t.TaskID, &t.KieTaskID, &t.TgID, &t.State, &t.Mode, &t.Prompt, &raw, &t.Aspect,
+		&t.TaskID, &t.KieTaskID, &t.TgID, &t.State, &t.Mode, &t.Prompt, &raw, &t.Aspect, &t.Resolution,
 		&t.ImageURL, &t.Error, &t.Retries, &t.CreatedAt)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return KieTask{}, ErrUserNotFound
@@ -727,4 +731,374 @@ func (p *Postgres) UsersActiveLite10d(ctx context.Context) ([]SchedulerUser, err
 		return nil, err
 	}
 	return scanSchedulerUsers(rows)
+}
+
+// ── Dashboard metrics ─────────────────────────────────────────────────────────
+
+type ChartPoint struct {
+	Date  string  `json:"date"`
+	Value float64 `json:"value"`
+}
+
+const litePriceRub = 349.0
+const proPriceRub = 899.0
+
+type DashboardMetrics struct {
+	// Block 1: Users
+	TotalUsers    int `json:"total_users"`
+	NewUsersToday int `json:"new_users_today"`
+	FreeTotal     int `json:"free_total"`
+	FreeNewToday  int `json:"free_new_today"`
+	LiteTotal     int `json:"lite_total"`
+	LiteNewToday  int `json:"lite_new_today"`
+	ProTotal      int `json:"pro_total"`
+	ProNewToday   int `json:"pro_new_today"`
+
+	// Block 2: Revenue
+	MRR          float64 `json:"mrr"`
+	NewMRR       float64 `json:"new_mrr"`
+	NRR          float64 `json:"nrr"`
+	ChurnRate    float64 `json:"churn_rate"`
+	RevenueChurn float64 `json:"revenue_churn"`
+	LTVAvg       float64 `json:"ltv_avg"`
+
+	// Block 3: Retention
+	RetentionM1    float64 `json:"retention_m1"`
+	RetentionM3    float64 `json:"retention_m3"`
+	FreeToPaidPct  float64 `json:"free_to_paid_pct"`
+	ReachedPayPct  float64 `json:"reached_pay_pct"`
+
+	// Block 4: Activity
+	DAU         int     `json:"dau"`
+	MAU         int     `json:"mau"`
+	DAUMAURatio float64 `json:"dau_mau_ratio"`
+
+	// Block 5: Costs & P&L
+	PhotoCostTotal float64 `json:"photo_cost_total"`
+	PhotoCostMonth float64 `json:"photo_cost_month"`
+	PhotoCostToday float64 `json:"photo_cost_today"`
+	ChatCostTotal  float64 `json:"chat_cost_total"`
+	Gens2K         int     `json:"gens_2k"`
+	Gens4K         int     `json:"gens_4k"`
+}
+
+func (p *Postgres) GetDashboardMetrics(ctx context.Context) (*DashboardMetrics, error) {
+	m := &DashboardMetrics{}
+
+	// Block 1: Users
+	const qUsers = `
+		SELECT
+			COUNT(*),
+			COUNT(*) FILTER (WHERE created_at >= CURRENT_DATE),
+			COUNT(*) FILTER (WHERE subscription IS NULL OR subscription_end_at <= NOW()),
+			COUNT(*) FILTER (WHERE (subscription IS NULL OR subscription_end_at <= NOW()) AND created_at >= CURRENT_DATE),
+			COUNT(*) FILTER (WHERE subscription = 'lite' AND subscription_end_at > NOW()),
+			COUNT(*) FILTER (WHERE subscription = 'lite' AND subscription_end_at > NOW() AND subscription_start_at >= CURRENT_DATE),
+			COUNT(*) FILTER (WHERE subscription = 'pro'  AND subscription_end_at > NOW()),
+			COUNT(*) FILTER (WHERE subscription = 'pro'  AND subscription_end_at > NOW() AND subscription_start_at >= CURRENT_DATE)
+		FROM users`
+	if err := p.Pool.QueryRow(ctx, qUsers).Scan(
+		&m.TotalUsers, &m.NewUsersToday,
+		&m.FreeTotal, &m.FreeNewToday,
+		&m.LiteTotal, &m.LiteNewToday,
+		&m.ProTotal, &m.ProNewToday,
+	); err != nil {
+		return nil, err
+	}
+
+	// Block 2: Revenue — MRR, New MRR, NRR, Churn, LTV
+	m.MRR = float64(m.LiteTotal)*litePriceRub + float64(m.ProTotal)*proPriceRub
+
+	// MRR at start of current calendar month (subs active on that day)
+	var liteAtSOM, proAtSOM int
+	const qSOM = `
+		SELECT
+			COUNT(*) FILTER (WHERE subscription = 'lite'),
+			COUNT(*) FILTER (WHERE subscription = 'pro')
+		FROM users
+		WHERE subscription IS NOT NULL
+		  AND subscription_start_at < DATE_TRUNC('month', NOW())
+		  AND subscription_end_at   > DATE_TRUNC('month', NOW())`
+	if err := p.Pool.QueryRow(ctx, qSOM).Scan(&liteAtSOM, &proAtSOM); err != nil {
+		return nil, err
+	}
+	mrrSOM := float64(liteAtSOM)*litePriceRub + float64(proAtSOM)*proPriceRub
+
+	// New MRR = subscriptions that started this month (first-time payers), active now
+	var liteNew, proNew int
+	const qNewMRR = `
+		SELECT
+			COUNT(*) FILTER (WHERE subscription = 'lite'),
+			COUNT(*) FILTER (WHERE subscription = 'pro')
+		FROM users
+		WHERE subscription IS NOT NULL
+		  AND subscription_start_at >= DATE_TRUNC('month', NOW())
+		  AND subscription_end_at > NOW()
+		  AND tg_id NOT IN (
+			  SELECT DISTINCT tg_id FROM payments
+			  WHERE status = 'paid' AND created_at < DATE_TRUNC('month', NOW())
+		  )`
+	if err := p.Pool.QueryRow(ctx, qNewMRR).Scan(&liteNew, &proNew); err != nil {
+		return nil, err
+	}
+	m.NewMRR = float64(liteNew)*litePriceRub + float64(proNew)*proPriceRub
+
+	// Churned this month = were active at SOM, now expired and not renewed
+	var liteChurned, proChurned int
+	const qChurn = `
+		SELECT
+			COUNT(*) FILTER (WHERE subscription = 'lite'),
+			COUNT(*) FILTER (WHERE subscription = 'pro')
+		FROM users
+		WHERE subscription IS NOT NULL
+		  AND subscription_start_at < DATE_TRUNC('month', NOW())
+		  AND subscription_end_at   > DATE_TRUNC('month', NOW())
+		  AND subscription_end_at  <= NOW()`
+	if err := p.Pool.QueryRow(ctx, qChurn).Scan(&liteChurned, &proChurned); err != nil {
+		return nil, err
+	}
+	churnedMRR := float64(liteChurned)*litePriceRub + float64(proChurned)*proPriceRub
+
+	subsAtSOM := liteAtSOM + proAtSOM
+	if subsAtSOM > 0 {
+		m.ChurnRate = float64(liteChurned+proChurned) / float64(subsAtSOM) * 100
+		m.RevenueChurn = churnedMRR / mrrSOM * 100
+	}
+	if mrrSOM > 0 {
+		m.NRR = m.MRR / mrrSOM * 100
+	} else {
+		m.NRR = 100
+	}
+
+	// LTV avg = total paid / distinct paying users
+	var ltvAvg float64
+	const qLTV = `
+		SELECT COALESCE(AVG(u_total), 0) FROM (
+			SELECT tg_id, SUM(amount::numeric) AS u_total
+			FROM payments WHERE status = 'paid'
+			GROUP BY tg_id
+		) t`
+	if err := p.Pool.QueryRow(ctx, qLTV).Scan(&ltvAvg); err != nil {
+		return nil, err
+	}
+	m.LTVAvg = ltvAvg
+
+	// Block 3: Retention
+	// M1 cohort: registered 25-35 days ago, active sub now
+	var m1Cohort, m1Retained int
+	const qM1 = `
+		SELECT COUNT(*),
+		       COUNT(*) FILTER (WHERE subscription IS NOT NULL AND subscription_end_at > NOW())
+		FROM users
+		WHERE created_at BETWEEN NOW() - INTERVAL '35 days' AND NOW() - INTERVAL '25 days'`
+	if err := p.Pool.QueryRow(ctx, qM1).Scan(&m1Cohort, &m1Retained); err != nil {
+		return nil, err
+	}
+	if m1Cohort > 0 {
+		m.RetentionM1 = float64(m1Retained) / float64(m1Cohort) * 100
+	}
+
+	// M3 cohort: registered 80-100 days ago, active sub now
+	var m3Cohort, m3Retained int
+	const qM3 = `
+		SELECT COUNT(*),
+		       COUNT(*) FILTER (WHERE subscription IS NOT NULL AND subscription_end_at > NOW())
+		FROM users
+		WHERE created_at BETWEEN NOW() - INTERVAL '100 days' AND NOW() - INTERVAL '80 days'`
+	if err := p.Pool.QueryRow(ctx, qM3).Scan(&m3Cohort, &m3Retained); err != nil {
+		return nil, err
+	}
+	if m3Cohort > 0 {
+		m.RetentionM3 = float64(m3Retained) / float64(m3Cohort) * 100
+	}
+
+	// Free → Paid this month: new payers this month who never paid before / free users before SOM
+	var newPayers, freeBeforeSOM int
+	const qF2P = `
+		WITH new_p AS (
+			SELECT DISTINCT tg_id FROM payments
+			WHERE status = 'paid' AND created_at >= DATE_TRUNC('month', NOW())
+			  AND tg_id NOT IN (
+				SELECT DISTINCT tg_id FROM payments
+				WHERE status = 'paid' AND created_at < DATE_TRUNC('month', NOW())
+			  )
+		)
+		SELECT
+			(SELECT COUNT(*) FROM new_p),
+			(SELECT COUNT(*) FROM users
+			 WHERE created_at < DATE_TRUNC('month', NOW())
+			   AND tg_id NOT IN (
+				 SELECT DISTINCT tg_id FROM payments
+				 WHERE status = 'paid' AND created_at < DATE_TRUNC('month', NOW())
+			   ))`
+	if err := p.Pool.QueryRow(ctx, qF2P).Scan(&newPayers, &freeBeforeSOM); err != nil {
+		return nil, err
+	}
+	if freeBeforeSOM > 0 {
+		m.FreeToPaidPct = float64(newPayers) / float64(freeBeforeSOM) * 100
+	}
+
+	// % reached payment (ever paid / total users)
+	var everpaid int
+	const qPaid = `SELECT COUNT(DISTINCT tg_id) FROM payments WHERE status = 'paid'`
+	if err := p.Pool.QueryRow(ctx, qPaid).Scan(&everpaid); err != nil {
+		return nil, err
+	}
+	if m.TotalUsers > 0 {
+		m.ReachedPayPct = float64(everpaid) / float64(m.TotalUsers) * 100
+	}
+
+	// Block: Costs & P&L
+	const qCosts = `
+		SELECT
+			COALESCE(SUM(CASE WHEN resolution='2K' THEN 4.8 WHEN resolution='4K' THEN 7.2 ELSE 4.8 END), 0),
+			COALESCE(SUM(CASE WHEN resolution='2K' AND created_at >= DATE_TRUNC('month',NOW()) THEN 4.8
+			                  WHEN resolution='4K' AND created_at >= DATE_TRUNC('month',NOW()) THEN 7.2
+			                  ELSE 0 END), 0),
+			COALESCE(SUM(CASE WHEN resolution='2K' AND created_at >= CURRENT_DATE THEN 4.8
+			                  WHEN resolution='4K' AND created_at >= CURRENT_DATE THEN 7.2
+			                  ELSE 0 END), 0),
+			COUNT(*) FILTER (WHERE resolution='2K' AND state='success'),
+			COUNT(*) FILTER (WHERE resolution='4K' AND state='success')
+		FROM kie_tasks
+		WHERE state = 'success'`
+	if err := p.Pool.QueryRow(ctx, qCosts).Scan(
+		&m.PhotoCostTotal, &m.PhotoCostMonth, &m.PhotoCostToday,
+		&m.Gens2K, &m.Gens4K,
+	); err != nil {
+		return nil, err
+	}
+
+	var chatSpentTotal float64
+	if err := p.Pool.QueryRow(ctx, `SELECT COALESCE(SUM(chat_spent_rub),0) FROM users`).Scan(&chatSpentTotal); err != nil {
+		return nil, err
+	}
+	m.ChatCostTotal = chatSpentTotal
+
+	// Block 4: DAU / MAU (active = made a generation or sent a chat message)
+	const qDAU = `
+		SELECT COUNT(DISTINCT tg_id) FROM (
+			SELECT tg_id FROM generations  WHERE created_at >= CURRENT_DATE
+			UNION
+			SELECT tg_id FROM chat_history WHERE role = 'user' AND created_at >= CURRENT_DATE
+		) t`
+	if err := p.Pool.QueryRow(ctx, qDAU).Scan(&m.DAU); err != nil {
+		return nil, err
+	}
+
+	const qMAU = `
+		SELECT COUNT(DISTINCT tg_id) FROM (
+			SELECT tg_id FROM generations  WHERE created_at >= NOW() - INTERVAL '30 days'
+			UNION
+			SELECT tg_id FROM chat_history WHERE role = 'user' AND created_at >= NOW() - INTERVAL '30 days'
+		) t`
+	if err := p.Pool.QueryRow(ctx, qMAU).Scan(&m.MAU); err != nil {
+		return nil, err
+	}
+	if m.MAU > 0 {
+		m.DAUMAURatio = float64(m.DAU) / float64(m.MAU) * 100
+	}
+
+	return m, nil
+}
+
+// GetChartData returns daily time series for a given metric over the last `days` days.
+// Supported metrics: new_users, revenue, gens, dau, mrr
+func (p *Postgres) GetChartData(ctx context.Context, metric string, days int) ([]ChartPoint, error) {
+	if days <= 0 || days > 365 {
+		days = 30
+	}
+
+	var query string
+	switch metric {
+	case "new_users":
+		query = `
+			WITH days AS (
+				SELECT d::date AS d FROM generate_series(
+					CURRENT_DATE - ($1-1) * '1 day'::interval,
+					CURRENT_DATE, '1 day'::interval
+				) d
+			)
+			SELECT days.d::text, COUNT(u.tg_id)::float8
+			FROM days LEFT JOIN users u ON u.created_at::date = days.d
+			GROUP BY days.d ORDER BY days.d`
+	case "revenue":
+		query = `
+			WITH days AS (
+				SELECT d::date AS d FROM generate_series(
+					CURRENT_DATE - ($1-1) * '1 day'::interval,
+					CURRENT_DATE, '1 day'::interval
+				) d
+			)
+			SELECT days.d::text, COALESCE(SUM(p.amount::numeric), 0)::float8
+			FROM days
+			LEFT JOIN payments p ON p.updated_at::date = days.d AND p.status = 'paid'
+			GROUP BY days.d ORDER BY days.d`
+	case "gens":
+		query = `
+			WITH days AS (
+				SELECT d::date AS d FROM generate_series(
+					CURRENT_DATE - ($1-1) * '1 day'::interval,
+					CURRENT_DATE, '1 day'::interval
+				) d
+			)
+			SELECT days.d::text, COUNT(g.id)::float8
+			FROM days LEFT JOIN generations g ON g.created_at::date = days.d
+			GROUP BY days.d ORDER BY days.d`
+	case "dau":
+		query = `
+			WITH days AS (
+				SELECT d::date AS d FROM generate_series(
+					CURRENT_DATE - ($1-1) * '1 day'::interval,
+					CURRENT_DATE, '1 day'::interval
+				) d
+			),
+			active AS (
+				SELECT created_at::date AS d, tg_id FROM generations
+				WHERE created_at >= CURRENT_DATE - $1 * '1 day'::interval
+				UNION
+				SELECT created_at::date AS d, tg_id FROM chat_history
+				WHERE role = 'user' AND created_at >= CURRENT_DATE - $1 * '1 day'::interval
+			)
+			SELECT days.d::text, COUNT(DISTINCT active.tg_id)::float8
+			FROM days LEFT JOIN active ON active.d = days.d
+			GROUP BY days.d ORDER BY days.d`
+	case "mrr":
+		query = `
+			WITH days AS (
+				SELECT d::date AS d FROM generate_series(
+					CURRENT_DATE - ($1-1) * '1 day'::interval,
+					CURRENT_DATE, '1 day'::interval
+				) d
+			)
+			SELECT days.d::text,
+				COALESCE(SUM(
+					CASE WHEN u.subscription='lite' THEN 349
+					     WHEN u.subscription='pro'  THEN 899
+					     ELSE 0 END
+				), 0)::float8
+			FROM days
+			LEFT JOIN users u ON u.subscription IS NOT NULL
+				AND u.subscription_start_at::date <= days.d
+				AND u.subscription_end_at::date   >  days.d
+			GROUP BY days.d ORDER BY days.d`
+	default:
+		return nil, nil
+	}
+
+	rows, err := p.Pool.Query(ctx, query, days)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	out := make([]ChartPoint, 0)
+	for rows.Next() {
+		var pt ChartPoint
+		if err := rows.Scan(&pt.Date, &pt.Value); err != nil {
+			return nil, err
+		}
+		out = append(out, pt)
+	}
+	return out, rows.Err()
 }

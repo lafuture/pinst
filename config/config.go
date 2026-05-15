@@ -26,6 +26,9 @@ type Config struct {
 	KieCallbackURL string
 	UploadsDir     string
 	PublicURL      string
+
+	DashboardSecret string
+	LandingDir      string
 }
 
 func Load() (*Config, error) {
@@ -50,6 +53,9 @@ func Load() (*Config, error) {
 		KieCallbackURL: strings.TrimSpace(os.Getenv("KIE_CALLBACK_URL")),
 		UploadsDir:     strings.TrimSpace(os.Getenv("UPLOADS_DIR")),
 		PublicURL:      strings.TrimRight(strings.TrimSpace(os.Getenv("PUBLIC_URL")), "/"),
+
+		DashboardSecret: strings.TrimSpace(os.Getenv("DASHBOARD_SECRET")),
+		LandingDir:      strings.TrimSpace(os.Getenv("LANDING_DIR")),
 	}
 	if cfg.KieCallbackURL == "" && cfg.PublicURL != "" {
 		cfg.KieCallbackURL = cfg.PublicURL + "/api/kie/callback/yWiJwdBfHLxqbtEd9wixxZc9"

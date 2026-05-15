@@ -17,7 +17,7 @@ func NewServer(cfg *config.Config, handler *handlers.Handler, store *storage.Sto
 	return &Server{
 		srv: &http.Server{
 			Addr:              cfg.ListenAddr,
-			Handler:           NewRouter(handler, cfg.JWTSecret, store),
+			Handler:           NewRouter(handler, cfg.JWTSecret, cfg.DashboardSecret, cfg.LandingDir, store),
 			ReadHeaderTimeout: 5 * time.Second,
 			ReadTimeout:       2 * time.Minute,
 			WriteTimeout:      0,

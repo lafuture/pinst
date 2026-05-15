@@ -14,10 +14,12 @@ services:
       - "${APP_PORT:-8080}:8080"
     volumes:
       - ./external:/app/external:ro
+      - ./landing:/app/landing:ro
       - pinst-uploads:/app/uploads
     environment:
       LISTEN_ADDR: "${LISTEN_ADDR:-:8080}"
-      STATIC_DIR: "${STATIC_DIR:-/app/external}"
+      STATIC_DIR: "${STATIC_DIR:-/app/external/app}"
+      LANDING_DIR: "${LANDING_DIR:-/app/landing}"
       JWT_SECRET: "${JWT_SECRET:-super-secret-key-change-me}"
       BOT_TOKEN: "${BOT_TOKEN:-}"
       BOT_USER: "${BOT_USER:-}"

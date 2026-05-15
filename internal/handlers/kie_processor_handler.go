@@ -61,8 +61,7 @@ func (h *Handler) processOneKieTask(ctx context.Context, id string) {
 		h.kieAcquire()
 	}
 
-	resolution := h.resolutionForUser(ctx, task.TgID)
-	kieTaskID, err := h.SendToNanoBananaPro(ctx, task.Prompt, task.MediaURLs, task.Aspect, resolution)
+	kieTaskID, err := h.SendToNanoBananaPro(ctx, task.Prompt, task.MediaURLs, task.Aspect, task.Resolution)
 	if err != nil {
 		log.Printf("processOneKieTask: SendToNanoBananaPro id=%s: %v", id, err)
 		// Инкрементируем счётчик чтобы ограничить повторы при сетевых ошибках (аналог stateKeyKieRetry в AiBot).

@@ -38,13 +38,59 @@ func corsMiddleware(next http.Handler) http.Handler {
 	})
 }
 
-func NewRouter(handler *handlers.Handler, jwtSecret string, store *storage.Storage) http.Handler {
+func dashboardAuth(secret string) func(http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			if strings.Contains(strings.ToLower(r.Header.Get("User-Agent")), "telegram") {
+				http.Error(w, "forbidden", http.StatusForbidden)
+				return
+			}
+			if secret == "" {
+				http.Error(w, "dashboard disabled", http.StatusForbidden)
+				return
+			}
+			_, pass, ok := r.BasicAuth()
+			if !ok || pass != secret {
+				w.Header().Set("WWW-Authenticate", `Basic realm="Pinst Dashboard"`)
+				http.Error(w, "unauthorized", http.StatusUnauthorized)
+				return
+			}
+			next.ServeHTTP(w, r)
+		})
+	}
+}
+
+func serveLanding(landingDir string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		f, err := os.Open(filepath.Join(landingDir, "index.html"))
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+		defer f.Close()
+		fi, _ := f.Stat()
+		w.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+		http.ServeContent(w, r, "index.html", fi.ModTime(), f)
+	}
+}
+
+func NewRouter(handler *handlers.Handler, jwtSecret string, dashboardSecret string, landingDir string, store *storage.Storage) http.Handler {
 	r := chi.NewRouter()
 	r.Use(middleware.RealIP)
 	r.Use(middleware.RequestID)
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 	r.Use(corsMiddleware)
+
+	r.With(dashboardAuth(dashboardSecret)).Get("/dashboard", handler.DashboardHandler)
+	r.With(dashboardAuth(dashboardSecret)).Get("/dashboard/api/chart", handler.DashboardChartHandler)
+
+	// Лендинг: GET / и картинки из landingDir/img/
+	if landingDir != "" {
+		landingFS := http.FileServer(http.Dir(landingDir))
+		r.Get("/", serveLanding(landingDir))
+		r.Handle("/img/*", landingFS)
+	}
 
 	r.Post("/api/auth/telegram", handler.TelegramAuthHandler)
 	r.Post("/api/kie/callback/yWiJwdBfHLxqbtEd9wixxZc9", handler.KieCallbackHandler)
@@ -87,14 +133,36 @@ func NewRouter(handler *handlers.Handler, jwtSecret string, store *storage.Stora
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 			return
 		}
+
+		// Редирект .html → чистый URL
+		if strings.HasSuffix(req.URL.Path, ".html") {
+			clean := strings.TrimSuffix(req.URL.Path, ".html")
+			if clean == "" {
+				clean = "/"
+			}
+			http.Redirect(w, req, clean, http.StatusMovedPermanently)
+			return
+		}
+
 		w.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
-		// Serve real file if it exists (assets, icons, etc.), otherwise SPA fallback
+
 		if root != "" {
-			if _, err := os.Stat(filepath.Join(root, filepath.Clean(req.URL.Path))); err == nil {
+			info, err := os.Stat(filepath.Join(root, filepath.Clean(req.URL.Path)))
+			// Отдаём только реальные файлы (js, css, svg и т.д.), директории — SPA fallback
+			if err == nil && !info.IsDir() {
 				fs.ServeHTTP(w, req)
 				return
 			}
-			http.ServeFile(w, req, filepath.Join(root, "index.html"))
+			// SPA fallback: открываем index.html и отдаём через ServeContent,
+			// чтобы не было редиректа на /index.html
+			f, err := os.Open(filepath.Join(root, "index.html"))
+			if err != nil {
+				http.NotFound(w, req)
+				return
+			}
+			defer f.Close()
+			fi, _ := f.Stat()
+			http.ServeContent(w, req, "index.html", fi.ModTime(), f)
 			return
 		}
 		http.NotFound(w, req)
