@@ -74,6 +74,8 @@ func (h *Handler) SendPhotoByURLToChatHandler(w http.ResponseWriter, r *http.Req
 	writeJSON(w, http.StatusOK, map[string]string{"status": "sent"})
 }
 
+const telegramPhotoMaxBytes = 10 * 1024 * 1024 // 10 MB — Telegram sendPhoto limit
+
 func (h *Handler) sendPhotoViaBot(tgID int64, imageURL string) error {
 	// Download image first — tempfile.aiquickdraw.com URLs can't be accessed by Telegram directly
 	imgResp, err := http.Get(imageURL)
@@ -89,14 +91,19 @@ func (h *Handler) sendPhotoViaBot(tgID int64, imageURL string) error {
 		return fmt.Errorf("read image: %w", err)
 	}
 
-	// Build multipart form
+	// Large files (4K) exceed sendPhoto's 10 MB limit — send as document instead.
+	method := "sendPhoto"
+	field := "photo"
+	if len(imgData) > telegramPhotoMaxBytes {
+		method = "sendDocument"
+		field = "document"
+	}
+
 	var buf bytes.Buffer
 	mw := multipart.NewWriter(&buf)
-
 	_ = mw.WriteField("chat_id", fmt.Sprintf("%d", tgID))
 	_ = mw.WriteField("caption", "Ваше фото из Pinst ✨")
-
-	fw, err := mw.CreateFormFile("photo", "photo.jpg")
+	fw, err := mw.CreateFormFile(field, "photo.jpg")
 	if err != nil {
 		return err
 	}
@@ -105,7 +112,7 @@ func (h *Handler) sendPhotoViaBot(tgID int64, imageURL string) error {
 	}
 	mw.Close()
 
-	apiURL := fmt.Sprintf("https://api.telegram.org/bot%s/sendPhoto", h.cfg.BOTToken)
+	apiURL := fmt.Sprintf("https://api.telegram.org/bot%s/%s", h.cfg.BOTToken, method)
 	resp, err := http.Post(apiURL, mw.FormDataContentType(), &buf)
 	if err != nil {
 		return err
