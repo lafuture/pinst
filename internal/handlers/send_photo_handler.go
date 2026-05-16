@@ -81,6 +81,9 @@ func (h *Handler) sendPhotoViaBot(tgID int64, imageURL string) error {
 		return fmt.Errorf("download image: %w", err)
 	}
 	defer imgResp.Body.Close()
+	if imgResp.StatusCode != http.StatusOK {
+		return fmt.Errorf("download image: status %d", imgResp.StatusCode)
+	}
 	imgData, err := io.ReadAll(imgResp.Body)
 	if err != nil {
 		return fmt.Errorf("read image: %w", err)
