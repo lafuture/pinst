@@ -60,8 +60,30 @@ func dashboardAuth(secret string) func(http.Handler) http.Handler {
 	}
 }
 
+func serveAppIndex(w http.ResponseWriter, r *http.Request) bool {
+	root := staticRoot()
+	if root == "" {
+		return false
+	}
+	f, err := os.Open(filepath.Join(root, "index.html"))
+	if err != nil {
+		return false
+	}
+	defer f.Close()
+	fi, _ := f.Stat()
+	w.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+	http.ServeContent(w, r, "index.html", fi.ModTime(), f)
+	return true
+}
+
 func serveLanding(landingDir string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		// Telegram Mini App: open the SPA instead of the landing page
+		if strings.Contains(strings.ToLower(r.Header.Get("User-Agent")), "telegram") {
+			if serveAppIndex(w, r) {
+				return
+			}
+		}
 		f, err := os.Open(filepath.Join(landingDir, "index.html"))
 		if err != nil {
 			http.NotFound(w, r)

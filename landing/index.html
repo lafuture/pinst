@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Pinst AI — Всё для создания контента в одном Telegram-боте</title>
+<link rel="icon" type="image/png" href="/img/favicon.png" />
+<link rel="apple-touch-icon" href="/img/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
@@ -889,9 +891,10 @@
     .reveal[data-dir="right"]{transform:translateX(18px);}
     .reveal[data-dir="scale"]{transform:scale(0.97);}
 
-    .hero{padding:90px 0 50px;}
-    h1.hero-title{font-size:36px;line-height:1.1;}
-    .hero-sub{font-size:16px;}
+    .hero{padding:38px 0 28px;}
+    h1.hero-title{font-size:32px;line-height:1.1;margin-bottom:12px;}
+    .hero-sub{font-size:15px;margin-bottom:20px;}
+    .hero-cta-row{gap:10px;}
     h2.section-title{font-size:28px;}
     .section-sub{font-size:15px;}
     .section{padding:64px 0;}
@@ -951,6 +954,17 @@
     h2.section-title em.brand::after{display:none;}
   }
 </style>
+<script>
+  // Redirect to the mini-app when opened inside Telegram WebView.
+  // Telegram appends #tgWebAppData=... to the URL — the server never
+  // sees the hash, so we handle it client-side here.
+  (function () {
+    var h = window.location.hash;
+    if (h && h.indexOf('tgWebApp') !== -1) {
+      window.location.replace('/app' + h);
+    }
+  })();
+</script>
 </head>
 <body>
 

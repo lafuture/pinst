@@ -9,6 +9,13 @@
       "cwd": "/Users/zakharbakhmutov/Desktop/Pinst/external"
     },
     {
+      "name": "landing-page",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "5176"],
+      "port": 5176,
+      "cwd": "/Users/zakharbakhmutov/Desktop/Pinst/landing"
+    },
+    {
       "name": "pinst-dev",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--", "--port", "5174"],

@@ -237,8 +237,7 @@ func (s *Service) FireOnboarding1h(ctx context.Context, u database.SchedulerUser
 	text := "У тебя ещё не сделано ни одного фото! Вот как это работает:\n\n" +
 		"1️⃣ Нажми «Создать» в меню\n" +
 		"2️⃣ Загрузи своё фото\n" +
-		"3️⃣ Загрузи референс из Pinterest или напиши промпт\n" +
-		"4️⃣ Получи результат за 30 секунд ✨"
+		"3️⃣ Получи результат за 30 секунд ✨"
 	s.sendTG(ctx, u.TgID, text, s.appBtn("Открыть Pinst"))
 }
 
