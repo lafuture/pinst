@@ -139,11 +139,6 @@ func (s *Service) logPaymentToChannel(ctx context.Context, tgID int64, plan stri
 		log.Printf("billing: logPaymentToChannel skipped — log channel not configured")
 		return
 	}
-	user, err := s.db.GetUser(ctx, tgID)
-	if err != nil {
-		log.Printf("billing: logPaymentToChannel GetUser tg_id=%d: %v", tgID, err)
-		return
-	}
 
 	planName := map[string]string{"lite": "Lite", "pro": "Pro"}[plan]
 	amount := planAmounts[plan]
@@ -153,12 +148,10 @@ func (s *Service) logPaymentToChannel(ctx context.Context, tgID int64, plan stri
 		kind = "Авто-продление"
 	}
 
-	userLine := fmt.Sprintf(`<a href="tg://user?id=%d">%s</a>`, tgID, user.FirstName)
+	text := fmt.Sprintf("💳 <b>%s</b>\n👤 tg://user?id=%d\nТариф: Pinst %s\nСумма: %s ₽",
+		kind, tgID, planName, amount)
 
-	text := fmt.Sprintf("💳 <b>%s</b>\n👤 %s\nТариф: <b>Pinst %s</b>\nСумма: <b>%s ₽</b>",
-		kind, userLine, planName, amount)
-
-	if err := s.tg.LogPayment(ctx, text); err != nil {
+	if err := s.tg.LogMessage(ctx, text); err != nil {
 		log.Printf("billing: logPaymentToChannel tg_id=%d: %v", tgID, err)
 	}
 }
