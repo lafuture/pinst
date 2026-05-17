@@ -17,6 +17,7 @@ type Config struct {
 	ShortName  string
 	TGChannel     string // CHANNEL_ID (-100…) для getChatMember
 	TGChannelLink string // CHANNEL_LINK (https://t.me/…) для кнопки
+	TGLogChannel  string // LOG_CHANNEL_ID (-100…) для логов платежей
 
 	YooKassaShopID    string
 	YooKassaSecretKey string
@@ -44,6 +45,7 @@ func Load() (*Config, error) {
 		ShortName:  strings.TrimSpace(os.Getenv("SHORT_NAME")),
 		TGChannel:     strings.TrimSpace(os.Getenv("CHANNEL_ID")),
 		TGChannelLink: strings.TrimSpace(os.Getenv("CHANNEL_LINK")),
+		TGLogChannel:  strings.TrimSpace(os.Getenv("LOG_CHANNEL_ID")),
 
 		YooKassaShopID:    strings.TrimSpace(os.Getenv("YOU_KASSA_ID")),
 		YooKassaSecretKey: strings.TrimSpace(os.Getenv("YOU_KASSA_SECRET_KEY")),

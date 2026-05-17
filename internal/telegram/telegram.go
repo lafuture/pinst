@@ -11,20 +11,22 @@ import (
 )
 
 type Client struct {
-	token       string
-	channelID   string
-	channelLink string
-	appURL      string
-	http        *http.Client
+	token        string
+	channelID    string
+	channelLink  string
+	appURL       string
+	logChannelID string
+	http         *http.Client
 }
 
-func New(token, channelID, channelLink, appURL string) *Client {
+func New(token, channelID, channelLink, appURL, logChannelID string) *Client {
 	return &Client{
-		token:       token,
-		channelID:   channelID,
-		channelLink: channelLink,
-		appURL:      appURL,
-		http:        &http.Client{Timeout: 10 * time.Second},
+		token:        token,
+		channelID:    channelID,
+		channelLink:  channelLink,
+		appURL:       appURL,
+		logChannelID: logChannelID,
+		http:         &http.Client{Timeout: 10 * time.Second},
 	}
 }
 
@@ -61,6 +63,38 @@ func (c *Client) SendMessage(ctx context.Context, chatID int64, text string, btn
 		}
 	}
 
+	data, err := json.Marshal(payload)
+	if err != nil {
+		return err
+	}
+	apiURL := fmt.Sprintf("https://api.telegram.org/bot%s/sendMessage", c.token)
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, apiURL, bytes.NewReader(data))
+	if err != nil {
+		return err
+	}
+	req.Header.Set("Content-Type", "application/json")
+	resp, err := c.http.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return fmt.Errorf("tg api %d: %s", resp.StatusCode, body)
+	}
+	return nil
+}
+
+// LogPayment sends a formatted message to the log channel.
+func (c *Client) LogPayment(ctx context.Context, text string) error {
+	if c.token == "" || c.logChannelID == "" {
+		return nil
+	}
+	payload := map[string]any{
+		"chat_id":    c.logChannelID,
+		"text":       text,
+		"parse_mode": "HTML",
+	}
 	data, err := json.Marshal(payload)
 	if err != nil {
 		return err

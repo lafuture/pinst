@@ -46,7 +46,7 @@ func main() {
 	kieLimiter := ratelimit.NewFixedWindow(20, 10*time.Second)
 	kieLimiter.StartRefill(ctx)
 
-	tgClient := telegram.New(cfg.BOTToken, cfg.TGChannel, cfg.TGChannelLink, cfg.PublicURL)
+	tgClient := telegram.New(cfg.BOTToken, cfg.TGChannel, cfg.TGChannelLink, cfg.PublicURL, cfg.TGLogChannel)
 	notifSvc := notifications.New(db, tgClient)
 	billingSvc := billing.New(db, cfg, tgClient)
 	scheduler := notifications.NewScheduler(notifSvc, billingSvc)

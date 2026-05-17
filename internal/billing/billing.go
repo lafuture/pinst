@@ -88,6 +88,8 @@ func (s *Service) HandleWebhook(ctx context.Context, p WebhookPayload) error {
 		}
 	}
 
+	s.logPaymentToChannel(ctx, tgID, plan, isAuto(p))
+
 	// Уведомление в Telegram только для авто-продления.
 	// При ручной оплате пользователь видит результат прямо в приложении.
 	if isAuto(p) {
@@ -130,6 +132,31 @@ func (s *Service) ChargeAutoRenewal(ctx context.Context, tgID int64, plan, metho
 	log.Printf("billing: auto-renewal initiated tg_id=%d plan=%s payment_id=%s status=%s",
 		tgID, plan, created.ID, created.Status)
 	return nil
+}
+
+func (s *Service) logPaymentToChannel(ctx context.Context, tgID int64, plan string, isAuto bool) {
+	user, err := s.db.GetUser(ctx, tgID)
+	if err != nil {
+		log.Printf("billing: logPaymentToChannel GetUser tg_id=%d: %v", tgID, err)
+		return
+	}
+
+	planName := map[string]string{"lite": "Lite", "pro": "Pro"}[plan]
+	amount := planAmounts[plan]
+
+	kind := "Новая подписка"
+	if isAuto {
+		kind = "Авто-продление"
+	}
+
+	userLine := fmt.Sprintf(`<a href="tg://user?id=%d">%s</a>`, tgID, user.FirstName)
+
+	text := fmt.Sprintf("💳 <b>%s</b>\n👤 %s\nТариф: <b>Pinst %s</b>\nСумма: <b>%s ₽</b>",
+		kind, userLine, planName, amount)
+
+	if err := s.tg.LogPayment(ctx, text); err != nil {
+		log.Printf("billing: logPaymentToChannel tg_id=%d: %v", tgID, err)
+	}
 }
 
 func (s *Service) notifySuccess(ctx context.Context, tgID int64, plan string) {
