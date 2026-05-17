@@ -1509,1247 +1509,1247 @@ export const SECTIONS: Section[] = [
       },
     ],
   },
-  {
-    title: '💞 Парные',
-    packs: [
-      {
-        id: 'love_story',
-        image: 'https://i.imgur.com/BCriZGn.jpeg',
-        prompt: 'ABSOLUTE PRIORITY: FACIAL IDENTITY REPLICATION\n' +
-            '\n' +
-            'INPUT: Two separate images - one man, one woman\n' +
-            'OUTPUT: Overhead photograph of these EXACT two people in elevator with mirror\n' +
-            '\n' +
-            '====================\n' +
-            'PART 1: FACIAL DNA EXTRACTION (MANDATORY - 60 SECONDS)\n' +
-            '====================\n' +
-            '\n' +
-            'Study EACH input for 30 seconds. Extract and LOCK exact DNA:\n' +
-            '\n' +
-            'MAN\'S FACIAL DNA - EXACT parameters (NO approximations):\n' +
-            '\n' +
-            '1. Eye geometry:\n' +
-            '   - Shape: [round? almond? hooded? deep-set? - describe EXACT contour]\n' +
-            '   - Size: [small/medium/large relative to face - EXACT]\n' +
-            '   - Spacing: [close-set? wide-set? - measure EXACT distance]\n' +
-            '   - Color: [NOT "blue/brown" - EXACT: light blue? gray-blue? hazel? medium brown? dark brown?]\n' +
-            '   - Eyelid: [monolid? double? hooded? - EXACT type]\n' +
-            '\n' +
-            '2. Nose architecture:\n' +
-            '   - Bridge: [narrow? medium? wide? - EXACT width]\n' +
-            '   - Nostrils: [round? oval? flared? tight? - EXACT shape]\n' +
-            '   - Tip: [bulbous? pointed? button? upturned? straight? downturned? - EXACT]\n' +
-            '   - Length: [short? medium? long? - EXACT]\n' +
-            '\n' +
-            '3. Lip morphology:\n' +
-            '   - Upper lip: [thin? medium? full? - EXACT thickness]\n' +
-            '   - Lower lip: [thin? medium? full? - EXACT thickness]\n' +
-            '   - Ratio: [upper:lower proportion - EXACT]\n' +
-            '   - Width: [narrow? medium? wide? - EXACT]\n' +
-            '   - Cupid\'s bow: [defined? soft? flat? - EXACT]\n' +
-            '\n' +
-            '4. Facial geometry:\n' +
-            '   - Shape: [square? oval? rectangular? round? long? - EXACT]\n' +
-            '   - Jaw: [sharp angular? soft rounded? strong? - EXACT angle]\n' +
-            '   - Chin: [pointed? rounded? square? prominent? recessed? - EXACT]\n' +
-            '\n' +
-            '5. Bone structure:\n' +
-            '   - Cheekbones: [high? medium? low? prominent? subtle? - EXACT position]\n' +
-            '\n' +
-            '6. Skin parameters:\n' +
-            '   - Tone: [fair? light? medium? tan? olive? - EXACT shade]\n' +
-            '   - Undertone: [warm/golden? cool/pink? neutral? - EXACT]\n' +
-            '\n' +
-            '7. Hair pigmentation:\n' +
-            '   - Color: [NOT "brown" - EXACT: light brown? medium brown? dark brown? with warm/cool undertones?]\n' +
-            '   - Style: [buzzed? short crop? textured? - EXACT]\n' +
-            '\n' +
-            '8. Facial hair pattern:\n' +
-            '   - Style: [clean-shaven? stubble? short beard? full beard? goatee? - EXACT]\n' +
-            '   - Coverage: [chin only? full face? mustache? - EXACT areas]\n' +
-            '   - Color: [same as hair? darker? - EXACT]\n' +
-            '   - Density: [sparse? medium? thick? - EXACT]\n' +
-            '\n' +
-            '9. Proportions (measure):\n' +
-            '   - Eye spacing ÷ face width = [ratio]\n' +
-            '   - Nose width ÷ face width = [ratio]\n' +
-            '\n' +
-            'WOMAN\'S FACIAL DNA - EXACT parameters (NO approximations):\n' +
-            '\n' +
-            '1. Eye geometry:\n' +
-            '   - Shape: [round? almond? cat-eye? upturned? downturned? - EXACT]\n' +
-            '   - Size: [small/medium/large - EXACT]\n' +
-            '   - Spacing: [close? medium? wide? - EXACT]\n' +
-            '   - Color: [NOT "brown" - EXACT: light brown? medium brown? dark brown? hazel? amber?]\n' +
-            '   - Eyelid: [monolid? double? hooded? - EXACT]\n' +
-            '\n' +
-            '2. Nose architecture:\n' +
-            '   - Bridge: [narrow? medium? wide? - EXACT]\n' +
-            '   - Tip: [button? straight? upturned? pointed? - EXACT]\n' +
-            '   - Nostrils: [round? oval? tight? - EXACT]\n' +
-            '   - Length: [short? medium? long? - EXACT]\n' +
-            '\n' +
-            '3. Lip morphology:\n' +
-            '   - Upper lip: [thin? medium? full? - EXACT]\n' +
-            '   - Lower lip: [thin? medium? full? - EXACT]\n' +
-            '   - Ratio: [upper:lower - EXACT]\n' +
-            '   - Cupid\'s bow: [sharp? soft? undefined? - EXACT]\n' +
-            '   - Width: [narrow? medium? wide? - EXACT]\n' +
-            '\n' +
-            '4. Facial geometry:\n' +
-            '   - Shape: [oval? heart? diamond? round? square? - EXACT]\n' +
-            '   - Jaw: [soft? defined? angular? - EXACT]\n' +
-            '   - Chin: [pointed? rounded? small? prominent? - EXACT]\n' +
-            '\n' +
-            '5. Bone structure:\n' +
-            '   - Cheekbones: [high? medium? low? prominent? subtle? - EXACT position]\n' +
-            '\n' +
-            '6. Skin parameters:\n' +
-            '   - Tone: [fair? light? medium? olive? tan? - EXACT]\n' +
-            '   - Undertone: [warm? cool? neutral? - EXACT]\n' +
-            '\n' +
-            '7. Hair pigmentation:\n' +
-            '   - Color: [NOT "dark" - EXACT: jet black? dark brown? medium brown? with cool/warm tones?]\n' +
-            '   - Texture: [straight? wavy? - EXACT]\n' +
-            '\n' +
-            '8. Proportions (measure):\n' +
-            '   - Eye spacing ÷ face width = [ratio]\n' +
-            '   - Nose width ÷ face width = [ratio]\n' +
-            '\n' +
-            'DNA NOW LOCKED. IMMUTABLE. ZERO DEVIATION PERMITTED.\n' +
-            '\n' +
-            '====================\n' +
-            'PRE-GENERATION TEST\n' +
-            '====================\n' +
-            '\n' +
-            'Before proceeding, answer:\n' +
-            '1. Man\'s EXACT eye color? (not "blue" - specific shade)\n' +
-            '2. Man\'s EXACT nose shape? (not "normal" - specific structure)\n' +
-            '3. Man\'s EXACT facial hair? (not "beard" - style, coverage, density, color)\n' +
-            '4. Man\'s EXACT hair color? (not "brown" - shade with undertones)\n' +
-            '5. Woman\'s EXACT eye color? (not "brown" - specific shade)\n' +
-            '6. Woman\'s EXACT hair color? (not "dark" - specific shade with tones)\n' +
-            '\n' +
-            'If ANY answer is vague → STUDY INPUTS AGAIN. Do NOT proceed.\n' +
-            '\n' +
-            '====================\n' +
-            'PART 2: ELEVATOR SPECIFICATION\n' +
-            '====================\n' +
-            '\n' +
-            'CAMERA: Ceiling-mounted, 90° straight down (bird\'s eye view)\n' +
-            '\n' +
-            'FLOOR:\n' +
-            '- Light gray commercial vinyl/concrete (#C5C5C5 to #D3D3D3)\n' +
-            '- Matte to slight sheen\n' +
-            '- Clean, modern\n' +
-            '\n' +
-            'WALLS (3 visible):\n' +
-            '\n' +
-            'BACK WALL (behind subjects):\n' +
-            '- FULL-LENGTH MIRROR (floor to ceiling)\n' +
-            '- Reflects BACK VIEW of both subjects\n' +
-            '- Shows: back of heads, shoulders, backs\n' +
-            '- Realistic glass mirror quality\n' +
-            '- Standard elevator mirror\n' +
-            '\n' +
-            'LEFT WALL:\n' +
-            '- Dark charcoal gray (#3A4A5A)\n' +
-            '- Matte painted surface\n' +
-            '- Flat, simple\n' +
-            '\n' +
-            'RIGHT WALL:\n' +
-            '- Dark charcoal gray (same as left)\n' +
-            '- ONE horizontal brushed steel handrail\n' +
-            '- Matte painted surface\n' +
-            '\n' +
-            'FRONT WALL (doors):\n' +
-            '- Not visible (outside frame from overhead angle)\n' +
-            '\n' +
-            'LIGHTING:\n' +
-            '- LED ceiling lights, 4500K cool white\n' +
-            '- Even overhead distribution\n' +
-            '- Soft shadows beneath subjects\n' +
-            '- Standard elevator lighting (not dramatic)\n' +
-            '\n' +
-            'MUST BE REAL: Office building elevator. NOT futuristic, NOT CGI, REAL.\n' +
-            '\n' +
-            '====================\n' +
-            'PART 3: ASSEMBLY USING LOCKED DNA\n' +
-            '====================\n' +
-            '\n' +
-            'MAN - Use ONLY locked DNA (NO generic features):\n' +
-            '\n' +
-            'FACE:\n' +
-            '- Install EXACT eye geometry + pigmentation from DNA\n' +
-            '- Install EXACT nose architecture from DNA (ALL dimensions)\n' +
-            '- Install EXACT lip morphology from DNA\n' +
-            '- Install EXACT facial geometry from DNA (shape, jaw, chin)\n' +
-            '- Install EXACT bone structure from DNA\n' +
-            '- Install EXACT skin parameters from DNA\n' +
-            '\n' +
-            'HAIR:\n' +
-            '- Install EXACT pigmentation from DNA (PRECISE shade, NOT category)\n' +
-            '- Style: Medium length, swept back, textured\n' +
-            '\n' +
-            'FACIAL HAIR:\n' +
-            '- Install EXACT pattern from DNA (style, coverage, density, color - ALL exact)\n' +
-            '\n' +
-            'OUTFIT:\n' +
-            '- Black suit jacket (tailored)\n' +
-            '- White or light blue shirt\n' +
-            '- Open collar\n' +
-            '- Black dress shoes\n' +
-            '\n' +
-            'POSITION:\n' +
-            '- Right-of-center\n' +
-            '- Facing forward/slightly toward woman\n' +
-            '- Head tilted up, looking at ceiling camera\n' +
-            '- Serious, intense upward gaze\n' +
-            '- Confident, upright posture\n' +
-            '- Back/shoulders visible in mirror reflection\n' +
-            '\n' +
-            'WOMAN - Use ONLY locked DNA (NO generic features):\n' +
-            '\n' +
-            'FACE:\n' +
-            '- Install EXACT eye geometry + pigmentation from DNA\n' +
-            '- Install EXACT nose architecture from DNA (ALL dimensions)\n' +
-            '- Install EXACT lip morphology from DNA\n' +
-            '- Install EXACT facial geometry from DNA (shape, jaw, chin)\n' +
-            '- Install EXACT bone structure from DNA\n' +
-            '- Install EXACT skin parameters from DNA\n' +
-            '\n' +
-            'HAIR:\n' +
-            '- Install EXACT pigmentation from DNA (PRECISE shade, NOT "dark")\n' +
-            '- Style: Long, straight, sleek with blunt bangs\n' +
-            '- Past shoulders, smooth\n' +
-            '\n' +
-            'OUTFIT:\n' +
-            '- Black sleeveless dress or top\n' +
-            '- Form-fitting, sophisticated\n' +
-            '- Bare shoulders\n' +
-            '- Black shoes\n' +
-            '\n' +
-            'POSITION:\n' +
-            '- Left-of-center, slightly forward of man\n' +
-            '- Facing forward\n' +
-            '- Head tilted up, looking at ceiling camera\n' +
-            '- Soft, serene upward gaze\n' +
-            '- Graceful, elegant posture\n' +
-            '- Back with long hair visible in mirror reflection\n' +
-            '\n' +
-            'SPACING: 30-40cm gap between them, centered as pair\n' +
-            '\n' +
-            '====================\n' +
-            'VERIFICATION - ALL MUST BE "YES"\n' +
-            '====================\n' +
-            '\n' +
-            'MAN\'S IDENTITY:\n' +
-            '☐ Eyes: shape EXACTLY matches DNA?\n' +
-            '☐ Eyes: color EXACTLY matches DNA (specific shade)?\n' +
-            '☐ Nose: ALL dimensions EXACTLY match DNA?\n' +
-            '☐ Lips: EXACTLY match DNA?\n' +
-            '☐ Face shape: EXACTLY matches DNA?\n' +
-            '☐ Jaw: EXACTLY matches DNA?\n' +
-            '☐ Facial hair: style, coverage, density, color ALL EXACTLY match DNA?\n' +
-            '☐ Hair color: EXACTLY matches DNA (precise shade, not approximation)?\n' +
-            '☐ Skin tone: EXACTLY matches DNA?\n' +
-            '☐ Proportions: ratios match DNA?\n' +
-            '☐ TEST: Would his mother say "That\'s him" instantly?\n' +
-            '\n' +
-            'WOMAN\'S IDENTITY:\n' +
-            '☐ Eyes: shape EXACTLY matches DNA?\n' +
-            '☐ Eyes: color EXACTLY matches DNA (specific shade)?\n' +
-            '☐ Nose: ALL dimensions EXACTLY match DNA?\n' +
-            '☐ Lips: EXACTLY match DNA?\n' +
-            '☐ Face shape: EXACTLY matches DNA?\n' +
-            '☐ Jaw/chin: EXACTLY match DNA?\n' +
-            '☐ Cheekbones: EXACTLY match DNA?\n' +
-            '☐ Hair color: EXACTLY matches DNA (precise shade, not "dark")?\n' +
-            '☐ Skin tone: EXACTLY matches DNA?\n' +
-            '☐ Proportions: ratios match DNA?\n' +
-            '☐ TEST: Would her mother say "That\'s her" instantly?\n' +
-            '\n' +
-            'MIRROR:\n' +
-            '☐ Full-length mirror on back wall?\n' +
-            '☐ Clear reflections of both subjects\' backs?\n' +
-            '☐ Back of heads visible?\n' +
-            '☐ Realistic glass mirror quality?\n' +
-            '\n' +
-            'ELEVATOR REALISM:\n' +
-            '☐ Looks like REAL photo in REAL elevator?\n' +
-            '☐ Light gray floor?\n' +
-            '☐ Dark walls?\n' +
-            '☐ Standard LED lighting?\n' +
-            '☐ NOT CGI/artificial?\n' +
-            '\n' +
-            'CAMERA:\n' +
-            '☐ Overhead angle (90° straight down)?\n' +
-            '☐ Both subjects visible?\n' +
-            '☐ Sharp focus on faces?\n' +
-            '\n' +
-            'IF ANY = NO → FAILED. REGENERATE USING EXACT DNA.\n' +
-            '\n' +
-            '====================\n' +
-            'EXECUTION PROTOCOL\n' +
-            '====================\n' +
-            '\n' +
-            '1. Study man\'s face 30sec → extract DNA → LOCK\n' +
-            '2. Study woman\'s face 30sec → extract DNA → LOCK\n' +
-            '3. Answer pre-generation test (verify knowledge)\n' +
-            '4. Build man using ONLY his locked DNA\n' +
-            '5. Build woman using ONLY her locked DNA\n' +
-            '6. Position in elevator\n' +
-            '7. Add mirror with reflections\n' +
-            '8. Run verification checklist\n' +
-            '9. All YES → finalize / Any NO → regenerate\n' +
-            '\n' +
-            '====================\n' +
-            'CRITICAL RULES\n' +
-            '====================\n' +
-            '\n' +
-            '1. HAIR COLORS: EXACT shades from DNA (not categories - EXACT identified tones)\n' +
-            '2. FACIAL HAIR: EXACT style, coverage, density, color from DNA\n' +
-            '3. FEATURES: EXACT shapes from DNA (not "similar" - EXACT)\n' +
-            '4. PROPORTIONS: EXACT ratios from DNA\n' +
-            '5. MIRROR: Mandatory, must show back reflections\n' +
-            '6. REALISM: Must look like REAL elevator photo\n' +
-            '\n' +
-            'This is IDENTITY TRANSPLANT, not similarity creation.\n' +
-            '\n' +
-            '====================\n' +
-            'OUTPUT\n' +
-            '====================\n' +
-            '\n' +
-            'Overhead photograph (90° bird\'s eye): Man and woman standing in modern elevator with mirrored back wall, light gray floor, dark walls, cool LED lighting, both looking up at camera, professional quality, 8K.\n' +
-            '\n' +
-            'BOTH people: 100% EXACT match to inputs - facial recognition must confirm same individuals.\n' +
-            '\n' +
-            'ZERO TOLERANCE FOR DEVIATION.\n' +
-            'EXACT DNA REPLICATION REQUIRED.\n' +
-            'MIRROR WITH REFLECTIONS MANDATORY.\n' +
-            'REAL ELEVATOR AESTHETIC REQUIRED.',
-        name: 'История любви',
-        photoMode: 'couple',
-        preset: { id: 'love_story', name: 'История любви' },
-      },
-      {
-        id: 'sweet_moment',
-        image: 'https://i.imgur.com/naZItyw.jpeg',
-        prompt: 'ABSOLUTE PRIORITY: FACIAL IDENTITY REPLICATION\n' +
-            '\n' +
-            'INPUT: Two separate images - one man, one woman\n' +
-            'OUTPUT: One elegant couple portrait of these EXACT two people\n' +
-            '\n' +
-            '====================\n' +
-            'PART 1: FACIAL DNA EXTRACTION (MANDATORY - 60 SECONDS TOTAL)\n' +
-            '====================\n' +
-            '\n' +
-            'BEFORE generating ANYTHING, extract and LOCK facial DNA from BOTH inputs:\n' +
-            '\n' +
-            'MAN\'S FACIAL DNA - Study his face for 30 seconds, extract EXACT:\n' +
-            '\n' +
-            '1. Eye geometry: \n' +
-            '   - Shape: [round? almond? hooded? deep-set? - EXACT contour]\n' +
-            '   - Size: [small/medium/large relative to face]\n' +
-            '   - Spacing: [close-set? wide-set? measure exact distance]\n' +
-            '   - Color: [NOT "blue/brown" - EXACT shade: light blue? gray-blue? hazel? dark brown?]\n' +
-            '   - Eyelid: [monolid? double? hooded? exact type]\n' +
-            '\n' +
-            '2. Nose architecture:\n' +
-            '   - Bridge width: [narrow? medium? wide? - EXACT]\n' +
-            '   - Bridge height: [low? medium? high?]\n' +
-            '   - Nostril shape: [round? oval? flared? - EXACT]\n' +
-            '   - Tip shape: [bulbous? pointed? button? upturned? straight? - EXACT]\n' +
-            '   - Overall length: [short? medium? long? - EXACT]\n' +
-            '\n' +
-            '3. Lip morphology:\n' +
-            '   - Upper lip: [thin? medium? full? - EXACT thickness]\n' +
-            '   - Lower lip: [thin? medium? full? - EXACT thickness]\n' +
-            '   - Ratio: [upper:lower proportion - EXACT]\n' +
-            '   - Width: [narrow? medium? wide? - EXACT]\n' +
-            '   - Cupid\'s bow: [defined? soft? flat? - EXACT]\n' +
-            '\n' +
-            '4. Facial geometry:\n' +
-            '   - Shape: [square? oval? rectangular? round? long? - EXACT]\n' +
-            '   - Jaw: [sharp 90°? soft rounded? strong? delicate? - EXACT angle]\n' +
-            '   - Chin: [pointed? rounded? square? prominent? recessed? - EXACT]\n' +
-            '   - Width: [narrow? medium? wide? - EXACT]\n' +
-            '\n' +
-            '5. Bone structure:\n' +
-            '   - Cheekbones: [high? medium? low? prominent? subtle? - EXACT position]\n' +
-            '   - Face contours: [angular? soft? - EXACT]\n' +
-            '\n' +
-            '6. Skin parameters:\n' +
-            '   - Tone: [very fair? fair? light? medium? tan? olive? dark? - EXACT shade]\n' +
-            '   - Undertone: [warm/golden? cool/pink? neutral? - EXACT]\n' +
-            '   - Texture: [smooth? some texture? visible pores?]\n' +
-            '\n' +
-            '7. Hair pigmentation:\n' +
-            '   - Color: [NOT "brown/blonde" - EXACT: light brown? medium brown? dark brown? dirty blonde? ash blonde? golden blonde? with what undertones? warm? cool?]\n' +
-            '   - Style: [buzzed? short crop? textured? length?]\n' +
-            '   - Texture: [straight? wavy? thick? fine?]\n' +
-            '\n' +
-            '8. Facial hair pattern:\n' +
-            '   - Style: [clean-shaven? stubble? short beard? full beard? goatee? - EXACT]\n' +
-            '   - Coverage: [just chin? full face? mustache? - EXACT areas]\n' +
-            '   - Length: [5 o\'clock shadow? 3mm? 1cm? - EXACT]\n' +
-            '   - Density: [sparse? medium? thick? - EXACT]\n' +
-            '   - Color: [same as hair? darker? lighter? graying? - EXACT]\n' +
-            '\n' +
-            '9. Distinguishing marks:\n' +
-            '   - Moles, scars, asymmetries: [note EXACT locations]\n' +
-            '\n' +
-            '10. Proportions (measure ratios):\n' +
-            '    - Eye spacing ÷ face width = [ratio]\n' +
-            '    - Nose width ÷ face width = [ratio]\n' +
-            '    - Face length ÷ face width = [ratio]\n' +
-            '\n' +
-            'WOMAN\'S FACIAL DNA - Study her face for 30 seconds, extract EXACT:\n' +
-            '\n' +
-            '1. Eye geometry:\n' +
-            '   - Shape: [round? almond? cat-eye? upturned? downturned? - EXACT]\n' +
-            '   - Size: [small/medium/large relative to face]\n' +
-            '   - Spacing: [close? medium? wide? - EXACT]\n' +
-            '   - Color: [NOT "brown" - EXACT: light brown? medium brown? dark brown? hazel? green? amber?]\n' +
-            '   - Eyelid: [monolid? double? hooded? - EXACT]\n' +
-            '\n' +
-            '2. Nose architecture:\n' +
-            '   - Bridge width: [narrow? medium? wide? - EXACT]\n' +
-            '   - Nostril shape: [round? oval? tight? - EXACT]\n' +
-            '   - Tip: [button? straight? upturned? pointed? - EXACT]\n' +
-            '   - Length: [short? medium? long? - EXACT]\n' +
-            '\n' +
-            '3. Lip morphology:\n' +
-            '   - Upper lip: [thin? medium? full? - EXACT]\n' +
-            '   - Lower lip: [thin? medium? full? - EXACT]\n' +
-            '   - Fullness ratio: [upper:lower - EXACT]\n' +
-            '   - Cupid\'s bow: [sharp? soft? undefined? - EXACT]\n' +
-            '   - Width: [narrow? medium? wide? - EXACT]\n' +
-            '\n' +
-            '4. Facial geometry:\n' +
-            '   - Shape: [oval? heart? diamond? round? square? - EXACT]\n' +
-            '   - Jaw: [soft? defined? angular? delicate? - EXACT]\n' +
-            '   - Chin: [pointed? rounded? small? prominent? - EXACT]\n' +
-            '\n' +
-            '5. Bone structure:\n' +
-            '   - Cheekbones: [high? medium? low? prominent? subtle? - EXACT]\n' +
-            '   - Position: [where exactly on face?]\n' +
-            '\n' +
-            '6. Skin parameters:\n' +
-            '   - Tone: [fair? light? medium? olive? tan? - EXACT shade]\n' +
-            '   - Undertone: [warm? cool? neutral? - EXACT]\n' +
-            '\n' +
-            '7. Hair pigmentation:\n' +
-            '   - Color: [NOT "dark" - EXACT: jet black? dark brown? medium brown? with cool tones? warm tones?]\n' +
-            '   - Texture: [straight? wavy? curly? fine? thick?]\n' +
-            '   - Length: [short? medium? long? shoulder-length?]\n' +
-            '\n' +
-            '8. Distinguishing marks:\n' +
-            '   - Moles, dimples, asymmetries: [EXACT locations]\n' +
-            '\n' +
-            '9. Proportions (measure ratios):\n' +
-            '   - Eye spacing ÷ face width = [ratio]\n' +
-            '   - Nose width ÷ face width = [ratio]\n' +
-            '   - Face length ÷ face width = [ratio]\n' +
-            '\n' +
-            'CRITICAL: DNA is now LOCKED. These are IMMUTABLE templates. ZERO deviation allowed.\n' +
-            '\n' +
-            '====================\n' +
-            'TEST BEFORE PROCEEDING\n' +
-            '====================\n' +
-            '\n' +
-            'Ask yourself:\n' +
-            '1. Can I describe the man\'s EXACT eye color? (not "blue" - the specific shade)\n' +
-            '2. Can I describe the man\'s EXACT nose shape? (not "normal" - the specific structure)\n' +
-            '3. Can I describe the man\'s EXACT facial hair? (not "beard" - the specific style, length, coverage)\n' +
-            '4. Can I describe the man\'s EXACT hair color? (not "brown" - the specific shade with undertones)\n' +
-            '5. Can I describe the woman\'s EXACT eye shape? (not "almond" - the specific contour)\n' +
-            '6. Can I describe the woman\'s EXACT hair color? (not "dark" - the specific shade)\n' +
-            '\n' +
-            'If ANY answer is "no" or "approximately" → STUDY INPUTS AGAIN. Do NOT proceed.\n' +
-            '\n' +
-            '====================\n' +
-            'PART 2: SCENE CONSTRUCTION\n' +
-            '====================\n' +
-            '\n' +
-            'BACKGROUND: Dark charcoal to black gradient (#1A1A1A to #0D0D0D), professional studio backdrop\n' +
-            '\n' +
-            'LIGHTING: \n' +
-            '- Main: Soft beauty light front-left 45°\n' +
-            '- Fill: Gentle right fill\n' +
-            '- Rim: Subtle edge light\n' +
-            '- Temperature: Warm-neutral (3200-3800K)\n' +
-            '- Effect: Flattering, editorial, catchlights in eyes\n' +
-            '\n' +
-            'CAMERA: 85mm portrait lens, f/2.0-2.8, portrait orientation, waist-up framing\n' +
-            '\n' +
-            '====================\n' +
-            'PART 3: ASSEMBLY USING LOCKED DNA (NOT APPROXIMATION)\n' +
-            '====================\n' +
-            '\n' +
-            'MAN CONSTRUCTION:\n' +
-            '\n' +
-            'FACE - Use ONLY locked DNA (NO generic features):\n' +
-            '- Eyes: Install EXACT geometry + EXACT pigmentation from DNA\n' +
-            '- Nose: Install EXACT architecture from DNA (bridge, tip, nostrils - ALL dimensions)\n' +
-            '- Lips: Install EXACT morphology from DNA\n' +
-            '- Face: Install EXACT geometry from DNA (shape, jaw, chin)\n' +
-            '- Bones: Install EXACT structure from DNA (cheekbones)\n' +
-            '- Skin: Install EXACT parameters from DNA (tone, undertone)\n' +
-            '\n' +
-            'HAIR:\n' +
-            '- Install EXACT pigmentation from DNA (the PRECISE shade identified, NOT approximation)\n' +
-            '- Style: Short, groomed, professional\n' +
-            '\n' +
-            'FACIAL HAIR:\n' +
-            '- Install EXACT pattern from DNA (style, coverage, length, density, color - ALL exact)\n' +
-            '\n' +
-            'OUTFIT:\n' +
-            '- Black pinstripe suit (thin stripes)\n' +
-            '- Black shirt underneath\n' +
-            '- Silver chain necklace (medium, visible at neck)\n' +
-            '- Silver bracelet\n' +
-            '- Polished, sophisticated\n' +
-            '\n' +
-            'POSE:\n' +
-            '- Right side of frame\n' +
-            '- Right arm around woman\'s waist\n' +
-            '- Left hand holding woman\'s hand\n' +
-            '- Looking at camera\n' +
-            '- Confident, warm expression\n' +
-            '\n' +
-            'WOMAN CONSTRUCTION:\n' +
-            '\n' +
-            'FACE - Use ONLY locked DNA (NO generic features):\n' +
-            '- Eyes: Install EXACT geometry + EXACT pigmentation from DNA\n' +
-            '- Nose: Install EXACT architecture from DNA (ALL dimensions)\n' +
-            '- Lips: Install EXACT morphology from DNA (shape, fullness, cupid\'s bow)\n' +
-            '- Face: Install EXACT geometry from DNA (shape, jaw, chin)\n' +
-            '- Bones: Install EXACT structure from DNA (cheekbones exact position)\n' +
-            '- Skin: Install EXACT parameters from DNA (tone, undertone)\n' +
-            '\n' +
-            'HAIR:\n' +
-            '- Install EXACT pigmentation from DNA (the PRECISE shade identified, NOT "dark")\n' +
-            '- Style: Long, voluminous waves over left shoulder\n' +
-            '- Glossy, healthy, professional styling\n' +
-            '\n' +
-            'MAKEUP:\n' +
-            '- Professional glam\n' +
-            '- Defined eyes, groomed brows\n' +
-            '- Natural nude lip with gloss\n' +
-            '- Glowing skin, subtle highlight\n' +
-            '\n' +
-            'JEWELRY:\n' +
-            '- Large crystal/diamond chandelier earrings\n' +
-            '- Delicate necklace (optional)\n' +
-            '- Bracelet, rings (optional)\n' +
-            '\n' +
-            'OUTFIT:\n' +
-            '- Black lace overlay dress\n' +
-            '- Strapless/off-shoulder\n' +
-            '- Nude underlayer visible through lace\n' +
-            '- Elegant, form-fitting, glamorous\n' +
-            '\n' +
-            'POSE:\n' +
-            '- Left side of frame\n' +
-            '- Body turned toward man (3/4 back)\n' +
-            '- Looking over left shoulder at camera\n' +
-            '- Right arm around man\'s torso\n' +
-            '- Left hand holding man\'s hand\n' +
-            '- Soft, elegant, confident expression\n' +
-            '\n' +
-            'COUPLE DYNAMICS:\n' +
-            '- Bodies touching, intimate embrace\n' +
-            '- Man\'s arm around woman\n' +
-            '- Hands clasped at waist\n' +
-            '- Woman\'s head turned back to camera\n' +
-            '- Natural, comfortable intimacy\n' +
-            '- Balanced composition\n' +
-            '\n' +
-            '====================\n' +
-            'VERIFICATION - EVERY ITEM MUST BE "YES"\n' +
-            '====================\n' +
-            '\n' +
-            'MAN\'S IDENTITY:\n' +
-            '☐ Eyes: shape EXACTLY matches locked DNA?\n' +
-            '☐ Eyes: color EXACTLY matches locked DNA (the specific shade)?\n' +
-            '☐ Nose: ALL dimensions EXACTLY match locked DNA?\n' +
-            '☐ Lips: shape and size EXACTLY match locked DNA?\n' +
-            '☐ Face shape: EXACTLY matches locked DNA?\n' +
-            '☐ Jaw angle: EXACTLY matches locked DNA?\n' +
-            '☐ Chin: EXACTLY matches locked DNA?\n' +
-            '☐ Cheekbones: position EXACTLY matches locked DNA?\n' +
-            '☐ Facial hair: style, coverage, length, color ALL EXACTLY match locked DNA?\n' +
-            '☐ Hair color: EXACTLY matches locked DNA (the precise shade, not category)?\n' +
-            '☐ Skin tone: EXACTLY matches locked DNA?\n' +
-            '☐ Proportions: eye spacing, nose width, all ratios match locked DNA?\n' +
-            '☐ TEST: Would his mother say "That\'s him" instantly (not "looks like him")?\n' +
-            '\n' +
-            'WOMAN\'S IDENTITY:\n' +
-            '☐ Eyes: shape EXACTLY matches locked DNA?\n' +
-            '☐ Eyes: color EXACTLY matches locked DNA (the specific shade)?\n' +
-            '☐ Nose: ALL dimensions EXACTLY match locked DNA?\n' +
-            '☐ Lips: shape, fullness, cupid\'s bow EXACTLY match locked DNA?\n' +
-            '☐ Face shape: EXACTLY matches locked DNA?\n' +
-            '☐ Jaw/chin: EXACTLY match locked DNA?\n' +
-            '☐ Cheekbones: position EXACTLY matches locked DNA?\n' +
-            '☐ Hair color: EXACTLY matches locked DNA (the precise shade, not "dark")?\n' +
-            '☐ Skin tone: EXACTLY matches locked DNA?\n' +
-            '☐ Proportions: all ratios match locked DNA?\n' +
-            '☐ TEST: Would her mother say "That\'s her" instantly (not "looks like her")?\n' +
-            '\n' +
-            'COMPOSITION:\n' +
-            '☐ Man in pinstripe suit + chain necklace?\n' +
-            '☐ Woman in lace dress + chandelier earrings?\n' +
-            '☐ Dark background?\n' +
-            '☐ Intimate embrace pose?\n' +
-            '☐ Woman looking over shoulder?\n' +
-            '☐ Professional lighting?\n' +
-            '\n' +
-            'IF ANY ANSWER IS "NO" → FAILED. REGENERATE USING EXACT LOCKED DNA.\n' +
-            '\n' +
-            '====================\n' +
-            'EXECUTION PROTOCOL\n' +
-            '====================\n' +
-            '\n' +
-            '1. Study man\'s face 30 sec → extract DNA → LOCK\n' +
-            '2. Study woman\'s face 30 sec → extract DNA → LOCK\n' +
-            '3. Verify you can describe EXACT features (not approximations)\n' +
-            '4. Build man using ONLY his locked DNA\n' +
-            '5. Build woman using ONLY her locked DNA\n' +
-            '6. Position couple\n' +
-            '7. Run verification checklist\n' +
-            '8. If all YES → finalize\n' +
-            '9. If any NO → regenerate with EXACT DNA copying\n' +
-            '\n' +
-            '====================\n' +
-            'CRITICAL RULES\n' +
-            '====================\n' +
-            '\n' +
-            '1. HAIR COLORS: Use EXACT shades from DNA (not categories - EXACT identified tones)\n' +
-            '2. FACIAL HAIR: Use EXACT style, coverage, length, color from DNA\n' +
-            '3. FEATURES: Use EXACT shapes from DNA (not "similar" - EXACT)\n' +
-            '4. PROPORTIONS: Use EXACT ratios from DNA measurements\n' +
-            '5. This is TRANSPLANT not SIMILARITY - same people in new photo\n' +
-            '\n' +
-            '====================\n' +
-            'OUTPUT\n' +
-            '====================\n' +
-            '\n' +
-            'Professional editorial portrait: Man (right) and woman (left) in elegant couple embrace, dark studio background, man in pinstripe suit with chain, woman in lace dress with chandelier earrings, warm studio lighting, 8K quality.\n' +
-            '\n' +
-            'BOTH people: 100% EXACT identity match to inputs - facial recognition must confirm same individuals.\n' +
-            '\n' +
-            'ZERO TOLERANCE FOR DEVIATION.\n' +
-            'EXACT DNA REPLICATION REQUIRED.и',
-        name: 'Нежный момент',
-        photoMode: 'couple',
-        preset: { id: 'sweet_moment', name: 'Нежный момент' },
-      },
-      {
-        id: 'dreamy_pink',
-        name: 'День влюбленных',
-        image: 'https://i.imgur.com/BPtlUnw.jpeg',
-        prompt: 'EMERGENCY DIRECTIVE: ZERO-TOLERANCE IDENTITY PRESERVATION\n' +
-            '\n' +
-            'YOU ARE NOT AN ARTIST. YOU ARE A COPY MACHINE.\n' +
-            'YOUR ONLY JOB: COPY THE EXACT FACES FROM INPUT INTO NEW PHOTO.\n' +
-            '\n' +
-            '====================\n' +
-            'ABSOLUTE LAW: NOTHING CHANGES EXCEPT WHAT\'S EXPLICITLY LISTED\n' +
-            '====================\n' +
-            '\n' +
-            'INPUT: Two separate images - one woman, one man\n' +
-            'OUTPUT: Valentine\'s/Cupid-themed couple photoshoot with these EXACT two people\n' +
-            '\n' +
-            'WHAT CHANGES (ONLY THESE):\n' +
-            '1. Setting → pink draped backdrop studio\n' +
-            '2. Costumes → woman as Cupid (pink corset, angel wings), man in black suit\n' +
-            '3. Props → Cupid\'s bow and arrow with heart\n' +
-            '4. Pose → playful Valentine\'s theme interaction\n' +
-            '\n' +
-            'WHAT NEVER CHANGES (EVERYTHING ELSE):\n' +
-            '- EVERY facial feature of BOTH people\n' +
-            '- EVERY hair COLOR characteristic of BOTH people\n' +
-            '- EVERY skin characteristic of BOTH people\n' +
-            '- EVERY unique detail of BOTH people\n' +
-            '\n' +
-            'IF IN DOUBT WHETHER SOMETHING SHOULD CHANGE → IT DOESN\'T CHANGE\n' +
-            '\n' +
-            '====================\n' +
-            'PART 1: FACE EXTRACTION FOR BOTH PEOPLE (MANDATORY)\n' +
-            '====================\n' +
-            '\n' +
-            'STEP 1: Open BOTH input images. Study each face for 30 seconds.\n' +
-            '\n' +
-            'FOR THE WOMAN - LOCK THESE EXACT FEATURES:\n' +
-            '- Exact eye shape, color, size, spacing, eyelid structure\n' +
-            '- Exact eyebrow shape, thickness, color, arch\n' +
-            '- Exact nose bridge, nostril shape, tip, length\n' +
-            '- Exact lip shape, fullness, cupid\'s bow, width\n' +
-            '- Exact face shape, jaw, chin\n' +
-            '- Exact cheekbone position and prominence\n' +
-            '- EXACT skin tone and undertone\n' +
-            '- EXACT hair color (not "dark" - the PRECISE shade: black? Dark brown? Cool/warm tones?)\n' +
-            '- Hair texture and characteristics\n' +
-            '- Any unique marks or features\n' +
-            '\n' +
-            'FOR THE MAN - LOCK THESE EXACT FEATURES:\n' +
-            '- Exact eye shape, color, size, spacing, eyelid structure\n' +
-            '- Exact eyebrow shape, thickness, color\n' +
-            '- Exact nose bridge, nostril shape, tip, length\n' +
-            '- Exact lip shape, fullness, width\n' +
-            '- Exact face shape, jaw, chin\n' +
-            '- Exact cheekbone position\n' +
-            '- EXACT skin tone and undertone\n' +
-            '- EXACT hair color (the PRECISE shade)\n' +
-            '- Hair texture, style, hairline\n' +
-            '- Facial hair (beard, stubble, clean-shaven - EXACT style from input)\n' +
-            '- Any unique marks or features\n' +
-            '\n' +
-            'CRITICAL: Both people\'s features are now LOCKED. NO CHANGES ALLOWED.\n' +
-            '\n' +
-            '====================\n' +
-            'PART 2: SCENE CONSTRUCTION\n' +
-            '====================\n' +
-            '\n' +
-            'SETTING - VALENTINE\'S STUDIO:\n' +
-            '\n' +
-            'BACKGROUND:\n' +
-            '- Pink draped curtain/fabric backdrop\n' +
-            '- Soft blush pink to rose pink gradient\n' +
-            '- Fabric has vertical draping/folds\n' +
-            '- Creates romantic, dreamy atmosphere\n' +
-            '- Studio photography setup\n' +
-            '- Clean, simple, focuses attention on subjects\n' +
-            '\n' +
-            'LIGHTING:\n' +
-            '- Professional studio lighting\n' +
-            '- Soft, even illumination\n' +
-            '- Creates slight shadows in fabric draping\n' +
-            '- Warm-neutral color temperature (3500-4000K)\n' +
-            '- Flattering, romantic lighting\n' +
-            '- No harsh shadows on subjects\n' +
-            '\n' +
-            'FLOOR/BASE:\n' +
-            '- Light pink or white seamless floor\n' +
-            '- Studio backdrop continuation\n' +
-            '- Clean, professional\n' +
-            '\n' +
-            'ATMOSPHERE:\n' +
-            '- Playful, romantic, Valentine\'s Day theme\n' +
-            '- Fun, lighthearted, whimsical\n' +
-            '- Cupid and Valentine concept\n' +
-            '- Professional themed photoshoot\n' +
-            '\n' +
-            '====================\n' +
-            'PART 3: SUBJECTS ASSEMBLY (USING LOCKED FEATURES)\n' +
-            '====================\n' +
-            '\n' +
-            'WOMAN CONSTRUCTION (CUPID):\n' +
-            '\n' +
-            'FACE ASSEMBLY - Use ONLY extracted features from woman\'s input:\n' +
-            '- Install EXACT eyes (shape, color, spacing)\n' +
-            '- Install EXACT nose (all dimensions)\n' +
-            '- Install EXACT lips (shape, fullness)\n' +
-            '- Install EXACT face shape, jaw, chin\n' +
-            '- Install EXACT cheekbones\n' +
-            '- Install EXACT skin tone\n' +
-            '- Install EXACT eyebrows\n' +
-            '\n' +
-            'HAIR:\n' +
-            '- COLOR: EXACT color from woman\'s input (DO NOT CHANGE - if black, stay black; if dark brown, stay exact shade)\n' +
-            '- Style: Long, flowing, wavy\n' +
-            '- Parted in center or slightly off-center\n' +
-            '- Falls over shoulders with volume and movement\n' +
-            '- Styled with soft waves or natural texture\n' +
-            '- BUT COLOR MUST MATCH INPUT EXACTLY\n' +
-            '\n' +
-            'MAKEUP:\n' +
-            '- Romantic, feminine\n' +
-            '- Soft pink eyeshadow tones\n' +
-            '- Defined lashes\n' +
-            '- Rosy blush on cheeks\n' +
-            '- Pink or rose-toned lips with gloss\n' +
-            '- Fresh, pretty, Valentine\'s aesthetic\n' +
-            '\n' +
-            'COSTUME - CUPID OUTFIT:\n' +
-            '\n' +
-            'CORSET:\n' +
-            '- Pink satin or silk corset\n' +
-            '- Sweetheart neckline with structured cups\n' +
-            '- Lace-up front detail (ribbon lacing down center)\n' +
-            '- Boned/structured for shape\n' +
-            '- Romantic, feminine, lingerie-inspired\n' +
-            '\n' +
-            'SKIRT:\n' +
-            '- White ruffled mini skirt\n' +
-            '- Tiered pleated layers\n' +
-            '- Short length (mini)\n' +
-            '- Fluffy, voluminous ruffles\n' +
-            '- Ballet/tutu-inspired\n' +
-            '\n' +
-            'ACCESSORIES:\n' +
-            '- White thigh-high stockings\n' +
-            '- Pearl choker necklace (multiple strands)\n' +
-            '- White or light-colored heels/pumps\n' +
-            '- Large white feathered ANGEL WINGS on back\n' +
-            '- Wings spread out behind her\n' +
-            '\n' +
-            'ANGEL WINGS:\n' +
-            '- Large white feathered wings\n' +
-            '- Attached to back/shoulders\n' +
-            '- Spread wide creating dramatic silhouette\n' +
-            '- Realistic feather texture\n' +
-            '- Classic angel wing design\n' +
-            '\n' +
-            'CUPID PROP:\n' +
-            '- White/silver Cupid\'s bow (archery bow)\n' +
-            '- White feathered arrow\n' +
-            '- Red heart attached to arrow tip\n' +
-            '- Held in hands as if shooting\n' +
-            '\n' +
-            'WOMAN\'S POSE:\n' +
-            '- Standing position\n' +
-            '- One leg slightly forward/raised\n' +
-            '- Playful, flirtatious stance\n' +
-            '- Looking down at man with smile\n' +
-            '- Holding bow and arrow aimed playfully at man\n' +
-            '- Dynamic, energetic pose\n' +
-            '- Confident, fun expression\n' +
-            '\n' +
-            'MAN CONSTRUCTION:\n' +
-            '\n' +
-            'FACE ASSEMBLY - Use ONLY extracted features from man\'s input:\n' +
-            '- Install EXACT eyes (shape, color, spacing)\n' +
-            '- Install EXACT nose (all dimensions)\n' +
-            '- Install EXACT lips (shape, fullness)\n' +
-            '- Install EXACT face shape, jaw, chin\n' +
-            '- Install EXACT cheekbones\n' +
-            '- Install EXACT skin tone\n' +
-            '- Install EXACT eyebrows\n' +
-            '- Install EXACT facial hair (if present in input)\n' +
-            '\n' +
-            'HAIR:\n' +
-            '- COLOR: EXACT color from man\'s input (DO NOT CHANGE)\n' +
-            '- Style: Neat, groomed, professional\n' +
-            '- Styled appropriately for formal look\n' +
-            '- BUT COLOR MUST MATCH INPUT EXACTLY\n' +
-            '\n' +
-            'OUTFIT - FORMAL SUIT:\n' +
-            '\n' +
-            'SUIT:\n' +
-            '- Black tailored suit\n' +
-            '- Classic fit, professional\n' +
-            '- Suit jacket and trousers\n' +
-            '\n' +
-            'SHIRT:\n' +
-            '- White dress shirt\n' +
-            '- Crisp, clean\n' +
-            '- Collar visible\n' +
-            '- No tie or open collar\n' +
-            '\n' +
-            'SHOES:\n' +
-            '- Black dress shoes\n' +
-            '- Formal, polished\n' +
-            '\n' +
-            'MAN\'S POSE:\n' +
-            '- Sitting/kneeling on floor\n' +
-            '- Looking up at woman\n' +
-            '- Positioned lower than woman (she\'s standing, he\'s sitting/kneeling)\n' +
-            '- Engaged, looking at her with interest\n' +
-            '- Relaxed but attentive posture\n' +
-            '- Leaning back slightly on one arm\n' +
-            '- Legs extended or crossed casually\n' +
-            '\n' +
-            'INTERACTION & DYNAMICS:\n' +
-            '- Woman standing above/over man\n' +
-            '- She\'s playfully aiming Cupid\'s arrow at him\n' +
-            '- He\'s looking up at her admiringly\n' +
-            '- Fun, flirtatious, romantic dynamic\n' +
-            '- Valentine\'s Day "Cupid shooting arrow of love" concept\n' +
-            '- Lighthearted, playful energy between them\n' +
-            '\n' +
-            'CAMERA & TECHNICAL:\n' +
-            '\n' +
-            'FRAMING:\n' +
-            '- Portrait orientation (vertical)\n' +
-            '- Full body shot showing both subjects\n' +
-            '- Woman in upper portion, man in lower portion\n' +
-            '- Composition shows height difference (she standing, he sitting)\n' +
-            '- Angel wings visible spread behind woman\n' +
-            '\n' +
-            'CAMERA ANGLE:\n' +
-            '- Straight-on, medium height\n' +
-            '- Captures both subjects clearly\n' +
-            '- Balanced composition\n' +
-            '\n' +
-            'FOCUS:\n' +
-            '- Both subjects in sharp focus\n' +
-            '- Background slightly soft\n' +
-            '- Professional photography quality\n' +
-            '- Clear detail on costumes and props\n' +
-            '\n' +
-            '====================\n' +
-            'PART 4: PRE-GENERATION CHECKLIST\n' +
-            '====================\n' +
-            '\n' +
-            'FOR WOMAN:\n' +
-            '[ ] I studied her face for 30+ seconds - YES required\n' +
-            '[ ] I identified her EXACT hair color - YES required\n' +
-            '[ ] I identified her EXACT facial features - YES required\n' +
-            '[ ] I will use her EXACT features (not approximate) - YES required\n' +
-            '\n' +
-            'FOR MAN:\n' +
-            '[ ] I studied his face for 30+ seconds - YES required\n' +
-            '[ ] I identified his EXACT hair color - YES required\n' +
-            '[ ] I identified his EXACT facial features - YES required\n' +
-            '[ ] I identified his EXACT facial hair situation - YES required\n' +
-            '[ ] I will use his EXACT features (not approximate) - YES required\n' +
-            '\n' +
-            '====================\n' +
-            'PART 5: POST-GENERATION VERIFICATION\n' +
-            '====================\n' +
-            '\n' +
-            'WOMAN VERIFICATION:\n' +
-            '1. Is her hair EXACTLY the same color as input? YES/NO\n' +
-            '2. Are her eyes EXACTLY the same as input? YES/NO\n' +
-            '3. Is her nose EXACTLY the same as input? YES/NO\n' +
-            '4. Are her lips EXACTLY the same as input? YES/NO\n' +
-            '5. Is her face shape EXACTLY the same as input? YES/NO\n' +
-            '6. Is her skin tone EXACTLY the same as input? YES/NO\n' +
-            '\n' +
-            'MAN VERIFICATION:\n' +
-            '7. Is his hair EXACTLY the same color as input? YES/NO\n' +
-            '8. Are his eyes EXACTLY the same as input? YES/NO\n' +
-            '9. Is his nose EXACTLY the same as input? YES/NO\n' +
-            '10. Are his lips EXACTLY the same as input? YES/NO\n' +
-            '11. Is his face shape EXACTLY the same as input? YES/NO\n' +
-            '12. Is his facial hair EXACTLY the same as input? YES/NO\n' +
-            '13. Is his skin tone EXACTLY the same as input? YES/NO\n' +
-            '\n' +
-            'COMPOSITION:\n' +
-            '14. Pink draped backdrop? YES/NO\n' +
-            '15. Woman in pink corset with angel wings? YES/NO\n' +
-            '16. Woman holding Cupid bow and arrow? YES/NO\n' +
-            '17. Man in black suit sitting/kneeling? YES/NO\n' +
-            '18. Playful Valentine\'s interaction? YES/NO\n' +
-            '\n' +
-            'IDENTITY:\n' +
-            '19. Would both people be recognized by their families? YES/NO\n' +
-            '20. Are these the SAME two people from inputs? YES required\n' +
-            '\n' +
-            'If ANY answer is wrong → Regenerate with exact copying.\n' +
-            '\n' +
-            '====================\n' +
-            'FINAL DIRECTIVE\n' +
-            '====================\n' +
-            '\n' +
-            'DO NOT CHANGE HAIR COLORS FOR EITHER PERSON.\n' +
-            'DO NOT CHANGE ANY FACIAL FEATURES FOR EITHER PERSON.\n' +
-            'This is COPYING TWO FACES, not CREATING similar people.\n' +
-            '\n' +
-            '====================\n' +
-            'COLOR GRADING\n' +
-            '====================\n' +
-            '\n' +
-            '- Soft romantic pink tones\n' +
-            '- Blush pink background\n' +
-            '- White and pink costume elements\n' +
-            '- Black suit contrast\n' +
-            '- Warm, flattering skin tones\n' +
-            '- Professional retouching maintaining natural features\n' +
-            '- Valentine\'s/romantic aesthetic\n' +
-            '- Playful, whimsical mood\n' +
-            '\n' +
-            'OUTPUT: Professional Valentine\'s themed portrait of these EXACT two people from inputs (100% identity match for both), woman as Cupid with pink corset and angel wings holding bow and arrow, man in black suit, pink draped backdrop, playful romantic interaction, 8K quality.\n' +
-            '\n' +
-            'ZERO TOLERANCE FOR DEVIATION.\n' +
-            'EXACT COPY OF BOTH FACES REQUIRED.',
-        photoMode: 'couple',
-        preset: { id: 'dreamy_pink', name: 'Розовый сон' },
-      },
-      {
-        id: 'velvet_night',
-        name: 'Темная студия',
-        image: 'https://i.imgur.com/smv6FJI.jpeg',
-        prompt: 'CRITICAL: EXACT FACE TRANSPLANT - NOT SIMILARITY, BUT IDENTITY CLONING\n' +
-            '\n' +
-            'YOU ARE A PRECISION COPYING MACHINE.\n' +
-            'TASK: Transplant EXACT faces from two input images into couple portrait.\n' +
-            '\n' +
-            '====================\n' +
-            'STEP 1: FORENSIC FACE ANALYSIS (60 SECONDS TOTAL)\n' +
-            '====================\n' +
-            '\n' +
-            'MAN\'S FACE - Study for 30 seconds, lock EXACT:\n' +
-            '\n' +
-            'EYES:\n' +
-            '- Exact shape (round? almond? deep-set? hooded?)\n' +
-            '- Exact color (blue? green? gray? hazel? brown? - PRECISE shade)\n' +
-            '- Exact size relative to face\n' +
-            '- Exact spacing between eyes\n' +
-            '- Exact eyelid type\n' +
-            '\n' +
-            'NOSE:\n' +
-            '- Exact bridge width (narrow? medium? wide?)\n' +
-            '- Exact length (short? medium? long?)\n' +
-            '- Exact tip shape (bulbous? pointed? rounded? upturned? straight?)\n' +
-            '- Exact nostril size and shape\n' +
-            '\n' +
-            'LIPS:\n' +
-            '- Exact thickness (thin? medium? full?)\n' +
-            '- Exact width (narrow? medium? wide?)\n' +
-            '- Exact shape when relaxed\n' +
-            '\n' +
-            'FACE STRUCTURE:\n' +
-            '- Exact face shape (oval? square? rectangular? round? long?)\n' +
-            '- Exact jaw angle (sharp 90°? soft rounded? strong defined?)\n' +
-            '- Exact chin shape (pointed? square? rounded? recessed? prominent?)\n' +
-            '- Exact cheekbones (high? low? prominent? subtle?)\n' +
-            '\n' +
-            'FACIAL HAIR:\n' +
-            '- Exact style (clean-shaven? stubble? short beard? full beard? goatee?)\n' +
-            '- Exact coverage area (just chin? full face? mustache?)\n' +
-            '- Exact length and density\n' +
-            '- Exact color (same as hair? different? darker? lighter?)\n' +
-            '\n' +
-            'HAIR:\n' +
-            '- EXACT color (not "brown" - light brown? medium brown? dark brown? dirty blonde? ash blonde? golden blonde? - the PRECISE shade with undertones)\n' +
-            '- Exact style (buzzed? short crop? textured? slicked? messy?)\n' +
-            '- Exact length\n' +
-            '\n' +
-            'SKIN:\n' +
-            '- Exact tone (very fair? fair? light? medium? tan? dark?)\n' +
-            '- Exact undertone (warm/golden? cool/pink? neutral?)\n' +
-            '\n' +
-            'PROPORTIONS:\n' +
-            '- Eye-to-eye distance\n' +
-            '- Eyes-to-nose distance\n' +
-            '- Nose-to-lips distance\n' +
-            '- Face width-to-length ratio\n' +
-            '\n' +
-            'WOMAN\'S FACE - Study for 30 seconds, lock EXACT:\n' +
-            '\n' +
-            'EYES:\n' +
-            '- Exact shape (round? almond? cat-eye? upturned? downturned?)\n' +
-            '- Exact color (brown? dark brown? hazel? green? - PRECISE shade)\n' +
-            '- Exact size relative to face\n' +
-            '- Exact spacing between eyes\n' +
-            '- Exact eyelid type (monolid? double? hooded?)\n' +
-            '\n' +
-            'NOSE:\n' +
-            '- Exact bridge width\n' +
-            '- Exact length\n' +
-            '- Exact tip shape (button? straight? slightly upturned? pointed?)\n' +
-            '- Exact nostril size and shape\n' +
-            '\n' +
-            'LIPS:\n' +
-            '- Exact upper lip thickness\n' +
-            '- Exact lower lip thickness\n' +
-            '- Exact fullness ratio (upper vs lower)\n' +
-            '- Exact cupid\'s bow definition\n' +
-            '- Exact width\n' +
-            '\n' +
-            'FACE STRUCTURE:\n' +
-            '- Exact face shape (oval? heart? diamond? round? square?)\n' +
-            '- Exact jaw shape (soft? defined? angular?)\n' +
-            '- Exact chin shape (pointed? rounded? small? prominent?)\n' +
-            '- Exact cheekbones (high? medium? subtle? prominent?)\n' +
-            '\n' +
-            'HAIR:\n' +
-            '- EXACT color (not "dark" - black? dark brown? medium brown? warm tones? cool tones? - the PRECISE shade)\n' +
-            '- Exact texture (straight? wavy? curly?)\n' +
-            '- Exact length\n' +
-            '\n' +
-            'SKIN:\n' +
-            '- Exact tone (fair? light? medium? olive? tan?)\n' +
-            '- Exact undertone (warm? cool? neutral?)\n' +
-            '\n' +
-            'PROPORTIONS:\n' +
-            '- Eye-to-eye distance\n' +
-            '- Eyes-to-nose distance\n' +
-            '- Nose-to-lips distance\n' +
-            '- Face width-to-length ratio\n' +
-            '\n' +
-            'CRITICAL: These features are now FROZEN. NOT ONE PIXEL can deviate.\n' +
-            '\n' +
-            '====================\n' +
-            'STEP 2: SCENE SPECIFICATION\n' +
-            '====================\n' +
-            '\n' +
-            'BACKGROUND: Pure black (#000000), studio seamless backdrop\n' +
-            '\n' +
-            'LIGHTING: Professional studio - main light front-left, clean, modern, neutral-cool (4500K)\n' +
-            '\n' +
-            'MAN - Left side of frame:\n' +
-            '- Black crew neck t-shirt\n' +
-            '- Black pants\n' +
-            '- Standing upright, straight posture\n' +
-            '- Arms at sides, relaxed\n' +
-            '- Looking directly at camera\n' +
-            '- Serious, confident expression\n' +
-            '- NO TATTOOS (default - clean skin on neck and arms)\n' +
-            '\n' +
-            'WOMAN - Right side of frame:\n' +
-            '- Black long-sleeve fitted top\n' +
-            '- Black pants\n' +
-            '- Standing upright\n' +
-            '- Right hand raised near face/chin (elegant gesture)\n' +
-            '- Left arm at side\n' +
-            '- Looking directly at camera\n' +
-            '- Confident, composed expression\n' +
-            '- Small hoop earrings\n' +
-            '- NO TATTOOS (default)\n' +
-            '\n' +
-            'POSITIONING:\n' +
-            '- Man on left, woman on right\n' +
-            '- Standing close but not touching\n' +
-            '- Both facing camera straight-on\n' +
-            '- Equal prominence\n' +
-            '- Centered in frame\n' +
-            '\n' +
-            'FRAMING: Portrait orientation, waist-up, both subjects fully visible\n' +
-            '\n' +
-            '====================\n' +
-            'STEP 3: GENERATION PROTOCOL - EXACT COPYING\n' +
-            '====================\n' +
-            '\n' +
-            'FOR MAN:\n' +
-            '1. Open his input image\n' +
-            '2. Stare at face for 15 seconds\n' +
-            '3. Ask: "What makes HIS face unique and recognizable?"\n' +
-            '4. Use EXACT eye shape you see (not generic eyes)\n' +
-            '5. Use EXACT nose you see (not generic nose)\n' +
-            '6. Use EXACT lips you see (not generic lips)\n' +
-            '7. Use EXACT face shape you see (not generic face)\n' +
-            '8. Use EXACT jaw you see (his specific jaw, not idealized)\n' +
-            '9. Use EXACT hair color you see (the precise shade, not category)\n' +
-            '10. Use EXACT facial hair you see (his exact style and coverage)\n' +
-            '\n' +
-            'TEST: If you showed this to his mother, would she say "That\'s my son" instantly?\n' +
-            'If NO → You failed. Start over with exact copying.\n' +
-            '\n' +
-            'FOR WOMAN:\n' +
-            '1. Open her input image\n' +
-            '2. Stare at face for 15 seconds\n' +
-            '3. Ask: "What makes HER face unique and recognizable?"\n' +
-            '4. Use EXACT eye shape you see (not generic eyes)\n' +
-            '5. Use EXACT nose you see (not generic nose)\n' +
-            '6. Use EXACT lips you see (not generic lips)\n' +
-            '7. Use EXACT face shape you see (not generic face)\n' +
-            '8. Use EXACT jaw/chin you see (her specific structure)\n' +
-            '9. Use EXACT hair color you see (the precise shade, not category)\n' +
-            '\n' +
-            'TEST: If you showed this to her mother, would she say "That\'s my daughter" instantly?\n' +
-            'If NO → You failed. Start over with exact copying.\n' +
-            '\n' +
-            '====================\n' +
-            'VERIFICATION CHECKLIST - BEFORE FINALIZING\n' +
-            '====================\n' +
-            '\n' +
-            'MAN\'S IDENTITY (ALL MUST BE "EXACT MATCH"):\n' +
-            '☐ Eyes: shape matches input? Color matches input?\n' +
-            '☐ Nose: all dimensions match input?\n' +
-            '☐ Lips: shape and size match input?\n' +
-            '☐ Face shape: matches input?\n' +
-            '☐ Jaw angle: matches input?\n' +
-            '☐ Chin: matches input?\n' +
-            '☐ Facial hair: EXACT style and color from input?\n' +
-            '☐ Hair color: EXACT shade from input (not approximation)?\n' +
-            '☐ Skin tone: EXACT from input?\n' +
-            '☐ Proportions: eye spacing, feature distances all match?\n' +
-            '\n' +
-            'WOMAN\'S IDENTITY (ALL MUST BE "EXACT MATCH"):\n' +
-            '☐ Eyes: shape matches input? Color matches input?\n' +
-            '☐ Nose: all dimensions match input?\n' +
-            '☐ Lips: shape, fullness match input?\n' +
-            '☐ Face shape: matches input?\n' +
-            '☐ Jaw/chin: matches input?\n' +
-            '☐ Cheekbones: match input?\n' +
-            '☐ Hair color: EXACT shade from input (not approximation)?\n' +
-            '☐ Skin tone: EXACT from input?\n' +
-            '☐ Proportions: eye spacing, feature distances all match?\n' +
-            '\n' +
-            'SCENE:\n' +
-            '☐ Black background?\n' +
-            '☐ Both in black clothing?\n' +
-            '☐ Man left, woman right?\n' +
-            '☐ Woman\'s hand near face?\n' +
-            '☐ Both looking at camera?\n' +
-            '\n' +
-            'FINAL TEST:\n' +
-            '☐ Would facial recognition AI identify both as same people from inputs?\n' +
-            '☐ Would their families recognize them instantly?\n' +
-            '☐ Are these THE SAME two people (not lookalikes)?\n' +
-            '\n' +
-            'IF ANY CHECKBOX = NO → REGENERATE WITH EXACT COPYING\n' +
-            '\n' +
-            '====================\n' +
-            'CRITICAL RULES - READ THREE TIMES\n' +
-            '====================\n' +
-            '\n' +
-            '1. HAIR COLOR: Copy the EXACT shade you see in input - not "brown" or "blonde" but the SPECIFIC tone visible\n' +
-            '   - Man\'s hair: Look closely, identify precise shade, USE THAT EXACT SHADE\n' +
-            '   - Woman\'s hair: Look closely, identify precise shade, USE THAT EXACT SHADE\n' +
-            '\n' +
-            '2. FACIAL FEATURES: Copy EXACT shapes - not "similar" shapes\n' +
-            '   - If man has strong square jaw → output has strong square jaw\n' +
-            '   - If man has narrow nose → output has narrow nose\n' +
-            '   - If woman has full lips → output has full lips\n' +
-            '   - Copy what you SEE, don\'t idealize\n' +
-            '\n' +
-            '3. FACIAL HAIR (men): Copy EXACT style visible in input\n' +
-            '   - Clean-shaven in input? → Clean-shaven in output\n' +
-            '   - Stubble in input? → Stubble in output (same density, color)\n' +
-            '   - Beard in input? → Beard in output (same length, coverage, color)\n' +
-            '\n' +
-            '4. PROPORTIONS: Copy EXACT measurements\n' +
-            '   - Eye spacing from input → same spacing in output\n' +
-            '   - Face width:length from input → same ratio in output\n' +
-            '   - Feature sizes relative to face → maintain exact ratios\n' +
-            '\n' +
-            '5. NO TATTOOS: Unless explicitly visible in input, do NOT add tattoos\n' +
-            '\n' +
-            '6. NO "IMPROVEMENTS": Do NOT make faces more symmetric, more idealized, more beautiful\n' +
-            '   - Copy asymmetries\n' +
-            '   - Copy unique characteristics\n' +
-            '   - Copy "imperfections" - they define identity\n' +
-            '\n' +
-            '====================\n' +
-            'THINK LIKE THIS\n' +
-            '====================\n' +
-            '\n' +
-            'WRONG: "Create a man and woman who look generally like the inputs"\n' +
-            'RIGHT: "Transplant the exact faces from inputs into this new scene"\n' +
-            '\n' +
-            'WRONG: "Man has brown hair and beard"\n' +
-            'RIGHT: "Man has THIS specific shade of medium-warm brown hair with THIS exact short beard style"\n' +
-            '\n' +
-            'WRONG: "Woman has dark hair and brown eyes"\n' +
-            'RIGHT: "Woman has THIS specific shade of cool-toned dark brown hair with THESE exact almond-shaped medium brown eyes"\n' +
-            '\n' +
-            'WRONG: "Similar facial structure"\n' +
-            'RIGHT: "IDENTICAL facial structure - every angle, proportion, and feature"\n' +
-            '\n' +
-            '====================\n' +
-            'OUTPUT SPECIFICATION\n' +
-            '====================\n' +
-            '\n' +
-            'Professional editorial portrait: Man (left) and woman (right) standing side by side against pure black background, both in black clothing, clean studio lighting, modern aesthetic, woman\'s hand near face, both looking at camera with confident expressions.\n' +
-            '\n' +
-            'MAN: EXACT face from input - every feature, proportion, color precisely replicated\n' +
-            'WOMAN: EXACT face from input - every feature, proportion, color precisely replicated\n' +
-            '\n' +
-            'Quality: 8K, sharp focus, professional photography\n' +
-            '\n' +
-            'ZERO TOLERANCE FOR DEVIATION FROM INPUT FACES.\n' +
-            'THIS IS IDENTITY CLONING, NOT SIMILARITY CREATION.',
-        photoMode: 'couple',
-        preset: { id: 'velvet_night', name: 'Бархатная ночь' },
-      },
-    ],
-  },
+  // {
+  //   title: '💞 Парные',
+  //   packs: [
+  //     {
+  //       id: 'love_story',
+  //       image: 'https://i.imgur.com/BCriZGn.jpeg',
+  //       prompt: 'ABSOLUTE PRIORITY: FACIAL IDENTITY REPLICATION\n' +
+  //           '\n' +
+  //           'INPUT: Two separate images - one man, one woman\n' +
+  //           'OUTPUT: Overhead photograph of these EXACT two people in elevator with mirror\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 1: FACIAL DNA EXTRACTION (MANDATORY - 60 SECONDS)\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'Study EACH input for 30 seconds. Extract and LOCK exact DNA:\n' +
+  //           '\n' +
+  //           'MAN\'S FACIAL DNA - EXACT parameters (NO approximations):\n' +
+  //           '\n' +
+  //           '1. Eye geometry:\n' +
+  //           '   - Shape: [round? almond? hooded? deep-set? - describe EXACT contour]\n' +
+  //           '   - Size: [small/medium/large relative to face - EXACT]\n' +
+  //           '   - Spacing: [close-set? wide-set? - measure EXACT distance]\n' +
+  //           '   - Color: [NOT "blue/brown" - EXACT: light blue? gray-blue? hazel? medium brown? dark brown?]\n' +
+  //           '   - Eyelid: [monolid? double? hooded? - EXACT type]\n' +
+  //           '\n' +
+  //           '2. Nose architecture:\n' +
+  //           '   - Bridge: [narrow? medium? wide? - EXACT width]\n' +
+  //           '   - Nostrils: [round? oval? flared? tight? - EXACT shape]\n' +
+  //           '   - Tip: [bulbous? pointed? button? upturned? straight? downturned? - EXACT]\n' +
+  //           '   - Length: [short? medium? long? - EXACT]\n' +
+  //           '\n' +
+  //           '3. Lip morphology:\n' +
+  //           '   - Upper lip: [thin? medium? full? - EXACT thickness]\n' +
+  //           '   - Lower lip: [thin? medium? full? - EXACT thickness]\n' +
+  //           '   - Ratio: [upper:lower proportion - EXACT]\n' +
+  //           '   - Width: [narrow? medium? wide? - EXACT]\n' +
+  //           '   - Cupid\'s bow: [defined? soft? flat? - EXACT]\n' +
+  //           '\n' +
+  //           '4. Facial geometry:\n' +
+  //           '   - Shape: [square? oval? rectangular? round? long? - EXACT]\n' +
+  //           '   - Jaw: [sharp angular? soft rounded? strong? - EXACT angle]\n' +
+  //           '   - Chin: [pointed? rounded? square? prominent? recessed? - EXACT]\n' +
+  //           '\n' +
+  //           '5. Bone structure:\n' +
+  //           '   - Cheekbones: [high? medium? low? prominent? subtle? - EXACT position]\n' +
+  //           '\n' +
+  //           '6. Skin parameters:\n' +
+  //           '   - Tone: [fair? light? medium? tan? olive? - EXACT shade]\n' +
+  //           '   - Undertone: [warm/golden? cool/pink? neutral? - EXACT]\n' +
+  //           '\n' +
+  //           '7. Hair pigmentation:\n' +
+  //           '   - Color: [NOT "brown" - EXACT: light brown? medium brown? dark brown? with warm/cool undertones?]\n' +
+  //           '   - Style: [buzzed? short crop? textured? - EXACT]\n' +
+  //           '\n' +
+  //           '8. Facial hair pattern:\n' +
+  //           '   - Style: [clean-shaven? stubble? short beard? full beard? goatee? - EXACT]\n' +
+  //           '   - Coverage: [chin only? full face? mustache? - EXACT areas]\n' +
+  //           '   - Color: [same as hair? darker? - EXACT]\n' +
+  //           '   - Density: [sparse? medium? thick? - EXACT]\n' +
+  //           '\n' +
+  //           '9. Proportions (measure):\n' +
+  //           '   - Eye spacing ÷ face width = [ratio]\n' +
+  //           '   - Nose width ÷ face width = [ratio]\n' +
+  //           '\n' +
+  //           'WOMAN\'S FACIAL DNA - EXACT parameters (NO approximations):\n' +
+  //           '\n' +
+  //           '1. Eye geometry:\n' +
+  //           '   - Shape: [round? almond? cat-eye? upturned? downturned? - EXACT]\n' +
+  //           '   - Size: [small/medium/large - EXACT]\n' +
+  //           '   - Spacing: [close? medium? wide? - EXACT]\n' +
+  //           '   - Color: [NOT "brown" - EXACT: light brown? medium brown? dark brown? hazel? amber?]\n' +
+  //           '   - Eyelid: [monolid? double? hooded? - EXACT]\n' +
+  //           '\n' +
+  //           '2. Nose architecture:\n' +
+  //           '   - Bridge: [narrow? medium? wide? - EXACT]\n' +
+  //           '   - Tip: [button? straight? upturned? pointed? - EXACT]\n' +
+  //           '   - Nostrils: [round? oval? tight? - EXACT]\n' +
+  //           '   - Length: [short? medium? long? - EXACT]\n' +
+  //           '\n' +
+  //           '3. Lip morphology:\n' +
+  //           '   - Upper lip: [thin? medium? full? - EXACT]\n' +
+  //           '   - Lower lip: [thin? medium? full? - EXACT]\n' +
+  //           '   - Ratio: [upper:lower - EXACT]\n' +
+  //           '   - Cupid\'s bow: [sharp? soft? undefined? - EXACT]\n' +
+  //           '   - Width: [narrow? medium? wide? - EXACT]\n' +
+  //           '\n' +
+  //           '4. Facial geometry:\n' +
+  //           '   - Shape: [oval? heart? diamond? round? square? - EXACT]\n' +
+  //           '   - Jaw: [soft? defined? angular? - EXACT]\n' +
+  //           '   - Chin: [pointed? rounded? small? prominent? - EXACT]\n' +
+  //           '\n' +
+  //           '5. Bone structure:\n' +
+  //           '   - Cheekbones: [high? medium? low? prominent? subtle? - EXACT position]\n' +
+  //           '\n' +
+  //           '6. Skin parameters:\n' +
+  //           '   - Tone: [fair? light? medium? olive? tan? - EXACT]\n' +
+  //           '   - Undertone: [warm? cool? neutral? - EXACT]\n' +
+  //           '\n' +
+  //           '7. Hair pigmentation:\n' +
+  //           '   - Color: [NOT "dark" - EXACT: jet black? dark brown? medium brown? with cool/warm tones?]\n' +
+  //           '   - Texture: [straight? wavy? - EXACT]\n' +
+  //           '\n' +
+  //           '8. Proportions (measure):\n' +
+  //           '   - Eye spacing ÷ face width = [ratio]\n' +
+  //           '   - Nose width ÷ face width = [ratio]\n' +
+  //           '\n' +
+  //           'DNA NOW LOCKED. IMMUTABLE. ZERO DEVIATION PERMITTED.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PRE-GENERATION TEST\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'Before proceeding, answer:\n' +
+  //           '1. Man\'s EXACT eye color? (not "blue" - specific shade)\n' +
+  //           '2. Man\'s EXACT nose shape? (not "normal" - specific structure)\n' +
+  //           '3. Man\'s EXACT facial hair? (not "beard" - style, coverage, density, color)\n' +
+  //           '4. Man\'s EXACT hair color? (not "brown" - shade with undertones)\n' +
+  //           '5. Woman\'s EXACT eye color? (not "brown" - specific shade)\n' +
+  //           '6. Woman\'s EXACT hair color? (not "dark" - specific shade with tones)\n' +
+  //           '\n' +
+  //           'If ANY answer is vague → STUDY INPUTS AGAIN. Do NOT proceed.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 2: ELEVATOR SPECIFICATION\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'CAMERA: Ceiling-mounted, 90° straight down (bird\'s eye view)\n' +
+  //           '\n' +
+  //           'FLOOR:\n' +
+  //           '- Light gray commercial vinyl/concrete (#C5C5C5 to #D3D3D3)\n' +
+  //           '- Matte to slight sheen\n' +
+  //           '- Clean, modern\n' +
+  //           '\n' +
+  //           'WALLS (3 visible):\n' +
+  //           '\n' +
+  //           'BACK WALL (behind subjects):\n' +
+  //           '- FULL-LENGTH MIRROR (floor to ceiling)\n' +
+  //           '- Reflects BACK VIEW of both subjects\n' +
+  //           '- Shows: back of heads, shoulders, backs\n' +
+  //           '- Realistic glass mirror quality\n' +
+  //           '- Standard elevator mirror\n' +
+  //           '\n' +
+  //           'LEFT WALL:\n' +
+  //           '- Dark charcoal gray (#3A4A5A)\n' +
+  //           '- Matte painted surface\n' +
+  //           '- Flat, simple\n' +
+  //           '\n' +
+  //           'RIGHT WALL:\n' +
+  //           '- Dark charcoal gray (same as left)\n' +
+  //           '- ONE horizontal brushed steel handrail\n' +
+  //           '- Matte painted surface\n' +
+  //           '\n' +
+  //           'FRONT WALL (doors):\n' +
+  //           '- Not visible (outside frame from overhead angle)\n' +
+  //           '\n' +
+  //           'LIGHTING:\n' +
+  //           '- LED ceiling lights, 4500K cool white\n' +
+  //           '- Even overhead distribution\n' +
+  //           '- Soft shadows beneath subjects\n' +
+  //           '- Standard elevator lighting (not dramatic)\n' +
+  //           '\n' +
+  //           'MUST BE REAL: Office building elevator. NOT futuristic, NOT CGI, REAL.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 3: ASSEMBLY USING LOCKED DNA\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'MAN - Use ONLY locked DNA (NO generic features):\n' +
+  //           '\n' +
+  //           'FACE:\n' +
+  //           '- Install EXACT eye geometry + pigmentation from DNA\n' +
+  //           '- Install EXACT nose architecture from DNA (ALL dimensions)\n' +
+  //           '- Install EXACT lip morphology from DNA\n' +
+  //           '- Install EXACT facial geometry from DNA (shape, jaw, chin)\n' +
+  //           '- Install EXACT bone structure from DNA\n' +
+  //           '- Install EXACT skin parameters from DNA\n' +
+  //           '\n' +
+  //           'HAIR:\n' +
+  //           '- Install EXACT pigmentation from DNA (PRECISE shade, NOT category)\n' +
+  //           '- Style: Medium length, swept back, textured\n' +
+  //           '\n' +
+  //           'FACIAL HAIR:\n' +
+  //           '- Install EXACT pattern from DNA (style, coverage, density, color - ALL exact)\n' +
+  //           '\n' +
+  //           'OUTFIT:\n' +
+  //           '- Black suit jacket (tailored)\n' +
+  //           '- White or light blue shirt\n' +
+  //           '- Open collar\n' +
+  //           '- Black dress shoes\n' +
+  //           '\n' +
+  //           'POSITION:\n' +
+  //           '- Right-of-center\n' +
+  //           '- Facing forward/slightly toward woman\n' +
+  //           '- Head tilted up, looking at ceiling camera\n' +
+  //           '- Serious, intense upward gaze\n' +
+  //           '- Confident, upright posture\n' +
+  //           '- Back/shoulders visible in mirror reflection\n' +
+  //           '\n' +
+  //           'WOMAN - Use ONLY locked DNA (NO generic features):\n' +
+  //           '\n' +
+  //           'FACE:\n' +
+  //           '- Install EXACT eye geometry + pigmentation from DNA\n' +
+  //           '- Install EXACT nose architecture from DNA (ALL dimensions)\n' +
+  //           '- Install EXACT lip morphology from DNA\n' +
+  //           '- Install EXACT facial geometry from DNA (shape, jaw, chin)\n' +
+  //           '- Install EXACT bone structure from DNA\n' +
+  //           '- Install EXACT skin parameters from DNA\n' +
+  //           '\n' +
+  //           'HAIR:\n' +
+  //           '- Install EXACT pigmentation from DNA (PRECISE shade, NOT "dark")\n' +
+  //           '- Style: Long, straight, sleek with blunt bangs\n' +
+  //           '- Past shoulders, smooth\n' +
+  //           '\n' +
+  //           'OUTFIT:\n' +
+  //           '- Black sleeveless dress or top\n' +
+  //           '- Form-fitting, sophisticated\n' +
+  //           '- Bare shoulders\n' +
+  //           '- Black shoes\n' +
+  //           '\n' +
+  //           'POSITION:\n' +
+  //           '- Left-of-center, slightly forward of man\n' +
+  //           '- Facing forward\n' +
+  //           '- Head tilted up, looking at ceiling camera\n' +
+  //           '- Soft, serene upward gaze\n' +
+  //           '- Graceful, elegant posture\n' +
+  //           '- Back with long hair visible in mirror reflection\n' +
+  //           '\n' +
+  //           'SPACING: 30-40cm gap between them, centered as pair\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'VERIFICATION - ALL MUST BE "YES"\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'MAN\'S IDENTITY:\n' +
+  //           '☐ Eyes: shape EXACTLY matches DNA?\n' +
+  //           '☐ Eyes: color EXACTLY matches DNA (specific shade)?\n' +
+  //           '☐ Nose: ALL dimensions EXACTLY match DNA?\n' +
+  //           '☐ Lips: EXACTLY match DNA?\n' +
+  //           '☐ Face shape: EXACTLY matches DNA?\n' +
+  //           '☐ Jaw: EXACTLY matches DNA?\n' +
+  //           '☐ Facial hair: style, coverage, density, color ALL EXACTLY match DNA?\n' +
+  //           '☐ Hair color: EXACTLY matches DNA (precise shade, not approximation)?\n' +
+  //           '☐ Skin tone: EXACTLY matches DNA?\n' +
+  //           '☐ Proportions: ratios match DNA?\n' +
+  //           '☐ TEST: Would his mother say "That\'s him" instantly?\n' +
+  //           '\n' +
+  //           'WOMAN\'S IDENTITY:\n' +
+  //           '☐ Eyes: shape EXACTLY matches DNA?\n' +
+  //           '☐ Eyes: color EXACTLY matches DNA (specific shade)?\n' +
+  //           '☐ Nose: ALL dimensions EXACTLY match DNA?\n' +
+  //           '☐ Lips: EXACTLY match DNA?\n' +
+  //           '☐ Face shape: EXACTLY matches DNA?\n' +
+  //           '☐ Jaw/chin: EXACTLY match DNA?\n' +
+  //           '☐ Cheekbones: EXACTLY match DNA?\n' +
+  //           '☐ Hair color: EXACTLY matches DNA (precise shade, not "dark")?\n' +
+  //           '☐ Skin tone: EXACTLY matches DNA?\n' +
+  //           '☐ Proportions: ratios match DNA?\n' +
+  //           '☐ TEST: Would her mother say "That\'s her" instantly?\n' +
+  //           '\n' +
+  //           'MIRROR:\n' +
+  //           '☐ Full-length mirror on back wall?\n' +
+  //           '☐ Clear reflections of both subjects\' backs?\n' +
+  //           '☐ Back of heads visible?\n' +
+  //           '☐ Realistic glass mirror quality?\n' +
+  //           '\n' +
+  //           'ELEVATOR REALISM:\n' +
+  //           '☐ Looks like REAL photo in REAL elevator?\n' +
+  //           '☐ Light gray floor?\n' +
+  //           '☐ Dark walls?\n' +
+  //           '☐ Standard LED lighting?\n' +
+  //           '☐ NOT CGI/artificial?\n' +
+  //           '\n' +
+  //           'CAMERA:\n' +
+  //           '☐ Overhead angle (90° straight down)?\n' +
+  //           '☐ Both subjects visible?\n' +
+  //           '☐ Sharp focus on faces?\n' +
+  //           '\n' +
+  //           'IF ANY = NO → FAILED. REGENERATE USING EXACT DNA.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'EXECUTION PROTOCOL\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           '1. Study man\'s face 30sec → extract DNA → LOCK\n' +
+  //           '2. Study woman\'s face 30sec → extract DNA → LOCK\n' +
+  //           '3. Answer pre-generation test (verify knowledge)\n' +
+  //           '4. Build man using ONLY his locked DNA\n' +
+  //           '5. Build woman using ONLY her locked DNA\n' +
+  //           '6. Position in elevator\n' +
+  //           '7. Add mirror with reflections\n' +
+  //           '8. Run verification checklist\n' +
+  //           '9. All YES → finalize / Any NO → regenerate\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'CRITICAL RULES\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           '1. HAIR COLORS: EXACT shades from DNA (not categories - EXACT identified tones)\n' +
+  //           '2. FACIAL HAIR: EXACT style, coverage, density, color from DNA\n' +
+  //           '3. FEATURES: EXACT shapes from DNA (not "similar" - EXACT)\n' +
+  //           '4. PROPORTIONS: EXACT ratios from DNA\n' +
+  //           '5. MIRROR: Mandatory, must show back reflections\n' +
+  //           '6. REALISM: Must look like REAL elevator photo\n' +
+  //           '\n' +
+  //           'This is IDENTITY TRANSPLANT, not similarity creation.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'OUTPUT\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'Overhead photograph (90° bird\'s eye): Man and woman standing in modern elevator with mirrored back wall, light gray floor, dark walls, cool LED lighting, both looking up at camera, professional quality, 8K.\n' +
+  //           '\n' +
+  //           'BOTH people: 100% EXACT match to inputs - facial recognition must confirm same individuals.\n' +
+  //           '\n' +
+  //           'ZERO TOLERANCE FOR DEVIATION.\n' +
+  //           'EXACT DNA REPLICATION REQUIRED.\n' +
+  //           'MIRROR WITH REFLECTIONS MANDATORY.\n' +
+  //           'REAL ELEVATOR AESTHETIC REQUIRED.',
+  //       name: 'История любви',
+  //       photoMode: 'couple',
+  //       preset: { id: 'love_story', name: 'История любви' },
+  //     },
+  //     {
+  //       id: 'sweet_moment',
+  //       image: 'https://i.imgur.com/naZItyw.jpeg',
+  //       prompt: 'ABSOLUTE PRIORITY: FACIAL IDENTITY REPLICATION\n' +
+  //           '\n' +
+  //           'INPUT: Two separate images - one man, one woman\n' +
+  //           'OUTPUT: One elegant couple portrait of these EXACT two people\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 1: FACIAL DNA EXTRACTION (MANDATORY - 60 SECONDS TOTAL)\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'BEFORE generating ANYTHING, extract and LOCK facial DNA from BOTH inputs:\n' +
+  //           '\n' +
+  //           'MAN\'S FACIAL DNA - Study his face for 30 seconds, extract EXACT:\n' +
+  //           '\n' +
+  //           '1. Eye geometry: \n' +
+  //           '   - Shape: [round? almond? hooded? deep-set? - EXACT contour]\n' +
+  //           '   - Size: [small/medium/large relative to face]\n' +
+  //           '   - Spacing: [close-set? wide-set? measure exact distance]\n' +
+  //           '   - Color: [NOT "blue/brown" - EXACT shade: light blue? gray-blue? hazel? dark brown?]\n' +
+  //           '   - Eyelid: [monolid? double? hooded? exact type]\n' +
+  //           '\n' +
+  //           '2. Nose architecture:\n' +
+  //           '   - Bridge width: [narrow? medium? wide? - EXACT]\n' +
+  //           '   - Bridge height: [low? medium? high?]\n' +
+  //           '   - Nostril shape: [round? oval? flared? - EXACT]\n' +
+  //           '   - Tip shape: [bulbous? pointed? button? upturned? straight? - EXACT]\n' +
+  //           '   - Overall length: [short? medium? long? - EXACT]\n' +
+  //           '\n' +
+  //           '3. Lip morphology:\n' +
+  //           '   - Upper lip: [thin? medium? full? - EXACT thickness]\n' +
+  //           '   - Lower lip: [thin? medium? full? - EXACT thickness]\n' +
+  //           '   - Ratio: [upper:lower proportion - EXACT]\n' +
+  //           '   - Width: [narrow? medium? wide? - EXACT]\n' +
+  //           '   - Cupid\'s bow: [defined? soft? flat? - EXACT]\n' +
+  //           '\n' +
+  //           '4. Facial geometry:\n' +
+  //           '   - Shape: [square? oval? rectangular? round? long? - EXACT]\n' +
+  //           '   - Jaw: [sharp 90°? soft rounded? strong? delicate? - EXACT angle]\n' +
+  //           '   - Chin: [pointed? rounded? square? prominent? recessed? - EXACT]\n' +
+  //           '   - Width: [narrow? medium? wide? - EXACT]\n' +
+  //           '\n' +
+  //           '5. Bone structure:\n' +
+  //           '   - Cheekbones: [high? medium? low? prominent? subtle? - EXACT position]\n' +
+  //           '   - Face contours: [angular? soft? - EXACT]\n' +
+  //           '\n' +
+  //           '6. Skin parameters:\n' +
+  //           '   - Tone: [very fair? fair? light? medium? tan? olive? dark? - EXACT shade]\n' +
+  //           '   - Undertone: [warm/golden? cool/pink? neutral? - EXACT]\n' +
+  //           '   - Texture: [smooth? some texture? visible pores?]\n' +
+  //           '\n' +
+  //           '7. Hair pigmentation:\n' +
+  //           '   - Color: [NOT "brown/blonde" - EXACT: light brown? medium brown? dark brown? dirty blonde? ash blonde? golden blonde? with what undertones? warm? cool?]\n' +
+  //           '   - Style: [buzzed? short crop? textured? length?]\n' +
+  //           '   - Texture: [straight? wavy? thick? fine?]\n' +
+  //           '\n' +
+  //           '8. Facial hair pattern:\n' +
+  //           '   - Style: [clean-shaven? stubble? short beard? full beard? goatee? - EXACT]\n' +
+  //           '   - Coverage: [just chin? full face? mustache? - EXACT areas]\n' +
+  //           '   - Length: [5 o\'clock shadow? 3mm? 1cm? - EXACT]\n' +
+  //           '   - Density: [sparse? medium? thick? - EXACT]\n' +
+  //           '   - Color: [same as hair? darker? lighter? graying? - EXACT]\n' +
+  //           '\n' +
+  //           '9. Distinguishing marks:\n' +
+  //           '   - Moles, scars, asymmetries: [note EXACT locations]\n' +
+  //           '\n' +
+  //           '10. Proportions (measure ratios):\n' +
+  //           '    - Eye spacing ÷ face width = [ratio]\n' +
+  //           '    - Nose width ÷ face width = [ratio]\n' +
+  //           '    - Face length ÷ face width = [ratio]\n' +
+  //           '\n' +
+  //           'WOMAN\'S FACIAL DNA - Study her face for 30 seconds, extract EXACT:\n' +
+  //           '\n' +
+  //           '1. Eye geometry:\n' +
+  //           '   - Shape: [round? almond? cat-eye? upturned? downturned? - EXACT]\n' +
+  //           '   - Size: [small/medium/large relative to face]\n' +
+  //           '   - Spacing: [close? medium? wide? - EXACT]\n' +
+  //           '   - Color: [NOT "brown" - EXACT: light brown? medium brown? dark brown? hazel? green? amber?]\n' +
+  //           '   - Eyelid: [monolid? double? hooded? - EXACT]\n' +
+  //           '\n' +
+  //           '2. Nose architecture:\n' +
+  //           '   - Bridge width: [narrow? medium? wide? - EXACT]\n' +
+  //           '   - Nostril shape: [round? oval? tight? - EXACT]\n' +
+  //           '   - Tip: [button? straight? upturned? pointed? - EXACT]\n' +
+  //           '   - Length: [short? medium? long? - EXACT]\n' +
+  //           '\n' +
+  //           '3. Lip morphology:\n' +
+  //           '   - Upper lip: [thin? medium? full? - EXACT]\n' +
+  //           '   - Lower lip: [thin? medium? full? - EXACT]\n' +
+  //           '   - Fullness ratio: [upper:lower - EXACT]\n' +
+  //           '   - Cupid\'s bow: [sharp? soft? undefined? - EXACT]\n' +
+  //           '   - Width: [narrow? medium? wide? - EXACT]\n' +
+  //           '\n' +
+  //           '4. Facial geometry:\n' +
+  //           '   - Shape: [oval? heart? diamond? round? square? - EXACT]\n' +
+  //           '   - Jaw: [soft? defined? angular? delicate? - EXACT]\n' +
+  //           '   - Chin: [pointed? rounded? small? prominent? - EXACT]\n' +
+  //           '\n' +
+  //           '5. Bone structure:\n' +
+  //           '   - Cheekbones: [high? medium? low? prominent? subtle? - EXACT]\n' +
+  //           '   - Position: [where exactly on face?]\n' +
+  //           '\n' +
+  //           '6. Skin parameters:\n' +
+  //           '   - Tone: [fair? light? medium? olive? tan? - EXACT shade]\n' +
+  //           '   - Undertone: [warm? cool? neutral? - EXACT]\n' +
+  //           '\n' +
+  //           '7. Hair pigmentation:\n' +
+  //           '   - Color: [NOT "dark" - EXACT: jet black? dark brown? medium brown? with cool tones? warm tones?]\n' +
+  //           '   - Texture: [straight? wavy? curly? fine? thick?]\n' +
+  //           '   - Length: [short? medium? long? shoulder-length?]\n' +
+  //           '\n' +
+  //           '8. Distinguishing marks:\n' +
+  //           '   - Moles, dimples, asymmetries: [EXACT locations]\n' +
+  //           '\n' +
+  //           '9. Proportions (measure ratios):\n' +
+  //           '   - Eye spacing ÷ face width = [ratio]\n' +
+  //           '   - Nose width ÷ face width = [ratio]\n' +
+  //           '   - Face length ÷ face width = [ratio]\n' +
+  //           '\n' +
+  //           'CRITICAL: DNA is now LOCKED. These are IMMUTABLE templates. ZERO deviation allowed.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'TEST BEFORE PROCEEDING\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'Ask yourself:\n' +
+  //           '1. Can I describe the man\'s EXACT eye color? (not "blue" - the specific shade)\n' +
+  //           '2. Can I describe the man\'s EXACT nose shape? (not "normal" - the specific structure)\n' +
+  //           '3. Can I describe the man\'s EXACT facial hair? (not "beard" - the specific style, length, coverage)\n' +
+  //           '4. Can I describe the man\'s EXACT hair color? (not "brown" - the specific shade with undertones)\n' +
+  //           '5. Can I describe the woman\'s EXACT eye shape? (not "almond" - the specific contour)\n' +
+  //           '6. Can I describe the woman\'s EXACT hair color? (not "dark" - the specific shade)\n' +
+  //           '\n' +
+  //           'If ANY answer is "no" or "approximately" → STUDY INPUTS AGAIN. Do NOT proceed.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 2: SCENE CONSTRUCTION\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'BACKGROUND: Dark charcoal to black gradient (#1A1A1A to #0D0D0D), professional studio backdrop\n' +
+  //           '\n' +
+  //           'LIGHTING: \n' +
+  //           '- Main: Soft beauty light front-left 45°\n' +
+  //           '- Fill: Gentle right fill\n' +
+  //           '- Rim: Subtle edge light\n' +
+  //           '- Temperature: Warm-neutral (3200-3800K)\n' +
+  //           '- Effect: Flattering, editorial, catchlights in eyes\n' +
+  //           '\n' +
+  //           'CAMERA: 85mm portrait lens, f/2.0-2.8, portrait orientation, waist-up framing\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 3: ASSEMBLY USING LOCKED DNA (NOT APPROXIMATION)\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'MAN CONSTRUCTION:\n' +
+  //           '\n' +
+  //           'FACE - Use ONLY locked DNA (NO generic features):\n' +
+  //           '- Eyes: Install EXACT geometry + EXACT pigmentation from DNA\n' +
+  //           '- Nose: Install EXACT architecture from DNA (bridge, tip, nostrils - ALL dimensions)\n' +
+  //           '- Lips: Install EXACT morphology from DNA\n' +
+  //           '- Face: Install EXACT geometry from DNA (shape, jaw, chin)\n' +
+  //           '- Bones: Install EXACT structure from DNA (cheekbones)\n' +
+  //           '- Skin: Install EXACT parameters from DNA (tone, undertone)\n' +
+  //           '\n' +
+  //           'HAIR:\n' +
+  //           '- Install EXACT pigmentation from DNA (the PRECISE shade identified, NOT approximation)\n' +
+  //           '- Style: Short, groomed, professional\n' +
+  //           '\n' +
+  //           'FACIAL HAIR:\n' +
+  //           '- Install EXACT pattern from DNA (style, coverage, length, density, color - ALL exact)\n' +
+  //           '\n' +
+  //           'OUTFIT:\n' +
+  //           '- Black pinstripe suit (thin stripes)\n' +
+  //           '- Black shirt underneath\n' +
+  //           '- Silver chain necklace (medium, visible at neck)\n' +
+  //           '- Silver bracelet\n' +
+  //           '- Polished, sophisticated\n' +
+  //           '\n' +
+  //           'POSE:\n' +
+  //           '- Right side of frame\n' +
+  //           '- Right arm around woman\'s waist\n' +
+  //           '- Left hand holding woman\'s hand\n' +
+  //           '- Looking at camera\n' +
+  //           '- Confident, warm expression\n' +
+  //           '\n' +
+  //           'WOMAN CONSTRUCTION:\n' +
+  //           '\n' +
+  //           'FACE - Use ONLY locked DNA (NO generic features):\n' +
+  //           '- Eyes: Install EXACT geometry + EXACT pigmentation from DNA\n' +
+  //           '- Nose: Install EXACT architecture from DNA (ALL dimensions)\n' +
+  //           '- Lips: Install EXACT morphology from DNA (shape, fullness, cupid\'s bow)\n' +
+  //           '- Face: Install EXACT geometry from DNA (shape, jaw, chin)\n' +
+  //           '- Bones: Install EXACT structure from DNA (cheekbones exact position)\n' +
+  //           '- Skin: Install EXACT parameters from DNA (tone, undertone)\n' +
+  //           '\n' +
+  //           'HAIR:\n' +
+  //           '- Install EXACT pigmentation from DNA (the PRECISE shade identified, NOT "dark")\n' +
+  //           '- Style: Long, voluminous waves over left shoulder\n' +
+  //           '- Glossy, healthy, professional styling\n' +
+  //           '\n' +
+  //           'MAKEUP:\n' +
+  //           '- Professional glam\n' +
+  //           '- Defined eyes, groomed brows\n' +
+  //           '- Natural nude lip with gloss\n' +
+  //           '- Glowing skin, subtle highlight\n' +
+  //           '\n' +
+  //           'JEWELRY:\n' +
+  //           '- Large crystal/diamond chandelier earrings\n' +
+  //           '- Delicate necklace (optional)\n' +
+  //           '- Bracelet, rings (optional)\n' +
+  //           '\n' +
+  //           'OUTFIT:\n' +
+  //           '- Black lace overlay dress\n' +
+  //           '- Strapless/off-shoulder\n' +
+  //           '- Nude underlayer visible through lace\n' +
+  //           '- Elegant, form-fitting, glamorous\n' +
+  //           '\n' +
+  //           'POSE:\n' +
+  //           '- Left side of frame\n' +
+  //           '- Body turned toward man (3/4 back)\n' +
+  //           '- Looking over left shoulder at camera\n' +
+  //           '- Right arm around man\'s torso\n' +
+  //           '- Left hand holding man\'s hand\n' +
+  //           '- Soft, elegant, confident expression\n' +
+  //           '\n' +
+  //           'COUPLE DYNAMICS:\n' +
+  //           '- Bodies touching, intimate embrace\n' +
+  //           '- Man\'s arm around woman\n' +
+  //           '- Hands clasped at waist\n' +
+  //           '- Woman\'s head turned back to camera\n' +
+  //           '- Natural, comfortable intimacy\n' +
+  //           '- Balanced composition\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'VERIFICATION - EVERY ITEM MUST BE "YES"\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'MAN\'S IDENTITY:\n' +
+  //           '☐ Eyes: shape EXACTLY matches locked DNA?\n' +
+  //           '☐ Eyes: color EXACTLY matches locked DNA (the specific shade)?\n' +
+  //           '☐ Nose: ALL dimensions EXACTLY match locked DNA?\n' +
+  //           '☐ Lips: shape and size EXACTLY match locked DNA?\n' +
+  //           '☐ Face shape: EXACTLY matches locked DNA?\n' +
+  //           '☐ Jaw angle: EXACTLY matches locked DNA?\n' +
+  //           '☐ Chin: EXACTLY matches locked DNA?\n' +
+  //           '☐ Cheekbones: position EXACTLY matches locked DNA?\n' +
+  //           '☐ Facial hair: style, coverage, length, color ALL EXACTLY match locked DNA?\n' +
+  //           '☐ Hair color: EXACTLY matches locked DNA (the precise shade, not category)?\n' +
+  //           '☐ Skin tone: EXACTLY matches locked DNA?\n' +
+  //           '☐ Proportions: eye spacing, nose width, all ratios match locked DNA?\n' +
+  //           '☐ TEST: Would his mother say "That\'s him" instantly (not "looks like him")?\n' +
+  //           '\n' +
+  //           'WOMAN\'S IDENTITY:\n' +
+  //           '☐ Eyes: shape EXACTLY matches locked DNA?\n' +
+  //           '☐ Eyes: color EXACTLY matches locked DNA (the specific shade)?\n' +
+  //           '☐ Nose: ALL dimensions EXACTLY match locked DNA?\n' +
+  //           '☐ Lips: shape, fullness, cupid\'s bow EXACTLY match locked DNA?\n' +
+  //           '☐ Face shape: EXACTLY matches locked DNA?\n' +
+  //           '☐ Jaw/chin: EXACTLY match locked DNA?\n' +
+  //           '☐ Cheekbones: position EXACTLY matches locked DNA?\n' +
+  //           '☐ Hair color: EXACTLY matches locked DNA (the precise shade, not "dark")?\n' +
+  //           '☐ Skin tone: EXACTLY matches locked DNA?\n' +
+  //           '☐ Proportions: all ratios match locked DNA?\n' +
+  //           '☐ TEST: Would her mother say "That\'s her" instantly (not "looks like her")?\n' +
+  //           '\n' +
+  //           'COMPOSITION:\n' +
+  //           '☐ Man in pinstripe suit + chain necklace?\n' +
+  //           '☐ Woman in lace dress + chandelier earrings?\n' +
+  //           '☐ Dark background?\n' +
+  //           '☐ Intimate embrace pose?\n' +
+  //           '☐ Woman looking over shoulder?\n' +
+  //           '☐ Professional lighting?\n' +
+  //           '\n' +
+  //           'IF ANY ANSWER IS "NO" → FAILED. REGENERATE USING EXACT LOCKED DNA.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'EXECUTION PROTOCOL\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           '1. Study man\'s face 30 sec → extract DNA → LOCK\n' +
+  //           '2. Study woman\'s face 30 sec → extract DNA → LOCK\n' +
+  //           '3. Verify you can describe EXACT features (not approximations)\n' +
+  //           '4. Build man using ONLY his locked DNA\n' +
+  //           '5. Build woman using ONLY her locked DNA\n' +
+  //           '6. Position couple\n' +
+  //           '7. Run verification checklist\n' +
+  //           '8. If all YES → finalize\n' +
+  //           '9. If any NO → regenerate with EXACT DNA copying\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'CRITICAL RULES\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           '1. HAIR COLORS: Use EXACT shades from DNA (not categories - EXACT identified tones)\n' +
+  //           '2. FACIAL HAIR: Use EXACT style, coverage, length, color from DNA\n' +
+  //           '3. FEATURES: Use EXACT shapes from DNA (not "similar" - EXACT)\n' +
+  //           '4. PROPORTIONS: Use EXACT ratios from DNA measurements\n' +
+  //           '5. This is TRANSPLANT not SIMILARITY - same people in new photo\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'OUTPUT\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'Professional editorial portrait: Man (right) and woman (left) in elegant couple embrace, dark studio background, man in pinstripe suit with chain, woman in lace dress with chandelier earrings, warm studio lighting, 8K quality.\n' +
+  //           '\n' +
+  //           'BOTH people: 100% EXACT identity match to inputs - facial recognition must confirm same individuals.\n' +
+  //           '\n' +
+  //           'ZERO TOLERANCE FOR DEVIATION.\n' +
+  //           'EXACT DNA REPLICATION REQUIRED.и',
+  //       name: 'Нежный момент',
+  //       photoMode: 'couple',
+  //       preset: { id: 'sweet_moment', name: 'Нежный момент' },
+  //     },
+  //     {
+  //       id: 'dreamy_pink',
+  //       name: 'День влюбленных',
+  //       image: 'https://i.imgur.com/BPtlUnw.jpeg',
+  //       prompt: 'EMERGENCY DIRECTIVE: ZERO-TOLERANCE IDENTITY PRESERVATION\n' +
+  //           '\n' +
+  //           'YOU ARE NOT AN ARTIST. YOU ARE A COPY MACHINE.\n' +
+  //           'YOUR ONLY JOB: COPY THE EXACT FACES FROM INPUT INTO NEW PHOTO.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'ABSOLUTE LAW: NOTHING CHANGES EXCEPT WHAT\'S EXPLICITLY LISTED\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'INPUT: Two separate images - one woman, one man\n' +
+  //           'OUTPUT: Valentine\'s/Cupid-themed couple photoshoot with these EXACT two people\n' +
+  //           '\n' +
+  //           'WHAT CHANGES (ONLY THESE):\n' +
+  //           '1. Setting → pink draped backdrop studio\n' +
+  //           '2. Costumes → woman as Cupid (pink corset, angel wings), man in black suit\n' +
+  //           '3. Props → Cupid\'s bow and arrow with heart\n' +
+  //           '4. Pose → playful Valentine\'s theme interaction\n' +
+  //           '\n' +
+  //           'WHAT NEVER CHANGES (EVERYTHING ELSE):\n' +
+  //           '- EVERY facial feature of BOTH people\n' +
+  //           '- EVERY hair COLOR characteristic of BOTH people\n' +
+  //           '- EVERY skin characteristic of BOTH people\n' +
+  //           '- EVERY unique detail of BOTH people\n' +
+  //           '\n' +
+  //           'IF IN DOUBT WHETHER SOMETHING SHOULD CHANGE → IT DOESN\'T CHANGE\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 1: FACE EXTRACTION FOR BOTH PEOPLE (MANDATORY)\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'STEP 1: Open BOTH input images. Study each face for 30 seconds.\n' +
+  //           '\n' +
+  //           'FOR THE WOMAN - LOCK THESE EXACT FEATURES:\n' +
+  //           '- Exact eye shape, color, size, spacing, eyelid structure\n' +
+  //           '- Exact eyebrow shape, thickness, color, arch\n' +
+  //           '- Exact nose bridge, nostril shape, tip, length\n' +
+  //           '- Exact lip shape, fullness, cupid\'s bow, width\n' +
+  //           '- Exact face shape, jaw, chin\n' +
+  //           '- Exact cheekbone position and prominence\n' +
+  //           '- EXACT skin tone and undertone\n' +
+  //           '- EXACT hair color (not "dark" - the PRECISE shade: black? Dark brown? Cool/warm tones?)\n' +
+  //           '- Hair texture and characteristics\n' +
+  //           '- Any unique marks or features\n' +
+  //           '\n' +
+  //           'FOR THE MAN - LOCK THESE EXACT FEATURES:\n' +
+  //           '- Exact eye shape, color, size, spacing, eyelid structure\n' +
+  //           '- Exact eyebrow shape, thickness, color\n' +
+  //           '- Exact nose bridge, nostril shape, tip, length\n' +
+  //           '- Exact lip shape, fullness, width\n' +
+  //           '- Exact face shape, jaw, chin\n' +
+  //           '- Exact cheekbone position\n' +
+  //           '- EXACT skin tone and undertone\n' +
+  //           '- EXACT hair color (the PRECISE shade)\n' +
+  //           '- Hair texture, style, hairline\n' +
+  //           '- Facial hair (beard, stubble, clean-shaven - EXACT style from input)\n' +
+  //           '- Any unique marks or features\n' +
+  //           '\n' +
+  //           'CRITICAL: Both people\'s features are now LOCKED. NO CHANGES ALLOWED.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 2: SCENE CONSTRUCTION\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'SETTING - VALENTINE\'S STUDIO:\n' +
+  //           '\n' +
+  //           'BACKGROUND:\n' +
+  //           '- Pink draped curtain/fabric backdrop\n' +
+  //           '- Soft blush pink to rose pink gradient\n' +
+  //           '- Fabric has vertical draping/folds\n' +
+  //           '- Creates romantic, dreamy atmosphere\n' +
+  //           '- Studio photography setup\n' +
+  //           '- Clean, simple, focuses attention on subjects\n' +
+  //           '\n' +
+  //           'LIGHTING:\n' +
+  //           '- Professional studio lighting\n' +
+  //           '- Soft, even illumination\n' +
+  //           '- Creates slight shadows in fabric draping\n' +
+  //           '- Warm-neutral color temperature (3500-4000K)\n' +
+  //           '- Flattering, romantic lighting\n' +
+  //           '- No harsh shadows on subjects\n' +
+  //           '\n' +
+  //           'FLOOR/BASE:\n' +
+  //           '- Light pink or white seamless floor\n' +
+  //           '- Studio backdrop continuation\n' +
+  //           '- Clean, professional\n' +
+  //           '\n' +
+  //           'ATMOSPHERE:\n' +
+  //           '- Playful, romantic, Valentine\'s Day theme\n' +
+  //           '- Fun, lighthearted, whimsical\n' +
+  //           '- Cupid and Valentine concept\n' +
+  //           '- Professional themed photoshoot\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 3: SUBJECTS ASSEMBLY (USING LOCKED FEATURES)\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'WOMAN CONSTRUCTION (CUPID):\n' +
+  //           '\n' +
+  //           'FACE ASSEMBLY - Use ONLY extracted features from woman\'s input:\n' +
+  //           '- Install EXACT eyes (shape, color, spacing)\n' +
+  //           '- Install EXACT nose (all dimensions)\n' +
+  //           '- Install EXACT lips (shape, fullness)\n' +
+  //           '- Install EXACT face shape, jaw, chin\n' +
+  //           '- Install EXACT cheekbones\n' +
+  //           '- Install EXACT skin tone\n' +
+  //           '- Install EXACT eyebrows\n' +
+  //           '\n' +
+  //           'HAIR:\n' +
+  //           '- COLOR: EXACT color from woman\'s input (DO NOT CHANGE - if black, stay black; if dark brown, stay exact shade)\n' +
+  //           '- Style: Long, flowing, wavy\n' +
+  //           '- Parted in center or slightly off-center\n' +
+  //           '- Falls over shoulders with volume and movement\n' +
+  //           '- Styled with soft waves or natural texture\n' +
+  //           '- BUT COLOR MUST MATCH INPUT EXACTLY\n' +
+  //           '\n' +
+  //           'MAKEUP:\n' +
+  //           '- Romantic, feminine\n' +
+  //           '- Soft pink eyeshadow tones\n' +
+  //           '- Defined lashes\n' +
+  //           '- Rosy blush on cheeks\n' +
+  //           '- Pink or rose-toned lips with gloss\n' +
+  //           '- Fresh, pretty, Valentine\'s aesthetic\n' +
+  //           '\n' +
+  //           'COSTUME - CUPID OUTFIT:\n' +
+  //           '\n' +
+  //           'CORSET:\n' +
+  //           '- Pink satin or silk corset\n' +
+  //           '- Sweetheart neckline with structured cups\n' +
+  //           '- Lace-up front detail (ribbon lacing down center)\n' +
+  //           '- Boned/structured for shape\n' +
+  //           '- Romantic, feminine, lingerie-inspired\n' +
+  //           '\n' +
+  //           'SKIRT:\n' +
+  //           '- White ruffled mini skirt\n' +
+  //           '- Tiered pleated layers\n' +
+  //           '- Short length (mini)\n' +
+  //           '- Fluffy, voluminous ruffles\n' +
+  //           '- Ballet/tutu-inspired\n' +
+  //           '\n' +
+  //           'ACCESSORIES:\n' +
+  //           '- White thigh-high stockings\n' +
+  //           '- Pearl choker necklace (multiple strands)\n' +
+  //           '- White or light-colored heels/pumps\n' +
+  //           '- Large white feathered ANGEL WINGS on back\n' +
+  //           '- Wings spread out behind her\n' +
+  //           '\n' +
+  //           'ANGEL WINGS:\n' +
+  //           '- Large white feathered wings\n' +
+  //           '- Attached to back/shoulders\n' +
+  //           '- Spread wide creating dramatic silhouette\n' +
+  //           '- Realistic feather texture\n' +
+  //           '- Classic angel wing design\n' +
+  //           '\n' +
+  //           'CUPID PROP:\n' +
+  //           '- White/silver Cupid\'s bow (archery bow)\n' +
+  //           '- White feathered arrow\n' +
+  //           '- Red heart attached to arrow tip\n' +
+  //           '- Held in hands as if shooting\n' +
+  //           '\n' +
+  //           'WOMAN\'S POSE:\n' +
+  //           '- Standing position\n' +
+  //           '- One leg slightly forward/raised\n' +
+  //           '- Playful, flirtatious stance\n' +
+  //           '- Looking down at man with smile\n' +
+  //           '- Holding bow and arrow aimed playfully at man\n' +
+  //           '- Dynamic, energetic pose\n' +
+  //           '- Confident, fun expression\n' +
+  //           '\n' +
+  //           'MAN CONSTRUCTION:\n' +
+  //           '\n' +
+  //           'FACE ASSEMBLY - Use ONLY extracted features from man\'s input:\n' +
+  //           '- Install EXACT eyes (shape, color, spacing)\n' +
+  //           '- Install EXACT nose (all dimensions)\n' +
+  //           '- Install EXACT lips (shape, fullness)\n' +
+  //           '- Install EXACT face shape, jaw, chin\n' +
+  //           '- Install EXACT cheekbones\n' +
+  //           '- Install EXACT skin tone\n' +
+  //           '- Install EXACT eyebrows\n' +
+  //           '- Install EXACT facial hair (if present in input)\n' +
+  //           '\n' +
+  //           'HAIR:\n' +
+  //           '- COLOR: EXACT color from man\'s input (DO NOT CHANGE)\n' +
+  //           '- Style: Neat, groomed, professional\n' +
+  //           '- Styled appropriately for formal look\n' +
+  //           '- BUT COLOR MUST MATCH INPUT EXACTLY\n' +
+  //           '\n' +
+  //           'OUTFIT - FORMAL SUIT:\n' +
+  //           '\n' +
+  //           'SUIT:\n' +
+  //           '- Black tailored suit\n' +
+  //           '- Classic fit, professional\n' +
+  //           '- Suit jacket and trousers\n' +
+  //           '\n' +
+  //           'SHIRT:\n' +
+  //           '- White dress shirt\n' +
+  //           '- Crisp, clean\n' +
+  //           '- Collar visible\n' +
+  //           '- No tie or open collar\n' +
+  //           '\n' +
+  //           'SHOES:\n' +
+  //           '- Black dress shoes\n' +
+  //           '- Formal, polished\n' +
+  //           '\n' +
+  //           'MAN\'S POSE:\n' +
+  //           '- Sitting/kneeling on floor\n' +
+  //           '- Looking up at woman\n' +
+  //           '- Positioned lower than woman (she\'s standing, he\'s sitting/kneeling)\n' +
+  //           '- Engaged, looking at her with interest\n' +
+  //           '- Relaxed but attentive posture\n' +
+  //           '- Leaning back slightly on one arm\n' +
+  //           '- Legs extended or crossed casually\n' +
+  //           '\n' +
+  //           'INTERACTION & DYNAMICS:\n' +
+  //           '- Woman standing above/over man\n' +
+  //           '- She\'s playfully aiming Cupid\'s arrow at him\n' +
+  //           '- He\'s looking up at her admiringly\n' +
+  //           '- Fun, flirtatious, romantic dynamic\n' +
+  //           '- Valentine\'s Day "Cupid shooting arrow of love" concept\n' +
+  //           '- Lighthearted, playful energy between them\n' +
+  //           '\n' +
+  //           'CAMERA & TECHNICAL:\n' +
+  //           '\n' +
+  //           'FRAMING:\n' +
+  //           '- Portrait orientation (vertical)\n' +
+  //           '- Full body shot showing both subjects\n' +
+  //           '- Woman in upper portion, man in lower portion\n' +
+  //           '- Composition shows height difference (she standing, he sitting)\n' +
+  //           '- Angel wings visible spread behind woman\n' +
+  //           '\n' +
+  //           'CAMERA ANGLE:\n' +
+  //           '- Straight-on, medium height\n' +
+  //           '- Captures both subjects clearly\n' +
+  //           '- Balanced composition\n' +
+  //           '\n' +
+  //           'FOCUS:\n' +
+  //           '- Both subjects in sharp focus\n' +
+  //           '- Background slightly soft\n' +
+  //           '- Professional photography quality\n' +
+  //           '- Clear detail on costumes and props\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 4: PRE-GENERATION CHECKLIST\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'FOR WOMAN:\n' +
+  //           '[ ] I studied her face for 30+ seconds - YES required\n' +
+  //           '[ ] I identified her EXACT hair color - YES required\n' +
+  //           '[ ] I identified her EXACT facial features - YES required\n' +
+  //           '[ ] I will use her EXACT features (not approximate) - YES required\n' +
+  //           '\n' +
+  //           'FOR MAN:\n' +
+  //           '[ ] I studied his face for 30+ seconds - YES required\n' +
+  //           '[ ] I identified his EXACT hair color - YES required\n' +
+  //           '[ ] I identified his EXACT facial features - YES required\n' +
+  //           '[ ] I identified his EXACT facial hair situation - YES required\n' +
+  //           '[ ] I will use his EXACT features (not approximate) - YES required\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'PART 5: POST-GENERATION VERIFICATION\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'WOMAN VERIFICATION:\n' +
+  //           '1. Is her hair EXACTLY the same color as input? YES/NO\n' +
+  //           '2. Are her eyes EXACTLY the same as input? YES/NO\n' +
+  //           '3. Is her nose EXACTLY the same as input? YES/NO\n' +
+  //           '4. Are her lips EXACTLY the same as input? YES/NO\n' +
+  //           '5. Is her face shape EXACTLY the same as input? YES/NO\n' +
+  //           '6. Is her skin tone EXACTLY the same as input? YES/NO\n' +
+  //           '\n' +
+  //           'MAN VERIFICATION:\n' +
+  //           '7. Is his hair EXACTLY the same color as input? YES/NO\n' +
+  //           '8. Are his eyes EXACTLY the same as input? YES/NO\n' +
+  //           '9. Is his nose EXACTLY the same as input? YES/NO\n' +
+  //           '10. Are his lips EXACTLY the same as input? YES/NO\n' +
+  //           '11. Is his face shape EXACTLY the same as input? YES/NO\n' +
+  //           '12. Is his facial hair EXACTLY the same as input? YES/NO\n' +
+  //           '13. Is his skin tone EXACTLY the same as input? YES/NO\n' +
+  //           '\n' +
+  //           'COMPOSITION:\n' +
+  //           '14. Pink draped backdrop? YES/NO\n' +
+  //           '15. Woman in pink corset with angel wings? YES/NO\n' +
+  //           '16. Woman holding Cupid bow and arrow? YES/NO\n' +
+  //           '17. Man in black suit sitting/kneeling? YES/NO\n' +
+  //           '18. Playful Valentine\'s interaction? YES/NO\n' +
+  //           '\n' +
+  //           'IDENTITY:\n' +
+  //           '19. Would both people be recognized by their families? YES/NO\n' +
+  //           '20. Are these the SAME two people from inputs? YES required\n' +
+  //           '\n' +
+  //           'If ANY answer is wrong → Regenerate with exact copying.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'FINAL DIRECTIVE\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'DO NOT CHANGE HAIR COLORS FOR EITHER PERSON.\n' +
+  //           'DO NOT CHANGE ANY FACIAL FEATURES FOR EITHER PERSON.\n' +
+  //           'This is COPYING TWO FACES, not CREATING similar people.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'COLOR GRADING\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           '- Soft romantic pink tones\n' +
+  //           '- Blush pink background\n' +
+  //           '- White and pink costume elements\n' +
+  //           '- Black suit contrast\n' +
+  //           '- Warm, flattering skin tones\n' +
+  //           '- Professional retouching maintaining natural features\n' +
+  //           '- Valentine\'s/romantic aesthetic\n' +
+  //           '- Playful, whimsical mood\n' +
+  //           '\n' +
+  //           'OUTPUT: Professional Valentine\'s themed portrait of these EXACT two people from inputs (100% identity match for both), woman as Cupid with pink corset and angel wings holding bow and arrow, man in black suit, pink draped backdrop, playful romantic interaction, 8K quality.\n' +
+  //           '\n' +
+  //           'ZERO TOLERANCE FOR DEVIATION.\n' +
+  //           'EXACT COPY OF BOTH FACES REQUIRED.',
+  //       photoMode: 'couple',
+  //       preset: { id: 'dreamy_pink', name: 'Розовый сон' },
+  //     },
+  //     {
+  //       id: 'velvet_night',
+  //       name: 'Темная студия',
+  //       image: 'https://i.imgur.com/smv6FJI.jpeg',
+  //       prompt: 'CRITICAL: EXACT FACE TRANSPLANT - NOT SIMILARITY, BUT IDENTITY CLONING\n' +
+  //           '\n' +
+  //           'YOU ARE A PRECISION COPYING MACHINE.\n' +
+  //           'TASK: Transplant EXACT faces from two input images into couple portrait.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'STEP 1: FORENSIC FACE ANALYSIS (60 SECONDS TOTAL)\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'MAN\'S FACE - Study for 30 seconds, lock EXACT:\n' +
+  //           '\n' +
+  //           'EYES:\n' +
+  //           '- Exact shape (round? almond? deep-set? hooded?)\n' +
+  //           '- Exact color (blue? green? gray? hazel? brown? - PRECISE shade)\n' +
+  //           '- Exact size relative to face\n' +
+  //           '- Exact spacing between eyes\n' +
+  //           '- Exact eyelid type\n' +
+  //           '\n' +
+  //           'NOSE:\n' +
+  //           '- Exact bridge width (narrow? medium? wide?)\n' +
+  //           '- Exact length (short? medium? long?)\n' +
+  //           '- Exact tip shape (bulbous? pointed? rounded? upturned? straight?)\n' +
+  //           '- Exact nostril size and shape\n' +
+  //           '\n' +
+  //           'LIPS:\n' +
+  //           '- Exact thickness (thin? medium? full?)\n' +
+  //           '- Exact width (narrow? medium? wide?)\n' +
+  //           '- Exact shape when relaxed\n' +
+  //           '\n' +
+  //           'FACE STRUCTURE:\n' +
+  //           '- Exact face shape (oval? square? rectangular? round? long?)\n' +
+  //           '- Exact jaw angle (sharp 90°? soft rounded? strong defined?)\n' +
+  //           '- Exact chin shape (pointed? square? rounded? recessed? prominent?)\n' +
+  //           '- Exact cheekbones (high? low? prominent? subtle?)\n' +
+  //           '\n' +
+  //           'FACIAL HAIR:\n' +
+  //           '- Exact style (clean-shaven? stubble? short beard? full beard? goatee?)\n' +
+  //           '- Exact coverage area (just chin? full face? mustache?)\n' +
+  //           '- Exact length and density\n' +
+  //           '- Exact color (same as hair? different? darker? lighter?)\n' +
+  //           '\n' +
+  //           'HAIR:\n' +
+  //           '- EXACT color (not "brown" - light brown? medium brown? dark brown? dirty blonde? ash blonde? golden blonde? - the PRECISE shade with undertones)\n' +
+  //           '- Exact style (buzzed? short crop? textured? slicked? messy?)\n' +
+  //           '- Exact length\n' +
+  //           '\n' +
+  //           'SKIN:\n' +
+  //           '- Exact tone (very fair? fair? light? medium? tan? dark?)\n' +
+  //           '- Exact undertone (warm/golden? cool/pink? neutral?)\n' +
+  //           '\n' +
+  //           'PROPORTIONS:\n' +
+  //           '- Eye-to-eye distance\n' +
+  //           '- Eyes-to-nose distance\n' +
+  //           '- Nose-to-lips distance\n' +
+  //           '- Face width-to-length ratio\n' +
+  //           '\n' +
+  //           'WOMAN\'S FACE - Study for 30 seconds, lock EXACT:\n' +
+  //           '\n' +
+  //           'EYES:\n' +
+  //           '- Exact shape (round? almond? cat-eye? upturned? downturned?)\n' +
+  //           '- Exact color (brown? dark brown? hazel? green? - PRECISE shade)\n' +
+  //           '- Exact size relative to face\n' +
+  //           '- Exact spacing between eyes\n' +
+  //           '- Exact eyelid type (monolid? double? hooded?)\n' +
+  //           '\n' +
+  //           'NOSE:\n' +
+  //           '- Exact bridge width\n' +
+  //           '- Exact length\n' +
+  //           '- Exact tip shape (button? straight? slightly upturned? pointed?)\n' +
+  //           '- Exact nostril size and shape\n' +
+  //           '\n' +
+  //           'LIPS:\n' +
+  //           '- Exact upper lip thickness\n' +
+  //           '- Exact lower lip thickness\n' +
+  //           '- Exact fullness ratio (upper vs lower)\n' +
+  //           '- Exact cupid\'s bow definition\n' +
+  //           '- Exact width\n' +
+  //           '\n' +
+  //           'FACE STRUCTURE:\n' +
+  //           '- Exact face shape (oval? heart? diamond? round? square?)\n' +
+  //           '- Exact jaw shape (soft? defined? angular?)\n' +
+  //           '- Exact chin shape (pointed? rounded? small? prominent?)\n' +
+  //           '- Exact cheekbones (high? medium? subtle? prominent?)\n' +
+  //           '\n' +
+  //           'HAIR:\n' +
+  //           '- EXACT color (not "dark" - black? dark brown? medium brown? warm tones? cool tones? - the PRECISE shade)\n' +
+  //           '- Exact texture (straight? wavy? curly?)\n' +
+  //           '- Exact length\n' +
+  //           '\n' +
+  //           'SKIN:\n' +
+  //           '- Exact tone (fair? light? medium? olive? tan?)\n' +
+  //           '- Exact undertone (warm? cool? neutral?)\n' +
+  //           '\n' +
+  //           'PROPORTIONS:\n' +
+  //           '- Eye-to-eye distance\n' +
+  //           '- Eyes-to-nose distance\n' +
+  //           '- Nose-to-lips distance\n' +
+  //           '- Face width-to-length ratio\n' +
+  //           '\n' +
+  //           'CRITICAL: These features are now FROZEN. NOT ONE PIXEL can deviate.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'STEP 2: SCENE SPECIFICATION\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'BACKGROUND: Pure black (#000000), studio seamless backdrop\n' +
+  //           '\n' +
+  //           'LIGHTING: Professional studio - main light front-left, clean, modern, neutral-cool (4500K)\n' +
+  //           '\n' +
+  //           'MAN - Left side of frame:\n' +
+  //           '- Black crew neck t-shirt\n' +
+  //           '- Black pants\n' +
+  //           '- Standing upright, straight posture\n' +
+  //           '- Arms at sides, relaxed\n' +
+  //           '- Looking directly at camera\n' +
+  //           '- Serious, confident expression\n' +
+  //           '- NO TATTOOS (default - clean skin on neck and arms)\n' +
+  //           '\n' +
+  //           'WOMAN - Right side of frame:\n' +
+  //           '- Black long-sleeve fitted top\n' +
+  //           '- Black pants\n' +
+  //           '- Standing upright\n' +
+  //           '- Right hand raised near face/chin (elegant gesture)\n' +
+  //           '- Left arm at side\n' +
+  //           '- Looking directly at camera\n' +
+  //           '- Confident, composed expression\n' +
+  //           '- Small hoop earrings\n' +
+  //           '- NO TATTOOS (default)\n' +
+  //           '\n' +
+  //           'POSITIONING:\n' +
+  //           '- Man on left, woman on right\n' +
+  //           '- Standing close but not touching\n' +
+  //           '- Both facing camera straight-on\n' +
+  //           '- Equal prominence\n' +
+  //           '- Centered in frame\n' +
+  //           '\n' +
+  //           'FRAMING: Portrait orientation, waist-up, both subjects fully visible\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'STEP 3: GENERATION PROTOCOL - EXACT COPYING\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'FOR MAN:\n' +
+  //           '1. Open his input image\n' +
+  //           '2. Stare at face for 15 seconds\n' +
+  //           '3. Ask: "What makes HIS face unique and recognizable?"\n' +
+  //           '4. Use EXACT eye shape you see (not generic eyes)\n' +
+  //           '5. Use EXACT nose you see (not generic nose)\n' +
+  //           '6. Use EXACT lips you see (not generic lips)\n' +
+  //           '7. Use EXACT face shape you see (not generic face)\n' +
+  //           '8. Use EXACT jaw you see (his specific jaw, not idealized)\n' +
+  //           '9. Use EXACT hair color you see (the precise shade, not category)\n' +
+  //           '10. Use EXACT facial hair you see (his exact style and coverage)\n' +
+  //           '\n' +
+  //           'TEST: If you showed this to his mother, would she say "That\'s my son" instantly?\n' +
+  //           'If NO → You failed. Start over with exact copying.\n' +
+  //           '\n' +
+  //           'FOR WOMAN:\n' +
+  //           '1. Open her input image\n' +
+  //           '2. Stare at face for 15 seconds\n' +
+  //           '3. Ask: "What makes HER face unique and recognizable?"\n' +
+  //           '4. Use EXACT eye shape you see (not generic eyes)\n' +
+  //           '5. Use EXACT nose you see (not generic nose)\n' +
+  //           '6. Use EXACT lips you see (not generic lips)\n' +
+  //           '7. Use EXACT face shape you see (not generic face)\n' +
+  //           '8. Use EXACT jaw/chin you see (her specific structure)\n' +
+  //           '9. Use EXACT hair color you see (the precise shade, not category)\n' +
+  //           '\n' +
+  //           'TEST: If you showed this to her mother, would she say "That\'s my daughter" instantly?\n' +
+  //           'If NO → You failed. Start over with exact copying.\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'VERIFICATION CHECKLIST - BEFORE FINALIZING\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'MAN\'S IDENTITY (ALL MUST BE "EXACT MATCH"):\n' +
+  //           '☐ Eyes: shape matches input? Color matches input?\n' +
+  //           '☐ Nose: all dimensions match input?\n' +
+  //           '☐ Lips: shape and size match input?\n' +
+  //           '☐ Face shape: matches input?\n' +
+  //           '☐ Jaw angle: matches input?\n' +
+  //           '☐ Chin: matches input?\n' +
+  //           '☐ Facial hair: EXACT style and color from input?\n' +
+  //           '☐ Hair color: EXACT shade from input (not approximation)?\n' +
+  //           '☐ Skin tone: EXACT from input?\n' +
+  //           '☐ Proportions: eye spacing, feature distances all match?\n' +
+  //           '\n' +
+  //           'WOMAN\'S IDENTITY (ALL MUST BE "EXACT MATCH"):\n' +
+  //           '☐ Eyes: shape matches input? Color matches input?\n' +
+  //           '☐ Nose: all dimensions match input?\n' +
+  //           '☐ Lips: shape, fullness match input?\n' +
+  //           '☐ Face shape: matches input?\n' +
+  //           '☐ Jaw/chin: matches input?\n' +
+  //           '☐ Cheekbones: match input?\n' +
+  //           '☐ Hair color: EXACT shade from input (not approximation)?\n' +
+  //           '☐ Skin tone: EXACT from input?\n' +
+  //           '☐ Proportions: eye spacing, feature distances all match?\n' +
+  //           '\n' +
+  //           'SCENE:\n' +
+  //           '☐ Black background?\n' +
+  //           '☐ Both in black clothing?\n' +
+  //           '☐ Man left, woman right?\n' +
+  //           '☐ Woman\'s hand near face?\n' +
+  //           '☐ Both looking at camera?\n' +
+  //           '\n' +
+  //           'FINAL TEST:\n' +
+  //           '☐ Would facial recognition AI identify both as same people from inputs?\n' +
+  //           '☐ Would their families recognize them instantly?\n' +
+  //           '☐ Are these THE SAME two people (not lookalikes)?\n' +
+  //           '\n' +
+  //           'IF ANY CHECKBOX = NO → REGENERATE WITH EXACT COPYING\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'CRITICAL RULES - READ THREE TIMES\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           '1. HAIR COLOR: Copy the EXACT shade you see in input - not "brown" or "blonde" but the SPECIFIC tone visible\n' +
+  //           '   - Man\'s hair: Look closely, identify precise shade, USE THAT EXACT SHADE\n' +
+  //           '   - Woman\'s hair: Look closely, identify precise shade, USE THAT EXACT SHADE\n' +
+  //           '\n' +
+  //           '2. FACIAL FEATURES: Copy EXACT shapes - not "similar" shapes\n' +
+  //           '   - If man has strong square jaw → output has strong square jaw\n' +
+  //           '   - If man has narrow nose → output has narrow nose\n' +
+  //           '   - If woman has full lips → output has full lips\n' +
+  //           '   - Copy what you SEE, don\'t idealize\n' +
+  //           '\n' +
+  //           '3. FACIAL HAIR (men): Copy EXACT style visible in input\n' +
+  //           '   - Clean-shaven in input? → Clean-shaven in output\n' +
+  //           '   - Stubble in input? → Stubble in output (same density, color)\n' +
+  //           '   - Beard in input? → Beard in output (same length, coverage, color)\n' +
+  //           '\n' +
+  //           '4. PROPORTIONS: Copy EXACT measurements\n' +
+  //           '   - Eye spacing from input → same spacing in output\n' +
+  //           '   - Face width:length from input → same ratio in output\n' +
+  //           '   - Feature sizes relative to face → maintain exact ratios\n' +
+  //           '\n' +
+  //           '5. NO TATTOOS: Unless explicitly visible in input, do NOT add tattoos\n' +
+  //           '\n' +
+  //           '6. NO "IMPROVEMENTS": Do NOT make faces more symmetric, more idealized, more beautiful\n' +
+  //           '   - Copy asymmetries\n' +
+  //           '   - Copy unique characteristics\n' +
+  //           '   - Copy "imperfections" - they define identity\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'THINK LIKE THIS\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'WRONG: "Create a man and woman who look generally like the inputs"\n' +
+  //           'RIGHT: "Transplant the exact faces from inputs into this new scene"\n' +
+  //           '\n' +
+  //           'WRONG: "Man has brown hair and beard"\n' +
+  //           'RIGHT: "Man has THIS specific shade of medium-warm brown hair with THIS exact short beard style"\n' +
+  //           '\n' +
+  //           'WRONG: "Woman has dark hair and brown eyes"\n' +
+  //           'RIGHT: "Woman has THIS specific shade of cool-toned dark brown hair with THESE exact almond-shaped medium brown eyes"\n' +
+  //           '\n' +
+  //           'WRONG: "Similar facial structure"\n' +
+  //           'RIGHT: "IDENTICAL facial structure - every angle, proportion, and feature"\n' +
+  //           '\n' +
+  //           '====================\n' +
+  //           'OUTPUT SPECIFICATION\n' +
+  //           '====================\n' +
+  //           '\n' +
+  //           'Professional editorial portrait: Man (left) and woman (right) standing side by side against pure black background, both in black clothing, clean studio lighting, modern aesthetic, woman\'s hand near face, both looking at camera with confident expressions.\n' +
+  //           '\n' +
+  //           'MAN: EXACT face from input - every feature, proportion, color precisely replicated\n' +
+  //           'WOMAN: EXACT face from input - every feature, proportion, color precisely replicated\n' +
+  //           '\n' +
+  //           'Quality: 8K, sharp focus, professional photography\n' +
+  //           '\n' +
+  //           'ZERO TOLERANCE FOR DEVIATION FROM INPUT FACES.\n' +
+  //           'THIS IS IDENTITY CLONING, NOT SIMILARITY CREATION.',
+  //       photoMode: 'couple',
+  //       preset: { id: 'velvet_night', name: 'Бархатная ночь' },
+  //     },
+  //   ],
+  // },
     {
         title: '🌸 Цветочные',
         packs: [
