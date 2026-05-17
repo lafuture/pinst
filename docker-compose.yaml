@@ -29,7 +29,6 @@ services:
       KIE_API_KEY: "${KIE_API_KEY:-}"
       KIE_CALLBACK_URL: "${KIE_CALLBACK_URL:-}"
       UPLOADS_DIR: "${UPLOADS_DIR:-/app/uploads}"
-      PUBLIC_URL: "${PUBLIC_URL:-}"
 
   db:
     image: postgres:16.10-alpine
