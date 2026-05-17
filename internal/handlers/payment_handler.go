@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"time"
 
 	"pinst/internal/auth"
 )
@@ -119,7 +120,7 @@ func (h *Handler) CreatePaymentHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	httpReq.SetBasicAuth(h.cfg.YooKassaShopID, h.cfg.YooKassaSecretKey)
 	httpReq.Header.Set("Content-Type", "application/json")
-	httpReq.Header.Set("Idempotence-Key", fmt.Sprintf("%d-%s-%s", userID, req.Plan, req.Method))
+	httpReq.Header.Set("Idempotence-Key", fmt.Sprintf("%d-%s-%s-%d", userID, req.Plan, req.Method, time.Now().UnixMilli()))
 
 	resp, err := http.DefaultClient.Do(httpReq)
 	if err != nil {
@@ -157,7 +158,7 @@ func (h *Handler) CreatePaymentHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if created.Confirmation.ConfirmationURL == "" {
-		log.Printf("CreatePayment: empty confirmation URL payment_id=%s", created.ID)
+		log.Printf("CreatePayment: empty confirmation URL payment_id=%s body=%s", created.ID, string(respBytes))
 		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "no confirmation url"})
 		return
 	}
