@@ -30,7 +30,7 @@ WORKDIR /app
 
 COPY --from=build /out/pinst /app/pinst
 COPY internal/database/migrations /app/internal/database/migrations
-COPY --from=frontend /frontend/dist /app/external/app
+COPY --from=frontend /external/app /app/external/app
 RUN mkdir -p /app/external /app/landing /app/uploads
 
 RUN chown -R appuser:appuser /app

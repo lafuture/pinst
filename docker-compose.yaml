@@ -13,7 +13,6 @@ services:
     ports:
       - "${APP_PORT:-8080}:8080"
     volumes:
-      - ./external:/app/external:ro
       - ./landing:/app/landing:ro
       - pinst-uploads:/app/uploads
     environment:
