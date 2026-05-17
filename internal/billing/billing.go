@@ -135,6 +135,10 @@ func (s *Service) ChargeAutoRenewal(ctx context.Context, tgID int64, plan, metho
 }
 
 func (s *Service) logPaymentToChannel(ctx context.Context, tgID int64, plan string, isAuto bool) {
+	if !s.tg.LogChannelConfigured() {
+		log.Printf("billing: logPaymentToChannel skipped — log channel not configured")
+		return
+	}
 	user, err := s.db.GetUser(ctx, tgID)
 	if err != nil {
 		log.Printf("billing: logPaymentToChannel GetUser tg_id=%d: %v", tgID, err)

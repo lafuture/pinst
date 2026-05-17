@@ -45,7 +45,7 @@ func Load() (*Config, error) {
 		ShortName:  strings.TrimSpace(os.Getenv("SHORT_NAME")),
 		TGChannel:     strings.TrimSpace(os.Getenv("CHANNEL_ID")),
 		TGChannelLink: strings.TrimSpace(os.Getenv("CHANNEL_LINK")),
-		TGLogChannel:  strings.TrimSpace(os.Getenv("LOG_CHANNEL_ID")),
+		TGLogChannel:  strings.TrimSpace(os.Getenv("LOGS_CHANNEL_ID")),
 
 		YooKassaShopID:    strings.TrimSpace(os.Getenv("YOU_KASSA_ID")),
 		YooKassaSecretKey: strings.TrimSpace(os.Getenv("YOU_KASSA_SECRET_KEY")),

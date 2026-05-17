@@ -85,10 +85,12 @@ func (c *Client) SendMessage(ctx context.Context, chatID int64, text string, btn
 	return nil
 }
 
+func (c *Client) LogChannelConfigured() bool { return c.token != "" && c.logChannelID != "" }
+
 // LogPayment sends a formatted message to the log channel.
 func (c *Client) LogPayment(ctx context.Context, text string) error {
 	if c.token == "" || c.logChannelID == "" {
-		return nil
+		return fmt.Errorf("log channel not configured (token=%v logChannelID=%q)", c.token != "", c.logChannelID)
 	}
 	payload := map[string]any{
 		"chat_id":    c.logChannelID,
