@@ -118,10 +118,11 @@ func (h *Handler) KieCallbackHandler(w http.ResponseWriter, r *http.Request) {
 	case h.kieResults <- kieResult{taskID: task.TaskID, imageURL: imageURL}:
 	default:
 		// очередь результатов переполнена — обрабатываем inline
-		if dbErr := h.db.MarkKieTaskSuccess(ctx, task.TaskID, imageURL); dbErr != nil {
+		finalURL := h.mirrorImage(ctx, imageURL, task.TaskID)
+		if dbErr := h.db.MarkKieTaskSuccess(ctx, task.TaskID, finalURL); dbErr != nil {
 			log.Printf("KieCallback: MarkKieTaskSuccess id=%s: %v", task.TaskID, dbErr)
 		}
-		if _, dbErr := h.db.AddGeneration(ctx, task.TgID, imageURL, task.Prompt, task.Mode); dbErr != nil {
+		if _, dbErr := h.db.AddGeneration(ctx, task.TgID, finalURL, task.Prompt, task.Mode); dbErr != nil {
 			log.Printf("KieCallback: AddGeneration id=%s: %v", task.TaskID, dbErr)
 		}
 		h.notifier.notify(task.TaskID)

@@ -128,14 +128,15 @@ func (h *Handler) processOneKieResult(ctx context.Context, res kieResult) {
 		log.Printf("processOneKieResult: GetKieTask id=%s: %v", res.taskID, err)
 		return
 	}
-	if err := h.db.MarkKieTaskSuccess(ctx, res.taskID, res.imageURL); err != nil {
+	finalURL := h.mirrorImage(ctx, res.imageURL, res.taskID)
+	if err := h.db.MarkKieTaskSuccess(ctx, res.taskID, finalURL); err != nil {
 		log.Printf("processOneKieResult: MarkKieTaskSuccess id=%s: %v", res.taskID, err)
 	}
-	if _, err := h.db.AddGeneration(ctx, task.TgID, res.imageURL, task.Prompt, task.Mode); err != nil {
+	if _, err := h.db.AddGeneration(ctx, task.TgID, finalURL, task.Prompt, task.Mode); err != nil {
 		log.Printf("processOneKieResult: AddGeneration id=%s: %v", res.taskID, err)
 	}
 	h.notifier.notify(res.taskID)
-	log.Printf("processOneKieResult: success id=%s url=%s", res.taskID, res.imageURL)
+	log.Printf("processOneKieResult: success id=%s url=%s", res.taskID, finalURL)
 }
 
 // tryRequeueKieTask повторно ставит задачу в очередь после kieRetryDelay.
