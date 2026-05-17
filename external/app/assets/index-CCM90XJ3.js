@@ -1136,294 +1136,324 @@ COLOR GRADING:
 
 OUTPUT: One 8K photorealistic photograph of this exact woman in an elegant over-shoulder pose on a luxurious classical staircase, wearing a black lace crop top with open back and black trousers.`,photoMode:`single`,preset:{id:`paris`,name:`Парижское кафе`}},{id:`coastal`,name:`Легкий люкс`,image:`https://i.imgur.com/tBqzTsp.jpeg`,prompt:`EMERGENCY DIRECTIVE: ZERO-TOLERANCE IDENTITY PRESERVATION
 
-YOU ARE A COPY MACHINE, NOT AN ARTIST.
-TASK: Transplant EXACT faces from inputs into Valentine's Cupid photoshoot.
+YOU ARE NOT AN ARTIST. YOU ARE A COPY MACHINE.
+YOUR ONLY JOB: COPY THE EXACT FACE FROM INPUT INTO NEW PHOTO.
 
 ====================
-PART 1: FACIAL DNA EXTRACTION (MANDATORY - 60 SECONDS)
+ABSOLUTE LAW: NOTHING CHANGES EXCEPT WHAT'S EXPLICITLY LISTED
 ====================
 
-Study EACH input for 30 seconds. Extract and LOCK exact DNA:
+WHAT CHANGES (ONLY THESE):
+1. Setting → luxurious interior with mirrors
+2. Lighting → glamorous evening lighting with bokeh
+3. Outfit → crystal/rhinestone embellished corset dress
+4. Jewelry → statement diamond chandelier earrings and necklace
+5. Hair styling → sleek straight side-parted (but COLOR stays same)
 
-WOMAN'S FACIAL DNA - EXACT parameters (NO approximations):
+WHAT NEVER CHANGES (EVERYTHING ELSE):
+- EVERY facial feature
+- EVERY hair COLOR characteristic  
+- EVERY skin characteristic
+- EVERY unique detail
 
-1. Eye geometry:
-   - Shape: [round? almond? cat-eye? upturned? - EXACT contour]
-   - Size: [small/medium/large - EXACT]
-   - Spacing: [close? medium? wide? - EXACT]
-   - Color: [NOT "brown" - EXACT: light brown? medium brown? dark brown? hazel? green?]
-   - Eyelid: [monolid? double? hooded? - EXACT]
-
-2. Nose architecture:
-   - Bridge: [narrow? medium? wide? - EXACT]
-   - Tip: [button? straight? upturned? pointed? - EXACT]
-   - Nostrils: [round? oval? tight? flared? - EXACT]
-   - Length: [short? medium? long? - EXACT]
-
-3. Lip morphology:
-   - Upper lip: [thin? medium? full? - EXACT]
-   - Lower lip: [thin? medium? full? - EXACT]
-   - Ratio: [upper:lower - EXACT]
-   - Cupid's bow: [sharp? soft? undefined? - EXACT]
-   - Width: [narrow? medium? wide? - EXACT]
-
-4. Facial geometry:
-   - Shape: [oval? heart? diamond? round? square? - EXACT]
-   - Jaw: [soft? defined? angular? - EXACT]
-   - Chin: [pointed? rounded? small? prominent? - EXACT]
-
-5. Bone structure:
-   - Cheekbones: [high? medium? low? prominent? subtle? - EXACT position]
-
-6. Skin parameters:
-   - Tone: [fair? light? medium? olive? tan? - EXACT]
-   - Undertone: [warm? cool? neutral? - EXACT]
-
-7. Hair pigmentation:
-   - Color: [NOT "dark" - EXACT: jet black? dark brown? medium brown? with cool/warm tones?]
-   - Texture: [straight? wavy? curly? - EXACT]
-   - Length: [short? medium? long? - EXACT]
-
-8. Proportions (measure):
-   - Eye spacing ÷ face width = [ratio]
-   - Nose width ÷ face width = [ratio]
-
-MAN'S FACIAL DNA - EXACT parameters (NO approximations):
-
-1. Eye geometry:
-   - Shape: [round? almond? hooded? deep-set? - EXACT]
-   - Size: [small/medium/large - EXACT]
-   - Spacing: [close? medium? wide? - EXACT]
-   - Color: [NOT "blue/brown" - EXACT: light blue? gray-blue? hazel? medium brown? dark brown?]
-   - Eyelid: [monolid? double? hooded? - EXACT]
-
-2. Nose architecture:
-   - Bridge: [narrow? medium? wide? - EXACT]
-   - Tip: [bulbous? pointed? button? straight? upturned? - EXACT]
-   - Nostrils: [round? oval? flared? - EXACT]
-   - Length: [short? medium? long? - EXACT]
-
-3. Lip morphology:
-   - Upper lip: [thin? medium? full? - EXACT]
-   - Lower lip: [thin? medium? full? - EXACT]
-   - Width: [narrow? medium? wide? - EXACT]
-
-4. Facial geometry:
-   - Shape: [square? oval? rectangular? round? - EXACT]
-   - Jaw: [sharp angular? soft rounded? strong? - EXACT]
-   - Chin: [pointed? rounded? square? prominent? - EXACT]
-
-5. Bone structure:
-   - Cheekbones: [high? medium? low? - EXACT]
-
-6. Skin parameters:
-   - Tone: [fair? light? medium? tan? - EXACT]
-   - Undertone: [warm? cool? neutral? - EXACT]
-
-7. Hair pigmentation:
-   - Color: [NOT "brown" - EXACT: light brown? medium brown? dark brown? with warm/cool undertones?]
-   - Style: [buzzed? short? textured? - EXACT]
-
-8. Facial hair pattern:
-   - Style: [clean-shaven? stubble? short beard? full beard? - EXACT]
-   - Coverage: [chin? full face? mustache? - EXACT]
-   - Color: [same as hair? darker? - EXACT]
-   - Density: [sparse? medium? thick? - EXACT]
-
-9. Proportions (measure):
-   - Eye spacing ÷ face width = [ratio]
-   - Nose width ÷ face width = [ratio]
-
-DNA NOW LOCKED. IMMUTABLE. ZERO DEVIATION ALLOWED.
+IF IN DOUBT WHETHER SOMETHING SHOULD CHANGE → IT DOESN'T CHANGE
 
 ====================
-PRE-GENERATION TEST
+PART 1: FACE EXTRACTION (MANDATORY)
 ====================
 
-Answer these BEFORE generating:
-1. Woman's EXACT eye color? (not "brown" - specific shade)
-2. Woman's EXACT hair color? (not "dark" - specific shade with tones)
-3. Woman's EXACT nose shape? (specific structure, not "normal")
-4. Man's EXACT eye color? (specific shade)
-5. Man's EXACT hair color? (shade with undertones)
-6. Man's EXACT facial hair? (style, coverage, density, color)
+STEP 1: Open input image. Stare at the face for 30 full seconds.
 
-If ANY answer is vague → STUDY INPUTS AGAIN.
+STEP 2: LOCK THE FOLLOWING (exact measurements):
+
+EYES - NO CHANGES ALLOWED:
+- Exact shape from input
+- Exact color from input (blue? Green? Gray-blue? The PRECISE shade)
+- Exact size from input
+- Exact spacing from input
+- Exact eyelid structure from input
+- COPY EXACTLY
+
+EYEBROWS - NO CHANGES ALLOWED:
+- Exact shape from input
+- Exact thickness from input
+- Exact color from input
+- Exact arch position from input
+- COPY EXACTLY
+
+NOSE - NO CHANGES ALLOWED:
+- Exact bridge width from input
+- Exact nostril shape from input
+- Exact tip shape from input
+- Exact length from input
+- COPY EXACTLY
+
+LIPS - NO CHANGES ALLOWED:
+- Exact upper lip shape from input
+- Exact lower lip shape from input
+- Exact fullness ratio from input
+- Exact cupid's bow from input
+- Exact width from input
+- COPY EXACTLY
+
+FACE SHAPE - NO CHANGES ALLOWED:
+- Exact face outline from input
+- Exact jaw shape from input
+- Exact chin shape from input
+- COPY EXACTLY
+
+CHEEKBONES - NO CHANGES ALLOWED:
+- Exact position from input
+- Exact prominence from input
+- COPY EXACTLY
+
+SKIN - NO CHANGES ALLOWED:
+- EXACT tone from input
+- EXACT undertone from input
+- DO NOT "SMOOTH" OR "PERFECT" - COPY AS IS
+
+HAIR COLOR - ABSOLUTE ZERO CHANGES ALLOWED:
+- Look at input hair color for 10 seconds
+- What is the EXACT shade? Light blonde? Dark blonde? Ash blonde? Golden blonde? Dirty blonde? Platinum? Medium blonde?
+- Does it have highlights? Lowlights? Dimension?
+- Lock this EXACT color
+- DO NOT:
+  * Make it darker
+  * Make it lighter  
+  * Change the undertone
+  * Remove dimension
+  * Add dimension
+- USE EXACT COLOR FROM INPUT - NO EXCEPTIONS
 
 ====================
-PART 2: SCENE SPECIFICATION
+PART 2: SCENE CONSTRUCTION
 ====================
 
-BACKGROUND: Pink draped fabric curtain (soft blush to rose pink), vertical folds
+SETTING - LUXURIOUS INTERIOR:
 
-LIGHTING: Studio - soft, even, warm-neutral (3500-4000K), romantic
+LOCATION:
+- Upscale interior space (hotel, mansion, or luxury apartment)
+- Modern glamorous aesthetic
+- Evening/night setting
 
-FLOOR: Light pink or white seamless
+BACKGROUND ELEMENTS:
+- Large mirrors with ornate frames or modern edges
+- Reflections visible in mirrors (subject's reflection, bokeh lights)
+- Dark walls or panels (black, dark gray, or deep charcoal)
+- Warm ambient lighting in background
+- Golden/warm bokeh lights visible (from chandeliers, sconces, or decorative lights)
+- Sophisticated, high-end atmosphere
 
-ATMOSPHERE: Playful, romantic, Valentine's/Cupid theme
+LIGHTING - GLAMOROUS SETUP:
+- Professional beauty lighting
+- Main light from front creating glossy, luminous skin
+- Creates strong highlights on skin (forehead, cheekbones, nose, shoulders, décolletage)
+- Warm-neutral color temperature (3500-4000K)
+- Bokeh lights in background creating dreamy atmosphere
+- Even, flattering illumination
+- Creates dewy, glowing skin effect
+- Highlights catch on rhinestones/crystals creating sparkle
+
+ATMOSPHERE:
+- Glamorous, luxurious, high-fashion
+- Evening elegance
+- Red carpet or gala aesthetic
+- Sophisticated and polished
 
 ====================
-PART 3: ASSEMBLY USING LOCKED DNA
+PART 3: SUBJECT ASSEMBLY (USING LOCKED FEATURES)
 ====================
 
-WOMAN (CUPID) - Use ONLY locked DNA:
+WOMAN CONSTRUCTION:
 
-FACE:
-- Install EXACT eye geometry + pigmentation from DNA
-- Install EXACT nose architecture from DNA (ALL dimensions)
-- Install EXACT lip morphology from DNA
-- Install EXACT facial geometry from DNA
-- Install EXACT bone structure from DNA
-- Install EXACT skin parameters from DNA
+FACE ASSEMBLY - Use ONLY the extracted features:
+- Install EXACT eyes from input (shape, color, spacing)
+- Install EXACT nose from input (all dimensions)
+- Install EXACT lips from input (shape, fullness, width)
+- Install EXACT face shape from input
+- Install EXACT cheekbones from input
+- Install EXACT skin tone from input
+- Install EXACT eyebrows from input
 
 HAIR:
-- Install EXACT pigmentation from DNA (PRECISE shade, NOT "dark")
-- Style: Long, flowing, wavy
-- Center or off-center part
-- Volume, movement, soft waves
-- BUT COLOR EXACT FROM DNA
+- COLOR: Use EXACT color from input (the specific blonde shade identified - DO NOT CHANGE)
+- Style: Sleek, straight, smooth
+- Parted deeply to one side (left or right)
+- Falls straight down, tucked behind ear on one side
+- Length: Long, past shoulders
+- Texture: Glossy, polished, salon-perfect finish
+- BUT COLOR MUST STAY EXACT FROM INPUT - NO DARKENING, NO LIGHTENING
 
-MAKEUP:
-- Romantic feminine
-- Soft pink eyeshadow
-- Defined lashes
-- Rosy blush
-- Pink/rose lips with gloss
+MAKEUP - GLAMOROUS STYLE:
+- Eyes: Defined winged eyeliner (black, elegant wing)
+- Eyeshadow: Neutral warm tones with subtle shimmer
+- Eyelashes: Long, dramatic (possibly false lashes)
+- Eyebrows: Perfectly groomed, defined
+- Skin: Ultra-dewy, glossy, luminous finish
+- Heavy highlight on: cheekbones, nose bridge, cupid's bow, center of forehead
+- Contouring: Subtle, enhancing bone structure
+- Lips: Glossy nude-pink or nude-beige
+- High shine/gloss on lips
+- Overall: High-glam red carpet makeup
 
-COSTUME:
-- Pink satin corset (sweetheart neckline, lace-up front)
-- White ruffled mini skirt (tiered pleats, tutu-style)
-- White thigh-high stockings
-- Pearl choker necklace (multiple strands)
-- White/light heels
-- Large white feathered ANGEL WINGS (spread behind)
+JEWELRY - STATEMENT PIECES:
 
-PROP:
-- White/silver Cupid bow
-- White feathered arrow
-- Red heart on arrow tip
+EARRINGS:
+- Large dramatic chandelier earrings
+- Crystal/diamond rhinestone design
+- Cascading dangles (multiple tiers)
+- Approximately 7-10cm long
+- Sparkling, catching light
+- Glamorous, show-stopping
 
-POSE:
-- Standing
-- One leg slightly forward/raised
-- Playful, flirtatious stance
-- Looking down at man with smile
-- Holding bow/arrow aimed at man
-- Dynamic, energetic, confident
+NECKLACE:
+- Layered rhinestone/diamond necklace
+- Multiple delicate chains with crystals
+- Sits at collarbone and upper chest
+- Draping, elegant design
+- Coordinates with earrings
+- Sparkling, luxurious
 
-MAN - Use ONLY locked DNA:
+OUTFIT - CRYSTAL EMBELLISHED:
 
-FACE:
-- Install EXACT eye geometry + pigmentation from DNA
-- Install EXACT nose architecture from DNA (ALL dimensions)
-- Install EXACT lip morphology from DNA
-- Install EXACT facial geometry from DNA
-- Install EXACT bone structure from DNA
-- Install EXACT skin parameters from DNA
-- Install EXACT facial hair from DNA (if present)
+DRESS/CORSET:
+- Crystal/rhinestone embellished corset or dress
+- Nude/beige/champagne base fabric
+- Completely covered in crystals/rhinestones creating dense sparkle
+- Sweetheart neckline or structured bust
+- Thin crystal-embellished straps
+- Form-fitting, structured bodice
+- Intricate crystal pattern/design
+- High-end couture or designer aesthetic
+- Red carpet worthy
 
-HAIR:
-- Install EXACT pigmentation from DNA (PRECISE shade, NOT category)
-- Style: Neat, groomed, professional
+VISIBLE DETAILS:
+- Décolletage exposed
+- Shoulders bare
+- Upper chest visible
+- Crystals catching light and sparkling
 
-OUTFIT:
-- Black tailored suit (jacket + trousers)
-- White dress shirt
-- Collar visible, no tie or open
-- Black dress shoes
+SKIN APPEARANCE:
+- Luminous, glowing, dewy
+- Strong highlights creating wet/glossy look
+- Professional body makeup/oil for shine
+- Healthy, radiant appearance
 
-POSE:
-- Sitting/kneeling on floor
-- Looking up at woman
-- Lower than woman (she stands, he sits)
-- Engaged, interested expression
-- Relaxed, attentive
-- Leaning back on one arm
-- Legs extended or crossed
+EXPRESSION & POSE:
 
-DYNAMICS:
-- Woman standing above/over man
-- She aims arrow at him playfully
-- He looks up admiringly
-- Fun, flirtatious, romantic
-- Valentine's "Cupid shooting love arrow" concept
-- Lighthearted, playful energy
+HEAD POSITION:
+- Turned to 3/4 profile (showing side of face and profile)
+- Looking slightly away from camera or to the side
+- Elegant, poised angle
+- Chin slightly lifted
+- Showcases jawline and neck
 
-FRAMING: Portrait/vertical, full body both subjects, woman upper portion, man lower, wings visible
+EXPRESSION:
+- Serene, confident, elegant
+- Slight subtle smile or neutral sophisticated expression
+- Relaxed but poised
+- Model-like composure
+- Glamorous, refined
 
-====================
-VERIFICATION - ALL MUST BE "YES"
-====================
+BODY POSITIONING:
+- Upper body and shoulders visible
+- Body angled slightly
+- Elegant, upright posture
+- Shoulders back
+- Confident stance
 
-WOMAN'S IDENTITY:
-☐ Eyes: shape EXACTLY matches DNA?
-☐ Eyes: color EXACTLY matches DNA (specific shade)?
-☐ Nose: ALL dimensions EXACTLY match DNA?
-☐ Lips: shape, fullness EXACTLY match DNA?
-☐ Face shape: EXACTLY matches DNA?
-☐ Jaw/chin: EXACTLY match DNA?
-☐ Cheekbones: EXACTLY match DNA?
-☐ Hair color: EXACTLY matches DNA (precise shade, not "dark")?
-☐ Skin tone: EXACTLY matches DNA?
-☐ Proportions: ratios match DNA?
-☐ TEST: Would her mother say "That's her" instantly?
+CAMERA & TECHNICAL SPECS:
 
-MAN'S IDENTITY:
-☐ Eyes: shape EXACTLY matches DNA?
-☐ Eyes: color EXACTLY matches DNA (specific shade)?
-☐ Nose: ALL dimensions EXACTLY match DNA?
-☐ Lips: EXACTLY match DNA?
-☐ Face shape: EXACTLY matches DNA?
-☐ Jaw: EXACTLY matches DNA?
-☐ Facial hair: style, coverage, density, color ALL EXACTLY match DNA?
-☐ Hair color: EXACTLY matches DNA (precise shade with undertones)?
-☐ Skin tone: EXACTLY matches DNA?
-☐ Proportions: ratios match DNA?
-☐ TEST: Would his mother say "That's him" instantly?
+FRAMING:
+- Portrait orientation (vertical)
+- Medium closeup (head, neck, shoulders, upper torso)
+- Subject positioned slightly off-center or centered
+- Mirror reflection may be visible in background
 
-SCENE:
-☐ Pink draped backdrop?
-☐ Woman in pink corset + white skirt + angel wings?
-☐ Woman holding Cupid bow and arrow?
-☐ Man in black suit?
-☐ Man sitting/kneeling, woman standing?
-☐ Playful Valentine's interaction?
+CAMERA ANGLE:
+- Straight-on to slightly from side
+- Eye level
+- Professional beauty/fashion photography angle
 
-IF ANY = NO → FAILED. REGENERATE USING EXACT DNA.
+FOCUS:
+- Sharp focus on face
+- Crystals/rhinestones in focus and sparkling
+- Background softly out of focus with bokeh lights
+- Shallow depth of field (f/1.8-2.8)
 
 ====================
-EXECUTION PROTOCOL
+PART 4: PRE-GENERATION CHECKLIST
 ====================
 
-1. Study woman's face 30sec → extract DNA → LOCK
-2. Study man's face 30sec → extract DNA → LOCK
-3. Answer pre-generation test (verify knowledge)
-4. Build woman using ONLY her locked DNA
-5. Build man using ONLY his locked DNA
-6. Position in Valentine's scene
-7. Run verification checklist
-8. All YES → finalize / Any NO → regenerate
+[ ] I studied the input face for 30+ seconds - YES required
+[ ] I identified the EXACT hair color (specific blonde shade) - YES required
+[ ] I identified EXACT eye color - YES required  
+[ ] I identified EXACT nose shape - YES required
+[ ] I identified EXACT lip shape - YES required
+[ ] I identified EXACT face shape - YES required
+[ ] I identified EXACT skin tone - YES required
+[ ] I will use EXACT hair color (not change it) - YES required
+[ ] I will use EXACT features (not approximate) - YES required
 
 ====================
-CRITICAL RULES
+PART 5: POST-GENERATION VERIFICATION
 ====================
 
-1. HAIR COLORS: EXACT shades from DNA (not categories - EXACT tones)
-2. FACIAL HAIR: EXACT style, coverage, density, color from DNA
-3. FEATURES: EXACT shapes from DNA (not "similar" - EXACT)
-4. PROPORTIONS: EXACT ratios from DNA
-5. This is FACE TRANSPLANT, not similarity creation
+HAIR CHECK:
+1. Is the hair EXACTLY the same color as input? YES/NO
+2. Did I darken the hair? NO required
+3. Did I lighten the hair? NO required
+4. Is it the SAME blonde shade from input? YES required
+
+FACE CHECK:
+5. Are these the SAME eyes from input? YES/NO
+6. Is this the SAME nose from input? YES/NO
+7. Are these the SAME lips from input? YES/NO
+8. Is this the SAME face shape from input? YES/NO
+9. Is this the SAME skin tone from input? YES/NO
+
+COMPOSITION CHECK:
+10. Luxurious interior with mirrors? YES/NO
+11. Crystal/rhinestone embellished dress? YES/NO
+12. Statement chandelier earrings and necklace? YES/NO
+13. Glossy, luminous skin with highlights? YES/NO
+14. Bokeh lights in background? YES/NO
+
+IDENTITY CHECK:
+15. Would facial recognition match this to input? YES/NO
+16. Is this the SAME PERSON? YES required
+
+If ANY answer is wrong → Regenerate with exact copying.
 
 ====================
-OUTPUT
+FINAL DIRECTIVE
 ====================
 
-Professional Valentine's portrait: Woman as Cupid (pink corset, white skirt, angel wings, holding bow/arrow) standing, man in black suit sitting/kneeling looking up, pink draped backdrop, playful romantic interaction, 8K quality.
+Hair color is the #1 failure point. 
+DO NOT CHANGE HAIR COLOR.
+DO NOT CHANGE HAIR COLOR.
+DO NOT CHANGE HAIR COLOR.
 
-BOTH people: 100% EXACT match to inputs - facial recognition must confirm same individuals.
+This is COPYING, not CREATING.
+USE THE EXACT HAIR COLOR FROM INPUT.
+
+====================
+COLOR GRADING
+====================
+
+- Warm-neutral tones
+- High gloss, dewy skin finish
+- Sparkling crystals/rhinestones
+- Golden bokeh lights in background
+- Rich, luxurious color palette
+- Professional retouching maintaining natural features
+- High-end fashion editorial aesthetic
+- Vogue/Harper's Bazaar glamour style
+
+OUTPUT: Professional glamour portrait of the EXACT SAME WOMAN from input (100% identity match), wearing crystal-embellished corset dress with statement jewelry, luxurious interior setting with mirrors, dewy glam makeup, 8K quality.
 
 ZERO TOLERANCE FOR DEVIATION.
-EXACT DNA REPLICATION REQUIRED.`,photoMode:`single`,preset:{id:`coastal`,name:`Прибрежный`}}]},{title:`💞 Парные`,packs:[{id:`love_story`,image:`https://i.imgur.com/BCriZGn.jpeg`,prompt:`ABSOLUTE PRIORITY: FACIAL IDENTITY REPLICATION
+EXACT COPY REQUIRED.`,photoMode:`single`,preset:{id:`coastal`,name:`Прибрежный`}}]},{title:`💞 Парные`,packs:[{id:`love_story`,image:`https://i.imgur.com/BCriZGn.jpeg`,prompt:`ABSOLUTE PRIORITY: FACIAL IDENTITY REPLICATION
 
 INPUT: Two separate images - one man, one woman
 OUTPUT: Overhead photograph of these EXACT two people in elevator with mirror
