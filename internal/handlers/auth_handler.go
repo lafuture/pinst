@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
 	"pinst/internal/auth"
@@ -92,5 +93,24 @@ func (h *Handler) TelegramAuthHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Printf("TelegramAuth: success tg_id=%d username=%q start_param_set=%v", tgID, u.Username, param != "")
+
+	if h.tg != nil && h.tg.LogChannelConfigured() {
+		go func() {
+			label := "🔁 Вход в бота"
+			if isNew {
+				label = "🆕 Новый пользователь"
+			}
+			ref := ""
+			if referrerID != 0 {
+				ref = fmt.Sprintf("\n🔗 tg://user?id=%d", referrerID)
+			}
+			text := fmt.Sprintf("%s\n👤 tg://user?id=%d%s",
+				label, tgID, ref)
+			if err := h.tg.LogMessage(r.Context(), text); err != nil {
+				log.Printf("TelegramAuth: log channel tg_id=%d: %v", tgID, err)
+			}
+		}()
+	}
+
 	writeJSON(w, http.StatusOK, authResponse{Token: token, Param: param})
 }

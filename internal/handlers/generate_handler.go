@@ -98,8 +98,26 @@ func (h *Handler) submitImageTask(ctx context.Context, tgID int64, prompt string
 	}
 
 	h.fireAfterGenerationTriggers(ctx, tgID)
+	h.logGenerationToChannel(tgID, mode)
 
 	return id, http.StatusAccepted, nil
+}
+
+func (h *Handler) logGenerationToChannel(tgID int64, mode string) {
+	if h.tg == nil || !h.tg.LogChannelConfigured() {
+		return
+	}
+	go func() {
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
+		text := fmt.Sprintf("🎨 <b>Генерация</b>\n👤 tg://user?id=%d\nРежим: %s",
+			tgID, mode)
+
+		if err := h.tg.LogMessage(ctx, text); err != nil {
+			log.Printf("logGenerationToChannel tg_id=%d: %v", tgID, err)
+		}
+	}()
 }
 
 // fireAfterGenerationTriggers — отправляет push-уведомления об остатке квоты.
