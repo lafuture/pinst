@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -106,7 +107,9 @@ func (h *Handler) TelegramAuthHandler(w http.ResponseWriter, r *http.Request) {
 			}
 			text := fmt.Sprintf("%s\n👤 tg://user?id=%d%s",
 				label, tgID, ref)
-			if err := h.tg.LogMessage(r.Context(), text); err != nil {
+			ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+			defer cancel()
+			if err := h.tg.LogMessage(ctx, text); err != nil {
 				log.Printf("TelegramAuth: log channel tg_id=%d: %v", tgID, err)
 			}
 		}()
