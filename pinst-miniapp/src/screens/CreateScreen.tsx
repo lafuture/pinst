@@ -40,10 +40,28 @@ const RATIO_OPTIONS: { value: AspectRatio; label: string; hint: string }[] = [
 
 const COUNT_OPTIONS = [1, 2, 3, 4, 5]
 
-const fileToBase64 = (file: File): Promise<string> =>
-  new Promise(resolve => {
+const resizeAndCompress = (file: File, maxPx = 1200, quality = 0.82): Promise<string> =>
+  new Promise((resolve, reject) => {
     const reader = new FileReader()
-    reader.onload = e => resolve(e.target!.result as string)
+    reader.onerror = reject
+    reader.onload = e => {
+      const img = new Image()
+      img.onerror = reject
+      img.onload = () => {
+        let { width, height } = img
+        if (width > maxPx || height > maxPx) {
+          const r = Math.min(maxPx / width, maxPx / height)
+          width = Math.round(width * r)
+          height = Math.round(height * r)
+        }
+        const canvas = document.createElement('canvas')
+        canvas.width = width
+        canvas.height = height
+        canvas.getContext('2d')!.drawImage(img, 0, 0, width, height)
+        resolve(canvas.toDataURL('image/jpeg', quality))
+      }
+      img.src = e.target!.result as string
+    }
     reader.readAsDataURL(file)
   })
 
@@ -189,7 +207,7 @@ export default function CreateScreen() {
     setSavingModel(true)
     try {
       const photos: ModelPhoto[] = await Promise.all(
-        tempPhotos.map(async ({ file }) => ({ dataUrl: await fileToBase64(file) }))
+        tempPhotos.map(async ({ file }) => ({ dataUrl: await resizeAndCompress(file) }))
       )
       const newModel: SavedModel = { id: `model_${Date.now()}`, photos, savedAt: new Date().toISOString() }
       const updated = [newModel, ...models]
@@ -271,15 +289,21 @@ export default function CreateScreen() {
 
   const canGenerate = activeModel ? true : selfPhotos.length > 0
 
-  const buildFormData = (): FormData => {
+  const buildFormData = async (): Promise<FormData> => {
     const fd = new FormData()
     if (activeModel) {
       for (const p of activeModel.photos) fd.append('model_photo', base64ToBlob(p.dataUrl), 'model.jpg')
     } else {
-      for (const f of selfPhotos) fd.append('photo', f)
+      for (const f of selfPhotos) {
+        const compressed = await resizeAndCompress(f)
+        fd.append('photo', base64ToBlob(compressed), 'photo.jpg')
+      }
     }
     if (mode === 'reference') {
-      for (const f of refPhotos) fd.append('reference', f)
+      for (const f of refPhotos) {
+        const compressed = await resizeAndCompress(f)
+        fd.append('reference', base64ToBlob(compressed), 'ref.jpg')
+      }
     }
     if (prompt) fd.append('prompt', prompt)
     if (activePreset && mode === 'simple') fd.append('preset', activePreset.id)
@@ -294,7 +318,7 @@ export default function CreateScreen() {
     const call = mode === 'reference' ? createReference : createSimple
     try {
       const submissions = await Promise.all(
-        Array.from({ length: photoCount }, () => call(buildFormData()))
+        Array.from({ length: photoCount }, () => buildFormData().then(fd => call(fd)))
       )
       const results = await Promise.all(
         submissions.map(s => streamTask(s.data.task_id))

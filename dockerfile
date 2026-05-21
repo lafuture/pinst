@@ -2,10 +2,8 @@ FROM node:22-alpine AS frontend
 
 WORKDIR /frontend
 
-RUN npm install -g npm@latest
-
 COPY pinst-miniapp/package*.json ./
-RUN npm ci
+RUN npm install
 
 COPY pinst-miniapp ./
 RUN npm run build

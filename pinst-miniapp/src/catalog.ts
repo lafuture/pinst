@@ -17,6 +17,205 @@ export const SECTIONS: Section[] = [
     title: '⚡ Новые',
     packs: [
         {
+            id: 'fishes',
+            name: 'Глаза рыбки',
+            image:  'https://i.imgur.com/sPM7hhF.png',
+            prompt: 'TASK: Vertical collage of two close-up eye photos with pencil-drawn fish — each eye is the fish\'s eye\n' +
+                '\n' +
+                '====================\n' +
+                'INPUT\n' +
+                '====================\n' +
+                '\n' +
+                'One photo showing TWO EYES of a couple (both eyes in one image)\n' +
+                '\n' +
+                '====================\n' +
+                'REFERENCE STYLE TO MATCH EXACTLY\n' +
+                '====================\n' +
+                '\n' +
+                'The fish must look like a REAL PENCIL SKETCH drawn directly on the person\'s skin:\n' +
+                '- Very thin, light, delicate pencil strokes\n' +
+                '- Lines are semi-transparent — skin texture shows THROUGH the lines\n' +
+                '- Strokes have natural pencil pressure variation (some lines fainter, some darker)\n' +
+                '- Slightly sketchy and organic — not a clean digital vector, not painted, not filled\n' +
+                '- Fine hand-drawn hatching for fins and tail — airy, wispy, flowing\n' +
+                '- The drawing sits ON the skin like real graphite — looks hand-sketched over a phone photo\n' +
+                '\n' +
+                'The fish is elegant and flowing: long wispy fins, a flowing tail, fine thin lines —\n' +
+                'a delicate fish, drawn airy and light, body curving organically around the eye.\n' +
+                '\n' +
+                '====================\n' +
+                'FISH COLOR — MATCH THE IRIS (CRITICAL)\n' +
+                '====================\n' +
+                '\n' +
+                'The fish line color = the EXACT color of THAT person\'s iris.\n' +
+                '\n' +
+                '- If the eye is gray-green / blue-gray → fish drawn in soft silvery gray-green pencil\n' +
+                '- If the eye is warm brown / hazel → fish drawn in warm brown pencil\n' +
+                '- Whatever the precise iris shade is → the fish lines are that same shade\n' +
+                '\n' +
+                'Top fish matches the top eye\'s iris. Bottom fish matches the bottom eye\'s iris.\n' +
+                'The fish and the eye it surrounds share the same color — they belong together.\n' +
+                '\n' +
+                '====================\n' +
+                'THE CORE RULE — EYE IS THE FISH\'S EYE\n' +
+                '====================\n' +
+                '\n' +
+                'In each image there is ONLY ONE EYE: the real human eye.\n' +
+                'The human eye IS the fish\'s eye. The fish has NO eye of its own.\n' +
+                '\n' +
+                '- Do NOT draw a fish eye — no circle, no dot, nothing\n' +
+                '- The fish HEAD wraps around the human eye\n' +
+                '- The fish MOUTH sits just beside the eye\'s inner corner\n' +
+                '- The fish BODY, fins and tail flow AWAY from the eye, across the skin, toward the temple\n' +
+                '- The human eye is at the HEAD of the fish — never the middle of the body\n' +
+                '- Fit each fish individually to its own eye — it must not slide off\n' +
+                '\n' +
+                '====================\n' +
+                'PART 1: LOCK IDENTITY (STUDY EACH EYE 30 SEC)\n' +
+                '====================\n' +
+                '\n' +
+                'For EACH person, lock these EXACT features — copy, do not approximate:\n' +
+                '\n' +
+                'EYE:\n' +
+                '- Iris color: EXACT precise shade with all variations\n' +
+                '- Iris pattern: EXACT radial fibers, specks, rings\n' +
+                '- Pupil: EXACT size and shape\n' +
+                '- Eye shape / разрез: EXACT contour, inner and outer corner shape and angle\n' +
+                '- Sclera: exact tone, any visible veins\n' +
+                '\n' +
+                'EYELASHES:\n' +
+                '- Upper and lower: EXACT length, curl, density, direction, color — real individual lashes\n' +
+                '\n' +
+                'EYEBROW:\n' +
+                '- EXACT color, thickness, arch, density, hair growth direction, stray hairs\n' +
+                '\n' +
+                'SKIN:\n' +
+                '- EXACT tone and undertone\n' +
+                '- Real texture: visible pores, fine lines, natural unevenness — keep it real\n' +
+                '- Eyelid folds, under-eye area, creases — EXACT\n' +
+                '\n' +
+                'DISTINCTIVE MARKS (do not miss any):\n' +
+                '- EVERY mole, EVERY freckle, EVERY scar/spot — exact location and size\n' +
+                '\n' +
+                'HAIR NEAR EYE:\n' +
+                '- EXACT color with undertones, texture, individual strands, baby hairs\n' +
+                '\n' +
+                'IDENTITY LOCKED. Every mole, freckle, lash and brow hair is immutable.\n' +
+                '\n' +
+                '====================\n' +
+                'PRE-GENERATION TEST\n' +
+                '====================\n' +
+                '\n' +
+                'Before drawing, answer for EACH person:\n' +
+                '1. EXACT iris color? (precise shade — this is also the fish color)\n' +
+                '2. EXACT eye shape / разрез and corners?\n' +
+                '3. EXACT eyelashes (length, curl, density)?\n' +
+                '4. EXACT eyebrow (color, thickness, arch)?\n' +
+                '5. EXACT skin tone, undertone, texture?\n' +
+                '6. EXACT hair color with undertones?\n' +
+                '7. How many moles/freckles and the EXACT location of each?\n' +
+                '\n' +
+                'If any answer is vague → study the input again.\n' +
+                '\n' +
+                '====================\n' +
+                'DRAWING ORDER\n' +
+                '====================\n' +
+                '\n' +
+                '1. Locate the human eye — this is the fish\'s eye, fixed in place.\n' +
+                '2. Draw the fish HEAD outline wrapping around the human eye, thin light pencil.\n' +
+                '3. Draw the small MOUTH just past the eye\'s inner corner.\n' +
+                '4. Draw 1-2 faint gill lines behind the head.\n' +
+                '5. Draw the BODY curving away from the eye toward the temple.\n' +
+                '6. Add airy wispy fins and a long flowing tail with fine hatching.\n' +
+                '7. Scatter a few tiny bubbles (thin faint circles) around.\n' +
+                '8. NO eye is drawn on the fish — the human eye is the only eye.\n' +
+                '\n' +
+                'All lines: thin, light, semi-transparent pencil, matching the iris color.\n' +
+                '\n' +
+                '====================\n' +
+                'PRESERVATION RULE\n' +
+                '====================\n' +
+                '\n' +
+                'The fish is a light pencil drawing layered ON TOP of the skin.\n' +
+                'It does NOT cover, hide, blur, or change ANY facial feature.\n' +
+                'Eye, lashes, brows, skin texture, every pore, every mole and freckle, hair —\n' +
+                'all stay 100% real and identical to the input. The photo underneath stays a\n' +
+                'real, unretouched phone photo.\n' +
+                '\n' +
+                '====================\n' +
+                'VERIFICATION — ALL MUST BE YES\n' +
+                '====================\n' +
+                '\n' +
+                'STYLE & CONCEPT:\n' +
+                '☐ Fish looks like a real light pencil sketch on skin (thin, semi-transparent)?\n' +
+                '☐ Skin texture shows through the fish lines?\n' +
+                '☐ Fish lines NOT filled or painted — just delicate strokes?\n' +
+                '☐ Fish color matches that eye\'s exact iris color?\n' +
+                '☐ The fish has NO drawn eye (no circle, no dot)?\n' +
+                '☐ The human eye is the only eye, inside the fish\'s head?\n' +
+                '☐ Fish mouth beside the eye\'s inner corner, body trailing to the temple?\n' +
+                '☐ Each fish individually fitted to its own eye (not slid off, not body-centered)?\n' +
+                '\n' +
+                'PERSON 1 (top) — identity:\n' +
+                '☐ Iris color and pattern EXACT?\n' +
+                '☐ Eye shape / разрез and corners EXACT?\n' +
+                '☐ Eyelashes EXACT (real, individual)?\n' +
+                '☐ Eyebrow EXACT?\n' +
+                '☐ Skin tone, undertone, real texture (pores) EXACT?\n' +
+                '☐ EVERY mole and freckle preserved in exact location?\n' +
+                '☐ Hair color and texture EXACT?\n' +
+                '☐ Would person 1 recognize themselves instantly?\n' +
+                '\n' +
+                'PERSON 2 (bottom) — identity:\n' +
+                '☐ Iris color and pattern EXACT?\n' +
+                '☐ Eye shape / разрез and corners EXACT?\n' +
+                '☐ Eyelashes EXACT (real, individual)?\n' +
+                '☐ Eyebrow EXACT?\n' +
+                '☐ Skin tone, undertone, real texture (pores) EXACT?\n' +
+                '☐ EVERY mole and freckle preserved in exact location?\n' +
+                '☐ Hair color and texture EXACT?\n' +
+                '☐ Would person 2 recognize themselves instantly?\n' +
+                '\n' +
+                'COMPOSITION:\n' +
+                '☐ Two photos stacked vertically, edge to edge?\n' +
+                '☐ Plain collage, nothing extra added?\n' +
+                '\n' +
+                'IF ANY = NO → regenerate.\n' +
+                '\n' +
+                '====================\n' +
+                'CRITICAL RULES\n' +
+                '====================\n' +
+                '\n' +
+                '1. Fish = real light pencil sketch on skin — thin, semi-transparent, skin shows through\n' +
+                '2. Fish color = EXACT iris color of that eye (top fish ↔ top eye, bottom fish ↔ bottom eye)\n' +
+                '3. The fish has NO eye — the human eye is the only eye, inside the fish\'s head\n' +
+                '4. Human eye at the HEAD of the fish, never the middle of the body\n' +
+                '5. Each fish fitted individually to its own eye — must not slide off\n' +
+                '6. MAXIMUM identity preservation — iris, разрез, lashes, brows, skin, hair, every mole and freckle\n' +
+                '7. Real unretouched photo underneath — visible pores, real lashes and brows\n' +
+                '8. Elegant flowing fish — airy wispy fins, long flowing tail, fine hatching\n' +
+                '9. Plain vertical collage — two photos stacked, nothing added\n' +
+                '\n' +
+                '====================\n' +
+                'OUTPUT\n' +
+                '====================\n' +
+                '\n' +
+                'Vertical collage of two realistic close-up eye photos (top and bottom), edge to edge,\n' +
+                'with natural skin texture, visible pores, real individual lashes and brows. Each\n' +
+                'person\'s real eye becomes an elegant fish drawn as a delicate, light pencil sketch\n' +
+                'directly on the skin — thin semi-transparent strokes with natural pencil pressure, the\n' +
+                'skin texture showing through, airy wispy fins and a long flowing tail with fine\n' +
+                'hatching, a few tiny bubbles. The fish line color exactly matches that eye\'s iris color\n' +
+                '(top fish matches top eye, bottom fish matches bottom eye). The fish has no eye of its\n' +
+                'own — the human eye is the fish\'s eye, sitting inside the fish\'s head with the mouth\n' +
+                'beside the inner corner and the body flowing toward the temple. Looks like a real hand\n' +
+                'pencil sketch over a phone photo. Maximum identity preservation: iris color and pattern,\n' +
+                'eye shape/разрез, eyelashes, eyebrows, skin tone and texture, hair, and every mole and\n' +
+                'freckle — all identical to the input.',
+            photoMode: 'single',
+            preset: { id: 'fishes', name: 'Студийный' },
+        },
+        {
             id: 'hearts',
             name: 'Коллаж с сердцами',
             image:  'https://i.imgur.com/bdo93fI.jpeg',
