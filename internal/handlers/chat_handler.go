@@ -101,6 +101,7 @@ func (h *Handler) ChatHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	h.persistChatExchange(r.Context(), tgID, prompt, reply, usage)
+	h.logGenerationToChannel(tgID, "chat")
 	writeJSON(w, http.StatusOK, chatResponse{Reply: reply})
 }
 
@@ -142,6 +143,7 @@ func (h *Handler) streamChat(w http.ResponseWriter, ctx context.Context, flusher
 	cleanFull := stripEntityTags(full)
 	_ = writeEvent("done", map[string]string{"reply": cleanFull})
 	h.persistChatExchange(ctx, tgID, userPrompt, cleanFull, usage)
+	h.logGenerationToChannel(tgID, "chat")
 }
 
 // stripEntityTags removes all entity["..."] annotations from a complete string.

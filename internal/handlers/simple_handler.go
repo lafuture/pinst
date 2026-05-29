@@ -58,10 +58,12 @@ func (h *Handler) CreateSimpleHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	preset := strings.TrimSpace(r.FormValue("preset"))
+	mode := "simple"
 	var finalPrompt string
 	if preset != "" && prompt != "" {
 		// Catalog preset: use the prompt exactly as provided, no system wrapping.
 		finalPrompt = prompt
+		mode = "preset"
 	} else {
 		if prompt == "" {
 			prompt = "Фотореалистичный портрет"
@@ -69,7 +71,7 @@ func (h *Handler) CreateSimpleHandler(w http.ResponseWriter, r *http.Request) {
 		finalPrompt = promptForModelOnly(prompt, len(media))
 	}
 
-	taskID, status, err := h.submitImageTask(r.Context(), tgID, finalPrompt, media, "simple", aspect)
+	taskID, status, err := h.submitImageTask(r.Context(), tgID, finalPrompt, media, mode, aspect)
 	if err != nil {
 		log.Printf("CreateSimple: tg_id=%d: %v", tgID, err)
 		writeError(w, status, err.Error())

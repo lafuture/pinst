@@ -16,6 +16,7 @@ import UploadIcon from '../components/UploadIcon'
 type Mode = 'simple' | 'reference' | 'enhance'
 type Step = 'upload' | 'loading' | 'result'
 type AspectRatio = 'auto' | '1:1' | '3:4' | '9:16' | '16:9'
+type RetouchStyle = 'enhance' | 'summer' | 'glam'
 
 interface ModelPhoto {
   dataUrl: string
@@ -121,6 +122,7 @@ export default function CreateScreen() {
   const [refPreviews, setRefPreviews] = useState<string[]>([])
   const [enhancePhoto, setEnhancePhoto] = useState<File | null>(null)
   const [enhancePreview, setEnhancePreview] = useState('')
+  const [retouchStyle, setRetouchStyle] = useState<RetouchStyle>('enhance')
   const [presetDismissed, setPresetDismissed] = useState(false)
   const [prompt, setPrompt] = useState('')
   const [aspectRatio, setAspectRatio] = useState<AspectRatio>('auto')
@@ -267,6 +269,260 @@ export default function CreateScreen() {
     reader.readAsDataURL(file)
   }
 
+  const RETOUCH_STYLE_PROMPTS: Record<RetouchStyle, string> = {
+    enhance: `ЗАДАЧА: Обработка и улучшение фотографии
+
+---
+
+АБСОЛЮТНЫЙ ПРИОРИТЕТ — ИДЕНТИЧНОСТЬ ЛИЦА:
+- Сохраняй лицо без каких-либо изменений черт и пропорций
+- НЕ меняй форму глаз, носа, губ, линию челюсти и скулы
+- Сохраняй уникальные особенности: родинки, асимметрии, веснушки, морщины
+- НЕ «улучшай» и не «исправляй» черты лица
+- Результат должен быть моментально узнаваем как тот же человек
+
+---
+
+ЧТО УЛУЧШАТЬ:
+- Детализация и чёткость изображения
+- Естественный, ровный тон кожи без пластикового эффекта
+- Аккуратная ретушь: убрать временные дефекты (прыщи, усталость), сохранить постоянные черты
+- Коррекция экспозиции, баланса белого, контраста — если нужно
+- Общее качество фото до уровня профессиональной съёмки
+
+---
+
+ЧТО НЕ МЕНЯТЬ:
+- Идентичность и черты лица
+- Поза и положение тела
+- Фон и окружение
+- Одежда и аксессуары
+- Общая атмосфера и настроение снимка
+
+---
+
+ТЕХНИЧЕСКИЕ ТРЕБОВАНИЯ:
+- Фотореалистичный результат, без AI-артефактов
+- Естественная текстура кожи (не over-retouched)
+- Сохранение исходного разрешения и пропорций`,
+    summer: `PHOTO EDITING TASK — NOT A NEW PHOTO, JUST EDITING THE INPUT
+
+====================
+WHAT THIS IS
+====================
+
+Take the EXACT input photo as-is.
+Do NOT change:
+- The pose
+- The position of the person
+- The face angle and expression
+- The framing and composition
+- The outfit
+- Any facial features
+- Hair length or color
+
+This is PHOTO RETOUCHING / EDITING only.
+The person stays exactly as they are in the input photo.
+
+====================
+EDITING INSTRUCTIONS
+====================
+
+Apply these changes to the EXISTING photo:
+
+1. TIME OF DAY → Change to night
+   • Make the sky dark blue-black (night)
+   • Darken the overall background
+   • Keep background elements (flowers, bushes) but make them darker/moodier
+
+2. WIND EFFECT → Add strong wind to the hair
+   • Her existing long hair starts flying dramatically
+   • Multiple strands lifted and blowing in the wind
+   • Hair moves upward and to the side
+   • Individual strands visible, caught mid-air
+   • Natural wind physics — not fake, looks real
+
+3. LIGHTING → Add warm golden rim light from behind
+   • Strong warm golden/orange light source behind her (2700-3200K)
+   • This backlight glows through her hair — each strand lit golden at the edges
+   • Hair edges become luminous and warm
+   • Front of face: slightly darker, natural night ambient light
+   • Creates dramatic contrast: dark background vs. glowing golden-lit hair
+   • Same dramatic backlight effect as reference photo 2
+
+4. OVERALL MOOD → Night aesthetic
+   • Cooler, darker shadows
+   • Warm vs. dark contrast
+   • Moody, cinematic, natural night feel
+   • Slight grain/noise consistent with iPhone night photography
+
+====================
+WHAT STAYS 100% THE SAME
+====================
+
+- Her EXACT face — every feature unchanged
+- Her EXACT pose and body position
+- Her EXACT expression
+- Her EXACT outfit (black top, Dior bag, necklace, jewelry)
+- Her EXACT hair color and length
+- Her EXACT skin tone and texture
+- Composition and framing — identical to input
+
+====================
+TECHNICAL STYLE
+====================
+
+- Realistic iPhone night photo look
+- Candid, natural feel
+- Not overly retouched
+- Natural skin texture preserved
+- Sharp focus on face maintained
+- Background bokeh natural
+- Grain consistent with night iPhone photo
+
+====================
+VERIFICATION
+====================
+
+☐ Same pose as input? (not changed)
+☐ Same face angle as input? (not changed)
+☐ Same expression as input? (not changed)
+☐ Same outfit as input? (not changed)
+☐ Sky/background now dark (night)?
+☐ Hair dramatically flying in wind?
+☐ Warm golden rim light glowing through hair from behind?
+☐ Hair edges luminous and golden-lit?
+☐ Looks like a real night photo edit?
+☐ Skin texture and face details preserved?
+☐ Would she recognize herself and her pose instantly?
+
+IF ANY = NO → RE-EDIT KEEPING ORIGINAL POSE AND FACE.
+
+====================
+OUTPUT
+====================
+
+The input photo edited to night time: same exact pose, same face, same expression,
+same outfit — only the sky turned dark night, strong wind added making her long hair
+fly dramatically, warm golden-orange rim light from behind glowing through her hair
+creating luminous golden strand edges, dark moody background. Looks like the same
+photo taken at night with wind. iPhone night photo aesthetic, natural grain, sharp face.
+
+SAME PERSON. SAME POSE. SAME FACE. JUST NIGHT + WIND + GOLDEN BACKLIGHT ADDED.`,
+    glam: `PHOTO EDITING TASK — EDIT THE INPUT PHOTO ONLY
+
+====================
+WHAT THIS IS
+====================
+
+Take the EXACT input photo as-is.
+Do NOT change:
+- The pose
+- The face angle and expression
+- The framing and composition
+- The outfit
+- Any facial features
+
+This is LIGHTING EDIT only.
+
+====================
+EDITING INSTRUCTIONS
+====================
+
+EFFECT: Club/flash spotlight — person glows bright, background goes dark
+
+1. SUBJECT BRIGHTNESS → Make the person glow
+   • Dramatically brighten the person (face, skin, outfit)
+   • Skin looks luminous, almost over-exposed in a natural way
+   • Face bright and clear — like caught in a direct flash or spotlight
+   • Skin has that glossy, dewy, slightly overlit club photo look
+   • Eyes bright and alive
+   • Hair lit from front — warm, bright, glowing strands
+
+2. BACKGROUND → Darken dramatically
+   • Push background to near black (#0A0A0A to #1A1A1A)
+   • All background elements fade into darkness
+   • Any people or objects behind = barely visible or invisible
+   • Creates stark contrast: bright glowing subject vs dark void background
+   • Vignette effect — darkness creeps in from all edges toward the subject
+
+3. LIGHTING QUALITY → Club flash aesthetic
+   • Looks like a flash photo taken in a dark club/bar
+   • Natural flash overexposure on skin (not harsh — soft glow)
+   • Slight warm tone on skin (golden/peach glow)
+   • Whites slightly blown out naturally
+   • Shadows under chin/neck deep and dark
+   • High contrast between lit skin and dark surroundings
+
+4. COLOR GRADING → Nightclub aesthetic
+   • Warm golden/peach tones on skin
+   • Cold dark blues/blacks in background
+   • High contrast overall
+   • Slight desaturation of background
+   • Skin tones rich and warm
+   • Can have slight film grain for authenticity
+
+5. QUALITY UPGRADE:
+   • Sharpen face and skin details
+   • Clean up noise while keeping natural texture
+   • Professional retouch quality
+   • Skin natural but polished
+
+====================
+WHAT STAYS THE SAME
+====================
+
+- EXACT pose and position
+- EXACT face and expression
+- EXACT outfit
+- EXACT hair color and style
+- EXACT facial features — nothing changed
+- Composition identical to input
+
+====================
+TECHNICAL SPECS
+====================
+
+- High contrast ratio (subject: very bright / background: very dark)
+- Vignette strength: strong (background nearly black at edges)
+- Skin brightness: +60-80% from original
+- Background darkness: -80-90% from original
+- Color temperature on subject: warm (3200-4000K feel)
+- Background color: cold dark blue-black
+- Grain: subtle, natural film grain
+
+====================
+VERIFICATION
+====================
+
+☐ Same pose as input?
+☐ Same face and expression?
+☐ Person visibly glowing / brightly lit?
+☐ Skin luminous and dewy?
+☐ Background near black / very dark?
+☐ Strong contrast between bright subject and dark background?
+☐ Looks like club flash photo aesthetic?
+☐ Warm tones on skin?
+☐ Natural, not fake or AI-looking?
+☐ Would person recognize themselves instantly?
+
+IF ANY = NO → RE-EDIT.
+
+====================
+OUTPUT
+====================
+
+Input photo edited with club flash spotlight effect: person glows brightly as if
+caught in direct flash/spotlight, skin luminous and warm, face sharp and clear —
+while background is pushed to near black, creating dramatic high-contrast nightclub
+aesthetic. Strong vignette from edges. Warm golden skin tones vs cold dark background.
+Natural film grain. Professional quality. Same pose, same face, same outfit — only
+the lighting dramatically changed.
+
+SAME PERSON. SAME POSE. SAME FACE.
+EFFECT: GLOWING SUBJECT + DARK BACKGROUND.`,
+  }
+
   const handleEnhance = async () => {
     if (!enhancePhoto) return
     hapticFeedback('medium')
@@ -274,6 +530,8 @@ export default function CreateScreen() {
     try {
       const fd = new FormData()
       fd.append('photo', enhancePhoto)
+      const stylePrompt = RETOUCH_STYLE_PROMPTS[retouchStyle]
+      if (stylePrompt) fd.append('prompt', stylePrompt)
       const { data: { task_id } } = await createRetouch(fd)
       const t = await streamTask(task_id)
       if (t.state !== 'success' || !t.image_url) {
@@ -1061,7 +1319,7 @@ export default function CreateScreen() {
                     <>
                       <GlassCard style={{ padding: 0, overflow: 'hidden' }}>
                         <div style={{ padding: '10px 12px' }}>
-                          <p style={{ ...labelStyle, margin: '0 0 8px' }}>Фото для улучшения</p>
+                          <p style={{ ...labelStyle, margin: '0 0 8px' }}>Фото для обработки</p>
                           {enhancePreview ? (
                             <div style={{ position: 'relative' }}>
                               <button
@@ -1125,11 +1383,52 @@ export default function CreateScreen() {
                           )}
                         </div>
                       </GlassCard>
+                      <div style={{
+                        display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',
+                        background: 'rgba(255,255,255,0.04)',
+                        border: '1px solid rgba(139,92,246,0.15)',
+                        borderRadius: 14, padding: 4, gap: 4,
+                      }}>
+                        {([
+                          {
+                            key: 'enhance' as RetouchStyle, label: 'Улучшение',
+                            icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+                          },
+                          {
+                            key: 'summer' as RetouchStyle, label: 'Летний вайб',
+                            icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2"/><path d="M12 2V4M12 20V22M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M2 12H4M20 12H22M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>,
+                          },
+                          {
+                            key: 'glam' as RetouchStyle, label: 'Гламур вайб',
+                            icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6 3H18L22 9L12 21L2 9L6 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M2 9H22M6 3L9 9L12 3L15 9L18 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+                          },
+                        ]).map(s => (
+                          <button
+                            key={s.key}
+                            onClick={() => { hapticFeedback('light'); setRetouchStyle(s.key) }}
+                            style={{
+                              background: retouchStyle === s.key ? 'linear-gradient(135deg, #8b5cf6, #6d28d9)' : 'transparent',
+                              border: 'none', borderRadius: 10,
+                              color: retouchStyle === s.key ? '#ffffff' : 'rgba(255,255,255,0.4)',
+                              fontSize: 11, fontWeight: retouchStyle === s.key ? 600 : 400,
+                              padding: '9px 2px', cursor: 'pointer', fontFamily: 'Inter, sans-serif',
+                              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3,
+                              flexDirection: 'column',
+                              transition: 'all 0.15s ease',
+                              boxShadow: retouchStyle === s.key ? '0 0 12px rgba(139,92,246,0.4)' : 'none',
+                              lineHeight: 1.2,
+                            }}
+                          >
+                            {s.icon}
+                            {s.label}
+                          </button>
+                        ))}
+                      </div>
                       <Button onClick={handleEnhance} disabled={!enhancePhoto}>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                           <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/>
                         </svg>
-                        Улучшить фото
+                        Обработать фото
                       </Button>
                       {!enhancePhoto && (
                         <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: 12, textAlign: 'center', margin: 0 }}>

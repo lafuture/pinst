@@ -111,8 +111,19 @@ func (h *Handler) logGenerationToChannel(tgID int64, mode string) {
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
 
+		modeNames := map[string]string{
+			"preset":    "Пресеты",
+			"simple":    "Обычный",
+			"reference": "По референсу",
+			"retouch":   "Обработка",
+			"chat":      "ИИ чат",
+		}
+		modeName := modeNames[mode]
+		if modeName == "" {
+			modeName = mode
+		}
 		text := fmt.Sprintf("🎨 <b>Генерация</b>\n👤 tg://user?id=%d\nРежим: %s",
-			tgID, mode)
+			tgID, modeName)
 
 		if err := h.tg.LogMessage(ctx, text); err != nil {
 			log.Printf("logGenerationToChannel tg_id=%d: %v", tgID, err)
